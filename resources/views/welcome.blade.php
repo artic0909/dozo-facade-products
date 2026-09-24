@@ -323,22 +323,42 @@
                 </p>
             </div>
 
-            <!-- Two Division Cards Grid -->
+            <!-- Two Division Cards Grid with Automatic Sideways Image Sliding -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
                 
                 <!-- DIVISION 1: DOZO WINDOWS -->
                 <div id="windows" class="flex flex-col">
-                    <!-- Image Card with Overlay -->
-                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group">
-                        <img 
-                            src="/images/solution_windows.jpg" 
-                            alt="DOZO Windows Interior" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
+                    <!-- Image Card with Horizontal Auto-Sliding Reel -->
+                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group rounded-sm shadow-xs">
+                        <!-- Horizontal Slider Track -->
+                        <div id="windowsSliderTrack" class="flex w-[400%] h-full transition-transform duration-700 ease-out">
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_windows.jpg" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_windows_2.jpg" alt="DOZO Casement Panorama" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_windows_3.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_windows_4.jpg" alt="DOZO Architectural Glazing" class="w-full h-full object-cover object-center">
+                            </div>
+                        </div>
+
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
+
+                        <!-- Top Right Carousel Dots Indicator -->
+                        <div class="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full border border-white/20">
+                            <button type="button" onclick="setWindowsSlide(0)" class="w-1.5 h-1.5 rounded-full bg-white win-dot transition-all" aria-label="Slide 1"></button>
+                            <button type="button" onclick="setWindowsSlide(1)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 2"></button>
+                            <button type="button" onclick="setWindowsSlide(2)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 3"></button>
+                            <button type="button" onclick="setWindowsSlide(3)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 4"></button>
+                        </div>
 
                         <!-- Text Overlay at Bottom Left -->
-                        <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                        <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
                                 DOZO
                             </div>
@@ -348,7 +368,7 @@
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 Engineered for comfort, performance and modern living.
                             </p>
-                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200">
+                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
                                 <span>Explore Windows</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
@@ -418,17 +438,37 @@
 
                 <!-- DIVISION 2: DOZO FACADE -->
                 <div id="facade" class="flex flex-col">
-                    <!-- Image Card with Overlay -->
-                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group">
-                        <img 
-                            src="/images/solution_facade.jpg" 
-                            alt="DOZO Façade Architecture" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
+                    <!-- Image Card with Horizontal Auto-Sliding Reel -->
+                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group rounded-sm shadow-xs">
+                        <!-- Horizontal Slider Track -->
+                        <div id="facadeSliderTrack" class="flex w-[400%] h-full transition-transform duration-700 ease-out">
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_facade.jpg" alt="DOZO Façade Architecture Perforated" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_facade_2.jpg" alt="DOZO Unitized Curtain Wall" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_facade_3.jpg" alt="DOZO Modern Cladding" class="w-full h-full object-cover object-center">
+                            </div>
+                            <div class="w-1/4 h-full shrink-0 relative">
+                                <img src="/images/solution_facade_4.jpg" alt="DOZO Architectural Louvers" class="w-full h-full object-cover object-center">
+                            </div>
+                        </div>
+
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
+
+                        <!-- Top Right Carousel Dots Indicator -->
+                        <div class="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full border border-white/20">
+                            <button type="button" onclick="setFacadeSlide(0)" class="w-1.5 h-1.5 rounded-full bg-white fac-dot transition-all" aria-label="Slide 1"></button>
+                            <button type="button" onclick="setFacadeSlide(1)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 2"></button>
+                            <button type="button" onclick="setFacadeSlide(2)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 3"></button>
+                            <button type="button" onclick="setFacadeSlide(3)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 4"></button>
+                        </div>
 
                         <!-- Text Overlay at Bottom Left -->
-                        <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                        <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
                                 DOZO
                             </div>
@@ -438,7 +478,7 @@
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 Architectural freedom with precision and durability.
                             </p>
-                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200">
+                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
                                 <span>Explore Facade</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
@@ -1406,6 +1446,57 @@
 
         // Start carousel autoplay on load
         resetHeroTimer();
+
+        // DOZO Windows Sideways Auto-Slider
+        let winSlideIdx = 0;
+        const totalWinSlides = 4;
+        let winTimer = null;
+
+        function setWindowsSlide(idx) {
+            winSlideIdx = idx;
+            const track = document.getElementById('windowsSliderTrack');
+            if (track) {
+                track.style.transform = `translateX(-${idx * 25}%)`;
+            }
+            const dots = document.querySelectorAll('.win-dot');
+            dots.forEach((dot, i) => {
+                dot.className = i === idx ? 'w-3 h-1.5 rounded-full bg-white win-dot transition-all' : 'w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all';
+            });
+        }
+
+        function autoAdvanceWindows() {
+            winSlideIdx = (winSlideIdx + 1) % totalWinSlides;
+            setWindowsSlide(winSlideIdx);
+        }
+
+        winTimer = setInterval(autoAdvanceWindows, 4200);
+
+        // DOZO Facade Sideways Auto-Slider (Staggered offset)
+        let facSlideIdx = 0;
+        const totalFacSlides = 4;
+        let facTimer = null;
+
+        function setFacadeSlide(idx) {
+            facSlideIdx = idx;
+            const track = document.getElementById('facadeSliderTrack');
+            if (track) {
+                track.style.transform = `translateX(-${idx * 25}%)`;
+            }
+            const dots = document.querySelectorAll('.fac-dot');
+            dots.forEach((dot, i) => {
+                dot.className = i === idx ? 'w-3 h-1.5 rounded-full bg-white fac-dot transition-all' : 'w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all';
+            });
+        }
+
+        function autoAdvanceFacade() {
+            facSlideIdx = (facSlideIdx + 1) % totalFacSlides;
+            setFacadeSlide(facSlideIdx);
+        }
+
+        // Delay initial start of facade slider so they alternate smoothly
+        setTimeout(() => {
+            facTimer = setInterval(autoAdvanceFacade, 4200);
+        }, 2100);
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
