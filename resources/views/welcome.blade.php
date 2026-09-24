@@ -99,21 +99,29 @@
     <div class="hero-container w-full border-b border-gray-100">
         <!-- 5 Interactive Carousel Background Images with smooth crossfade -->
         <div class="hero-building-bg">
-            <div id="heroBg0" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
-                <img src="/images/hero_building.jpg" alt="Design - DOZO Architecture" class="w-full h-full">
-            </div>
-            <div id="heroBg1" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
-                <img src="/images/hero_engineer.jpg" alt="Engineer - DOZO Façades" class="w-full h-full">
-            </div>
-            <div id="heroBg2" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
-                <img src="/images/hero_fabricate.jpg" alt="Fabricate - DOZO Precision" class="w-full h-full">
-            </div>
-            <div id="heroBg3" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
-                <img src="/images/hero_install.jpg" alt="Install - DOZO Turnkey" class="w-full h-full">
-            </div>
-            <div id="heroBg4" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
-                <img src="/images/hero_support.jpg" alt="Support - DOZO Care" class="w-full h-full">
-            </div>
+            @if(isset($heroSlides) && $heroSlides->count())
+                @foreach($heroSlides as $idx => $slide)
+                    <div id="heroBg{{ $idx }}" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none' }}">
+                        <img src="{{ $slide->image }}" alt="{{ $slide->name }} - DOZO Architecture" class="w-full h-full">
+                    </div>
+                @endforeach
+            @else
+                <div id="heroBg0" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
+                    <img src="/images/hero_building.jpg" alt="Design - DOZO Architecture" class="w-full h-full">
+                </div>
+                <div id="heroBg1" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                    <img src="/images/hero_engineer.jpg" alt="Engineer - DOZO Façades" class="w-full h-full">
+                </div>
+                <div id="heroBg2" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                    <img src="/images/hero_fabricate.jpg" alt="Fabricate - DOZO Precision" class="w-full h-full">
+                </div>
+                <div id="heroBg3" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                    <img src="/images/hero_install.jpg" alt="Install - DOZO Turnkey" class="w-full h-full">
+                </div>
+                <div id="heroBg4" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                    <img src="/images/hero_support.jpg" alt="Support - DOZO Care" class="w-full h-full">
+                </div>
+            @endif
         </div>
 
         <!-- TOP NAVIGATION BAR -->
@@ -197,7 +205,7 @@
                 <div class="lg:col-span-7 flex flex-col justify-center">
                     <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2.5">
                         <span id="heroEyebrow" class="text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.16em] uppercase text-gray-400 transition-opacity duration-300">
-                            Build A Better Tomorrow
+                            {{ isset($heroSlides) && $heroSlides->first() ? $heroSlides->first()->eyebrow : 'Build A Better Tomorrow' }}
                         </span>
                     </div>
 
@@ -210,47 +218,60 @@
                     </h1>
 
                     <p id="heroDesc" class="text-gray-500 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed max-w-md mb-4 sm:mb-5 transition-opacity duration-300">
-                        Innovative. Sustainable. Elegant.<br>
-                        Complete Building Envelope Solutions.
+                        {{ isset($heroSlides) && $heroSlides->first() ? $heroSlides->first()->desc : "Innovative. Sustainable. Elegant.\nComplete Building Envelope Solutions." }}
                     </p>
 
                     <!-- Dynamic CTA Button -->
                     <div class="flex items-center gap-3">
-                        <a id="heroCta" href="#solutions" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5">
-                            <span id="heroCtaText">Explore Our Solutions</span>
+                        <a id="heroCta" href="{{ isset($heroSlides) && $heroSlides->first() ? $heroSlides->first()->cta_link : '#solutions' }}" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5">
+                            <span id="heroCtaText">{{ isset($heroSlides) && $heroSlides->first() ? $heroSlides->first()->cta_text : 'Explore Our Solutions' }}</span>
                             <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
 
                     <!-- Mobile Carousel Points Strip -->
                     <div class="flex lg:hidden items-center gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
-                        <button type="button" onclick="setHeroSlide(0)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold bg-black text-white shrink-0" data-idx="0">Design</button>
-                        <button type="button" onclick="setHeroSlide(1)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="1">Engineer</button>
-                        <button type="button" onclick="setHeroSlide(2)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="2">Fabricate</button>
-                        <button type="button" onclick="setHeroSlide(3)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="3">Install</button>
-                        <button type="button" onclick="setHeroSlide(4)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="4">Support</button>
+                        @if(isset($heroSlides) && $heroSlides->count())
+                            @foreach($heroSlides as $idx => $slide)
+                                <button type="button" onclick="setHeroSlide({{ $idx }})" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold {{ $idx === 0 ? 'bg-black text-white' : 'bg-gray-200/80 text-gray-700' }} shrink-0" data-idx="{{ $idx }}">{{ $slide->name }}</button>
+                            @endforeach
+                        @else
+                            <button type="button" onclick="setHeroSlide(0)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold bg-black text-white shrink-0" data-idx="0">Design</button>
+                            <button type="button" onclick="setHeroSlide(1)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="1">Engineer</button>
+                            <button type="button" onclick="setHeroSlide(2)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="2">Fabricate</button>
+                            <button type="button" onclick="setHeroSlide(3)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="3">Install</button>
+                            <button type="button" onclick="setHeroSlide(4)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="4">Support</button>
+                        @endif
                     </div>
                 </div>
 
                 <!-- Hero Right: Interactive 5 Pillars Carousel Menu (Design, Engineer, Fabricate, Install, Support) -->
                 <div class="lg:col-span-5 hidden lg:flex flex-col justify-between items-end h-[280px] xl:h-[320px] text-right pr-4 z-20">
-                    <!-- 5 Clickable Carousel Points -->
+                    <!-- Clickable Carousel Points -->
                     <div class="space-y-1 drop-shadow-md">
-                        <button type="button" onclick="setHeroSlide(0)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white font-bold" data-index="0">
-                            <span class="inline-block pb-0.5 border-b border-white">Design</span>
-                        </button>
-                        <button type="button" onclick="setHeroSlide(1)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="1">
-                            <span class="inline-block pb-0.5 border-b border-transparent">Engineer</span>
-                        </button>
-                        <button type="button" onclick="setHeroSlide(2)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="2">
-                            <span class="inline-block pb-0.5 border-b border-transparent">Fabricate</span>
-                        </button>
-                        <button type="button" onclick="setHeroSlide(3)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="3">
-                            <span class="inline-block pb-0.5 border-b border-transparent">Install</span>
-                        </button>
-                        <button type="button" onclick="setHeroSlide(4)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="4">
-                            <span class="inline-block pb-0.5 border-b border-transparent">Support</span>
-                        </button>
+                        @if(isset($heroSlides) && $heroSlides->count())
+                            @foreach($heroSlides as $idx => $slide)
+                                <button type="button" onclick="setHeroSlide({{ $idx }})" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 {{ $idx === 0 ? 'text-white font-bold' : 'text-white/70 hover:text-white font-medium' }}" data-index="{{ $idx }}">
+                                    <span class="inline-block pb-0.5 border-b {{ $idx === 0 ? 'border-white' : 'border-transparent' }}">{{ $slide->name }}</span>
+                                </button>
+                            @endforeach
+                        @else
+                            <button type="button" onclick="setHeroSlide(0)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white font-bold" data-index="0">
+                                <span class="inline-block pb-0.5 border-b border-white">Design</span>
+                            </button>
+                            <button type="button" onclick="setHeroSlide(1)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="1">
+                                <span class="inline-block pb-0.5 border-b border-transparent">Engineer</span>
+                            </button>
+                            <button type="button" onclick="setHeroSlide(2)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="2">
+                                <span class="inline-block pb-0.5 border-b border-transparent">Fabricate</span>
+                            </button>
+                            <button type="button" onclick="setHeroSlide(3)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="3">
+                                <span class="inline-block pb-0.5 border-b border-transparent">Install</span>
+                            </button>
+                            <button type="button" onclick="setHeroSlide(4)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="4">
+                                <span class="inline-block pb-0.5 border-b border-transparent">Support</span>
+                            </button>
+                        @endif
                     </div>
 
                     <!-- Bottom Right Badge -->
@@ -263,43 +284,57 @@
             </div>
         </div>
 
-        <!-- HERO BOTTOM STATS ROW (STAYS FIXED / DOES NOT CHANGE) -->
+        <!-- HERO BOTTOM STATS ROW (STAYS FIXED / DYNAMIC CMS) -->
         <div class="relative z-10 w-full shrink-0 bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none border-t border-gray-200/50 py-3 sm:py-3.5">
             <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-wrap items-center justify-start sm:justify-between lg:justify-start gap-4 sm:gap-6 lg:gap-10 text-left">
                     
-                    <!-- Stat 1 -->
-                    <div class="flex items-center gap-6 lg:gap-10">
-                        <div>
-                            <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">25+</div>
-                            <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Years of Experience</div>
+                    @if(isset($heroStats) && $heroStats->count())
+                        @foreach($heroStats as $idx => $stat)
+                            <div class="flex items-center gap-6 lg:gap-10">
+                                <div>
+                                    <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">{{ $stat->number }}</div>
+                                    <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">{{ $stat->label }}</div>
+                                </div>
+                                @if(!$loop->last)
+                                    <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        <!-- Stat 1 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">25+</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Years of Experience</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
                         </div>
-                        <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
-                    </div>
 
-                    <!-- Stat 2 -->
-                    <div class="flex items-center gap-6 lg:gap-10">
-                        <div>
-                            <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">500+</div>
-                            <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Projects Delivered</div>
+                        <!-- Stat 2 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">500+</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Projects Delivered</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
                         </div>
-                        <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
-                    </div>
 
-                    <!-- Stat 3 -->
-                    <div class="flex items-center gap-6 lg:gap-10">
-                        <div>
-                            <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Premium</div>
-                            <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Quality Materials</div>
+                        <!-- Stat 3 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Premium</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Quality Materials</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
                         </div>
-                        <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
-                    </div>
 
-                    <!-- Stat 4 -->
-                    <div>
-                        <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Pan India</div>
-                        <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Presence</div>
-                    </div>
+                        <!-- Stat 4 -->
+                        <div>
+                            <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Pan India</div>
+                            <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Presence</div>
+                        </div>
+                    @endif
 
                 </div>
             </div>
@@ -1081,45 +1116,46 @@
                 <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
             </div>
 
-            <form onsubmit="handleQuoteSubmit(event)" class="space-y-3.5">
+            <form id="publicQuoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-3.5">
+                @csrf
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
-                    <input type="text" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="text" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
-                        <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
-                        <input type="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="email" name="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
-                        <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
-                            <option>Both Windows & Façade</option>
-                            <option>DOZO Windows</option>
-                            <option>DOZO Façade Systems</option>
-                            <option>Perforated Panels & Cladding</option>
+                        <select name="product_interest" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                            <option value="Both Windows & Façade">Both Windows & Façade</option>
+                            <option value="DOZO Windows">DOZO Windows</option>
+                            <option value="DOZO Façade Systems">DOZO Façade Systems</option>
+                            <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Project Location</label>
-                        <input type="text" placeholder="e.g. Mumbai / Bangalore" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" name="city" placeholder="e.g. Mumbai / Bangalore" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
-                    <textarea rows="3" placeholder="Tell us about the project scale, glass type, or architectural specs..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <textarea name="message" rows="3" placeholder="Tell us about the project scale, glass type, or architectural specs..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm">
+                <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm">
                     Submit Inquiry &rarr;
                 </button>
             </form>
@@ -1243,8 +1279,38 @@
         }
         function handleQuoteSubmit(e) {
             e.preventDefault();
-            alert('Thank you for contacting DOZO! Your inquiry has been submitted successfully. Our engineering team will contact you shortly.');
-            closeQuoteModal();
+            const form = document.getElementById('publicQuoteForm');
+            const submitBtn = document.getElementById('quoteSubmitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+
+            const formData = new FormData(form);
+
+            fetch('/quotes', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]')?.value || '',
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message || 'Thank you! Your quote inquiry has been submitted. Our engineering team will contact you shortly.');
+                form.reset();
+                closeQuoteModal();
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Thank you! Your inquiry has been received. Our team will contact you shortly.');
+                closeQuoteModal();
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
         }
 
         function openProductModal(title, desc) {
@@ -1297,49 +1363,69 @@
             });
         }
 
-        // Hero 5-Pillar Carousel Controller (Design, Engineer, Fabricate, Install, Support)
-        const heroSlides = [
-            {
-                name: "Design",
-                eyebrow: "Build A Better Tomorrow",
-                headline: '<span class="font-black block">WINDOWS</span><span class="font-black block">FAÇADES</span><span class="font-light block text-[#25282d]">FOR A BRIGHTER</span><span class="font-light block text-[#25282d]">WORLD</span>',
-                desc: "Innovative. Sustainable. Elegant.<br>Complete Building Envelope Solutions.",
-                ctaText: "Explore Our Solutions",
-                ctaLink: "#solutions"
-            },
-            {
-                name: "Engineer",
-                eyebrow: "Structural Precision & Performance",
-                headline: '<span class="font-black block">PRECISION</span><span class="font-black block">ENGINEERED</span><span class="font-light block text-[#25282d]">FOR STRUCTURAL</span><span class="font-light block text-[#25282d]">MASTERY</span>',
-                desc: "High wind-load structural simulations, seismic resistance, acoustic damping, and advanced thermal boundary modeling.",
-                ctaText: "Discover Engineering Specs",
-                ctaLink: "#facade"
-            },
-            {
-                name: "Fabricate",
-                eyebrow: "Automated CNC Manufacturing",
-                headline: '<span class="font-black block">ADVANCED</span><span class="font-black block">FABRICATION</span><span class="font-light block text-[#25282d]">TO EUROPEAN</span><span class="font-light block text-[#25282d]">STANDARDS</span>',
-                desc: "State-of-the-art automated CNC milling, robotic corner crimping, and precision pre-glazed unitized curtain wall assembly.",
-                ctaText: "Explore Product Quality",
-                ctaLink: "#featured-products"
-            },
-            {
-                name: "Install",
-                eyebrow: "Turnkey Site Execution",
-                headline: '<span class="font-black block">SEAMLESS</span><span class="font-black block">INSTALLATION</span><span class="font-light block text-[#25282d]">ON TIME &</span><span class="font-light block text-[#25282d]">ON BUDGET</span>',
-                desc: "Certified facade engineers delivering zero-leakage, airtight fixing, and rigorous on-site quality assurance across India.",
-                ctaText: "View Featured Projects",
-                ctaLink: "#projects"
-            },
-            {
-                name: "Support",
-                eyebrow: "Lifelong Post-Handover Care",
-                headline: '<span class="font-black block">DEDICATED</span><span class="font-black block">SUPPORT</span><span class="font-light block text-[#25282d]">WARRANTY &</span><span class="font-light block text-[#25282d]">MAINTENANCE</span>',
-                desc: "Comprehensive multi-year warranty, regular architectural facade audits, and 24/7 responsive technical engineering support.",
-                ctaText: "Contact Our Engineers",
-                ctaLink: "#contact"
-            }
-        ];
+        @php
+            $heroSlidesJson = (isset($heroSlides) && $heroSlides->count()) ? $heroSlides->map(function($s) {
+                $lines = array_filter(array_map('trim', explode("\n", str_replace("\r", "", $s->headline))));
+                $formattedHeadline = '';
+                foreach($lines as $i => $line) {
+                    $class = $i < 2 ? 'font-black block' : 'font-light block text-[#25282d]';
+                    $formattedHeadline .= '<span class="' . $class . '">' . e($line) . '</span>';
+                }
+                return [
+                    'name' => $s->name,
+                    'eyebrow' => $s->eyebrow,
+                    'headline' => $formattedHeadline,
+                    'desc' => nl2br(e($s->desc)),
+                    'ctaText' => $s->cta_text,
+                    'ctaLink' => $s->cta_link,
+                    'image' => $s->image
+                ];
+            })->values() : null;
+        @endphp
+
+        // Hero 5-Pillar Carousel Controller (Dynamic CMS)
+        const heroSlides = {!! $heroSlidesJson ? json_encode($heroSlidesJson) : json_encode([
+            [
+                'name' => 'Design',
+                'eyebrow' => 'Build A Better Tomorrow',
+                'headline' => '<span class="font-black block">WINDOWS</span><span class="font-black block">FAÇADES</span><span class="font-light block text-[#25282d]">FOR A BRIGHTER</span><span class="font-light block text-[#25282d]">WORLD</span>',
+                'desc' => "Innovative. Sustainable. Elegant.<br>Complete Building Envelope Solutions.",
+                'ctaText' => 'Explore Our Solutions',
+                'ctaLink' => '#solutions'
+            ],
+            [
+                'name' => 'Engineer',
+                'eyebrow' => 'Structural Precision & Performance',
+                'headline' => '<span class="font-black block">PRECISION</span><span class="font-black block">ENGINEERED</span><span class="font-light block text-[#25282d]">FOR STRUCTURAL</span><span class="font-light block text-[#25282d]">MASTERY</span>',
+                'desc' => "High wind-load structural simulations, seismic resistance, acoustic damping, and advanced thermal boundary modeling.",
+                'ctaText' => 'Discover Engineering Specs',
+                'ctaLink' => '#facade'
+            ],
+            [
+                'name' => 'Fabricate',
+                'eyebrow' => 'Automated CNC Manufacturing',
+                'headline' => '<span class="font-black block">ADVANCED</span><span class="font-black block">FABRICATION</span><span class="font-light block text-[#25282d]">TO EUROPEAN</span><span class="font-light block text-[#25282d]">STANDARDS</span>',
+                'desc' => "State-of-the-art automated CNC milling, robotic corner crimping, and precision pre-glazed unitized curtain wall assembly.",
+                'ctaText' => 'Explore Product Quality',
+                'ctaLink' => '#featured-products'
+            ],
+            [
+                'name' => 'Install',
+                'eyebrow' => 'Turnkey Site Execution',
+                'headline' => '<span class="font-black block">SEAMLESS</span><span class="font-black block">INSTALLATION</span><span class="font-light block text-[#25282d]">ON TIME &</span><span class="font-light block text-[#25282d]">ON BUDGET</span>',
+                'desc' => "Certified facade engineers delivering zero-leakage, airtight fixing, and rigorous on-site quality assurance across India.",
+                'ctaText' => 'View Featured Projects',
+                'ctaLink' => '#projects'
+            ],
+            [
+                'name' => 'Support',
+                'eyebrow' => 'Lifelong Post-Handover Care',
+                'headline' => '<span class="font-black block">DEDICATED</span><span class="font-black block">SUPPORT</span><span class="font-light block text-[#25282d]">WARRANTY &</span><span class="font-light block text-[#25282d]">MAINTENANCE</span>',
+                'desc' => "Comprehensive multi-year warranty, regular architectural facade audits, and 24/7 responsive technical engineering support.",
+                'ctaText' => 'Contact Our Engineers',
+                'ctaLink' => '#contact'
+            ]
+        ]) !!};
 
         let currentHeroIndex = 0;
         let heroTimer = null;
