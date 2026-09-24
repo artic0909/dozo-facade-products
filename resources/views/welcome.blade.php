@@ -327,27 +327,27 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
                 
                 <!-- DIVISION 1: DOZO WINDOWS -->
-                <div id="windows" class="flex flex-col">
-                    <!-- Image Card with Horizontal Auto-Sliding Reel -->
-                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group rounded-sm shadow-xs">
+                <div id="windows" class="flex flex-col rounded-none">
+                    <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
+                    <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
                         <!-- Horizontal Slider Track -->
-                        <div id="windowsSliderTrack" class="flex w-[400%] h-full transition-transform duration-700 ease-out">
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_windows.jpg" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center">
+                        <div id="windowsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_windows.jpg" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_windows_2.jpg" alt="DOZO Casement Panorama" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_windows_2.jpg" alt="DOZO Casement Panorama" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_windows_3.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_windows_3.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_windows_4.jpg" alt="DOZO Architectural Glazing" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_windows_4.jpg" alt="DOZO Architectural Glazing" class="w-full h-full object-cover object-center rounded-none">
                             </div>
                         </div>
 
                         <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10 rounded-none"></div>
 
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
@@ -429,27 +429,27 @@
                 </div>
 
                 <!-- DIVISION 2: DOZO FACADE -->
-                <div id="facade" class="flex flex-col">
-                    <!-- Image Card with Horizontal Auto-Sliding Reel -->
-                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group rounded-sm shadow-xs">
+                <div id="facade" class="flex flex-col rounded-none">
+                    <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
+                    <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
                         <!-- Horizontal Slider Track -->
-                        <div id="facadeSliderTrack" class="flex w-[400%] h-full transition-transform duration-700 ease-out">
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_facade.jpg" alt="DOZO Façade Architecture Perforated" class="w-full h-full object-cover object-center">
+                        <div id="facadeSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_facade.jpg" alt="DOZO Façade Architecture Perforated" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_facade_2.jpg" alt="DOZO Unitized Curtain Wall" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_facade_2.jpg" alt="DOZO Unitized Curtain Wall" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_facade_3.jpg" alt="DOZO Modern Cladding" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_facade_3.jpg" alt="DOZO Modern Cladding" class="w-full h-full object-cover object-center rounded-none">
                             </div>
-                            <div class="w-1/4 h-full shrink-0 relative">
-                                <img src="/images/solution_facade_4.jpg" alt="DOZO Architectural Louvers" class="w-full h-full object-cover object-center">
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="/images/solution_facade_4.jpg" alt="DOZO Architectural Louvers" class="w-full h-full object-cover object-center rounded-none">
                             </div>
                         </div>
 
                         <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10 rounded-none"></div>
 
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
@@ -551,15 +551,15 @@
                 </a>
             </div>
 
-            <!-- 4 Big Product Cards in One Row -->
+            <!-- 4 Big Product Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- 1. Sliding Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/90 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
-                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
+                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100">
+                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100 rounded-none">
                         <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
                         <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -570,11 +570,11 @@
                 </div>
 
                 <!-- 2. Casement Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/90 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Casement Window System', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
-                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Casement Window System', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
+                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100">
+                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100 rounded-none">
                         <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Casement Window</span>
                         <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -585,11 +585,11 @@
                 </div>
 
                 <!-- 3. Unitized Glass Facade -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
-                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#0d131a]">
-                        <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
+                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#0d131a]">
+                        <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800">
+                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800 rounded-none">
                         <span class="text-sm sm:text-[15px] font-bold text-white truncate">Unitized Glass Facade</span>
                         <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -600,11 +600,11 @@
                 </div>
 
                 <!-- 4. Perforated Panel -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Architectural Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
-                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#0d131a]">
-                        <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Architectural Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
+                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#0d131a]">
+                        <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800">
+                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800 rounded-none">
                         <span class="text-sm sm:text-[15px] font-bold text-white truncate">Perforated Panel</span>
                         <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -636,13 +636,13 @@
                 </a>
             </div>
 
-            <!-- 4 Big Project Cards in One Row -->
+            <!-- 4 Big Project Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Project 1: Residential Tower Kolkata -->
-                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Residential Tower, Kolkata', 'Luxury residential high-rise featuring custom acoustic DOZO casement windows and panoramic glass facades designed for urban sound isolation.')">
-                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
-                        <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Residential Tower, Kolkata', 'Luxury residential high-rise featuring custom acoustic DOZO casement windows and panoramic glass facades designed for urban sound isolation.')">
+                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="pt-3 pb-1">
                         <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Residential Tower</h4>
@@ -651,9 +651,9 @@
                 </div>
 
                 <!-- Project 2: Commercial Complex Bangalore (Accent Blue Title) -->
-                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Commercial Complex, Bangalore', 'State-of-the-art commercial tech hub envelope engineered with unitized double-glazed facade panels and integrated solar shading louvers.')">
-                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
-                        <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Commercial Complex, Bangalore', 'State-of-the-art commercial tech hub envelope engineered with unitized double-glazed facade panels and integrated solar shading louvers.')">
+                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="pt-3 pb-1">
                         <h4 class="text-sm sm:text-[15px] font-bold text-[#3b82f6] leading-snug group-hover:underline">Commercial Complex</h4>
@@ -662,9 +662,9 @@
                 </div>
 
                 <!-- Project 3: IT Park Hyderabad -->
-                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('IT Park, Hyderabad', 'Expansive IT campus building with solid aluminum cladding panels and high-efficiency thermal fixed glass systems.')">
-                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
-                        <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('IT Park, Hyderabad', 'Expansive IT campus building with solid aluminum cladding panels and high-efficiency thermal fixed glass systems.')">
+                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="pt-3 pb-1">
                         <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">IT Park</h4>
@@ -673,9 +673,9 @@
                 </div>
 
                 <!-- Project 4: Luxury Residence Goa -->
-                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Luxury Residence, Goa', 'Coastal luxury villa equipped with weather-resistant heavy-duty sliding glass doors and minimalist slim-profile frame geometry.')">
-                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
-                        <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Luxury Residence, Goa', 'Coastal luxury villa equipped with weather-resistant heavy-duty sliding glass doors and minimalist slim-profile frame geometry.')">
+                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="pt-3 pb-1">
                         <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Luxury Residence</h4>
@@ -813,9 +813,9 @@
             
             <h3 class="text-sm font-bold text-sky-700 mb-3">Featured Project</h3>
 
-            <div class="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm">
-                <div class="h-48 overflow-hidden">
-                    <img id="mobProjImg" src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover">
+            <div class="rounded-none overflow-hidden border border-gray-100 bg-white shadow-sm">
+                <div class="h-48 rounded-none overflow-hidden">
+                    <img id="mobProjImg" src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover rounded-none">
                 </div>
                 <div class="p-4 text-center">
                     <h4 id="mobProjTitle" class="text-sm font-bold text-gray-900">Commercial Complex</h4>
@@ -830,7 +830,7 @@
                         <button onclick="changeMobProject(4)" class="w-1.5 h-1.5 rounded-full bg-gray-300 m-dot" aria-label="5"></button>
                     </div>
 
-                    <a href="#projects" class="block w-full bg-[#1b1e23] text-white text-xs font-semibold py-2.5 rounded-xl text-center">
+                    <a href="#projects" class="block w-full bg-[#1b1e23] text-white text-xs font-semibold py-2.5 rounded-none text-center">
                         View All Projects &rarr;
                     </a>
                 </div>
@@ -878,9 +878,9 @@
                 <!-- Col 1: Brand Info & Socials (Span 4) -->
                 <div class="lg:col-span-4 flex flex-col justify-between">
                     <div>
-                        <!-- Enlarged Footer Logo -->
-                        <a href="/" class="inline-block mb-4">
-                            <img src="/logo.png" alt="DOZO Windows & Facades" class="h-12 sm:h-14 md:h-16 w-auto object-contain invert brightness-200">
+                        <!-- Footer Logo in White Background Container -->
+                        <a href="/" class="inline-flex items-center bg-white px-4 py-2 rounded-md mb-5 shadow-sm hover:opacity-95 transition-opacity">
+                            <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-12 md:h-14 w-auto object-contain">
                         </a>
                         <p class="text-xs sm:text-[13px] text-gray-400 leading-relaxed mb-6 max-w-sm">
                             DOZO is India's premier manufacturer and contractor of high-performance architectural aluminum windows, unitized curtain wall facades, and bespoke metallic building envelopes.
@@ -1005,10 +1005,10 @@
 
     <!-- Mobile Footer -->
     <footer class="sm:hidden bg-[#161a1e] text-white p-6 mt-6 border-t border-gray-800">
-        <!-- Enlarged Logo for Mobile -->
+        <!-- Mobile Footer Logo in White Background Container -->
         <div class="mb-4 text-left">
-            <a href="/" class="inline-block mb-3">
-                <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 w-auto object-contain invert brightness-200">
+            <a href="/" class="inline-flex items-center bg-white px-3.5 py-1.5 rounded-md mb-3 shadow-sm">
+                <img src="/logo.png" alt="DOZO Windows & Facades" class="h-9 w-auto object-contain">
             </a>
             <h3 class="text-base font-bold text-white leading-snug">Precision Building Envelope Solutions</h3>
             <p class="text-xs text-gray-400 mt-1">High-performance windows and architectural facade systems across India.</p>
