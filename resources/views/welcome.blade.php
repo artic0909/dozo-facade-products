@@ -653,7 +653,7 @@
         </div>
     </section>
 
-    <!-- FEATURED PROJECTS SECTION -->
+    <!-- DOZO PRODUCTS SECTION -->
     <section id="projects" class="py-12 sm:py-16 bg-white border-t border-gray-100">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -661,7 +661,7 @@
             <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-3">
                     <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#1a1d20] uppercase">
-                        FEATURED PROJECTS
+                        DOZO PRODUCTS
                     </h2>
                     <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
