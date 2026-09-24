@@ -274,190 +274,199 @@
     </div>
 
     <!-- OUR SOLUTIONS SECTION -->
-    <section id="solutions" class="py-12 lg:py-16 bg-white border-y border-gray-100">
+    <section id="solutions" class="py-12 sm:py-16 bg-white border-y border-gray-100">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center justify-between gap-2 mb-8 sm:mb-10">
+            <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center">
-                    <h2 class="text-lg sm:text-xl lg:text-[22px] font-black tracking-tight text-[#1a1d20] uppercase">
-                        Our Solutions
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                        OUR SOLUTIONS
                     </h2>
                     <span class="accent-blue-line"></span>
                 </div>
-                <p class="hidden sm:block text-xs font-medium text-gray-400">
+                <p class="text-xs sm:text-sm text-gray-500 font-normal">
                     Two Divisions. One Vision.
                 </p>
             </div>
 
-            <!-- Two Division Cards -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Two Division Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
                 
-                <!-- Division 1: DOZO Windows -->
-                <div id="windows" class="flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 bg-[#fafafa] shadow-xs hover:shadow-xl transition-all duration-300">
+                <!-- DIVISION 1: DOZO WINDOWS -->
+                <div id="windows" class="flex flex-col">
                     <!-- Image Card with Overlay -->
-                    <div class="relative h-[280px] sm:h-[360px] overflow-hidden group">
+                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group">
                         <img 
                             src="/images/solution_windows.jpg" 
                             alt="DOZO Windows Interior" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
 
-                        <!-- Floating Info Content -->
+                        <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                            <div class="text-[11px] font-bold tracking-widest uppercase text-sky-400 mb-1">DOZO</div>
-                            <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-1.5">Windows</h3>
-                            <p class="hidden sm:block text-xs sm:text-sm text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
+                            <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
+                                DOZO
+                            </div>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+                                Windows
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 Engineered for comfort, performance and modern living.
                             </p>
-                            
-                            <!-- Desktop Button -->
-                            <a href="#featured-products" class="hidden sm:inline-flex items-center gap-2 bg-white/20 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/40 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200">
+                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200">
                                 <span>Explore Windows</span>
-                                <span>&rarr;</span>
-                            </a>
-
-                            <!-- Mobile Button -->
-                            <a href="#featured-products" class="sm:hidden inline-flex items-center gap-1.5 text-xs text-gray-200 hover:text-white font-medium">
-                                <span>View Products</span>
-                                <span>&rarr;</span>
+                                <span class="text-sm">&rarr;</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 5 Feature Badges Row (Desktop) -->
-                    <div class="hidden sm:block p-6 bg-white border-t border-gray-100">
-                        <div class="grid grid-cols-5 gap-2 text-center">
+                    <!-- 5 Feature Badges Row -->
+                    <div class="pt-5 pb-2 bg-white">
+                        <div class="grid grid-cols-5 gap-1 text-center">
                             <!-- Feature 1: Thermal Insulation -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18c-3.866 0-7 3.134-7 7 0 2.5 1.5 4.5 3.5 6m3.5-13c3.866 0 7 3.134 7 7 0 2.5-1.5 4.5-3.5 6M8.5 16l3.5 5 3.5-5"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7a3 3 0 0 1 6 0"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Thermal Insulation</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Thermal<br>Insulation</span>
                             </div>
+
                             <!-- Feature 2: Sound Reduction -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.54 8.46a5 5 0 0 1 0 7.07m3.53-10.6a10 10 0 0 1 0 14.14"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Sound Reduction</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Sound<br>Reduction</span>
                             </div>
+
                             <!-- Feature 3: Weather Resistance -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 0 0 4 4h10a4 4 0 1 0-.1-7.999 5 5 0 0 0-9.8 1.999A4 4 0 0 0 3 15z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v2m3-2v2m3-2v2"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Weather Resistance</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Weather<br>Resistance</span>
                             </div>
+
                             <!-- Feature 4: Sleek Design -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <rect x="3" y="3" width="18" height="18" rx="1.5"/>
+                                        <rect x="6" y="6" width="12" height="12" rx="0.5" stroke-width="1.2"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Sleek Design</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Sleek<br>Design</span>
                             </div>
+
                             <!-- Feature 5: Long Lasting -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Long Lasting</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Long<br>Lasting</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Division 2: DOZO Facade -->
-                <div id="facade" class="flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 bg-[#fafafa] shadow-xs hover:shadow-xl transition-all duration-300">
+                <!-- DIVISION 2: DOZO FACADE -->
+                <div id="facade" class="flex flex-col">
                     <!-- Image Card with Overlay -->
-                    <div class="relative h-[280px] sm:h-[360px] overflow-hidden group">
+                    <div class="relative h-[320px] sm:h-[390px] w-full overflow-hidden group">
                         <img 
                             src="/images/solution_facade.jpg" 
                             alt="DOZO Façade Architecture" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
 
-                        <!-- Floating Info Content -->
+                        <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                            <div class="text-[11px] font-bold tracking-widest uppercase text-sky-400 mb-1">DOZO</div>
-                            <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-1.5">Facade</h3>
-                            <p class="hidden sm:block text-xs sm:text-sm text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
+                            <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
+                                DOZO
+                            </div>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+                                Facade
+                            </h3>
+                            <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 Architectural freedom with precision and durability.
                             </p>
-                            
-                            <!-- Desktop Button -->
-                            <a href="#featured-products" class="hidden sm:inline-flex items-center gap-2 bg-white/20 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/40 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200">
+                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200">
                                 <span>Explore Facade</span>
-                                <span>&rarr;</span>
-                            </a>
-
-                            <!-- Mobile Button -->
-                            <a href="#featured-products" class="sm:hidden inline-flex items-center gap-1.5 text-xs text-gray-200 hover:text-white font-medium">
-                                <span>View Products</span>
-                                <span>&rarr;</span>
+                                <span class="text-sm">&rarr;</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 5 Feature Badges Row (Desktop) -->
-                    <div class="hidden sm:block p-6 bg-white border-t border-gray-100">
-                        <div class="grid grid-cols-5 gap-2 text-center">
+                    <!-- 5 Feature Badges Row -->
+                    <div class="pt-5 pb-2 bg-white">
+                        <div class="grid grid-cols-5 gap-1 text-center">
                             <!-- Feature 1: Façade Cladding -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <rect x="3" y="3" width="18" height="18" rx="1.5"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 3v18M13 3v18M18 3v18M3 8h18M3 13h18M3 18h18" stroke-dasharray="1 2"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Façade Cladding</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Façade<br>Cladding</span>
                             </div>
+
                             <!-- Feature 2: Architectural Panels -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l9 5-9 5-9-5 9-5zM3 7v10l9 5 9-5V7M12 12v10"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 9.5l5 2.8 5-2.8" stroke-dasharray="1 2"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Architectural Panels</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Architectural<br>Panels</span>
                             </div>
+
                             <!-- Feature 3: Louvers & Sun Shades -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6l16-3M4 11l16-3M4 16l16-3M4 21l16-3"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Louvers & Sun Shades</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Louvers &<br>Sun Shades</span>
                             </div>
+
                             <!-- Feature 4: Flashings & Accessories -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Flashings & Accessories</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Flashings &<br>Accessories</span>
                             </div>
+
                             <!-- Feature 5: Custom Fabrication -->
                             <div class="flex flex-col items-center">
-                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-2">
-                                    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                                <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <circle cx="12" cy="11" r="3"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5v1M12 13.5v1M8.5 11h1M14.5 11h1"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11.5px] font-semibold text-gray-700 leading-tight">Custom Fabrication</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Custom<br>Fabrication</span>
                             </div>
                         </div>
                     </div>
