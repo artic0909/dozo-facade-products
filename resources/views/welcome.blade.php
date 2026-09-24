@@ -492,7 +492,7 @@
                                 DOZO
                             </div>
                             <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                                Facade
+                                Façade
                             </h3>
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 Architectural freedom with precision and durability.
@@ -564,6 +564,50 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- DIVISION 3 / FULL-WIDTH CAROUSEL: DOZO PRODUCTS -->
+            <div id="products-division" class="w-full flex flex-col rounded-none mt-8 lg:mt-10">
+                <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
+                <div class="relative h-[320px] sm:h-[400px] w-full rounded-none overflow-hidden group shadow-xs">
+                    <!-- Horizontal Slider Track -->
+                    <div id="productsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
+                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                            <img src="/images/hero_building.jpg" alt="DOZO Architectural Systems" class="w-full h-full object-cover object-center rounded-none">
+                        </div>
+                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                            <img src="/images/prod_sliding_window.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center rounded-none">
+                        </div>
+                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                            <img src="/images/proj_residential_tower.jpg" alt="DOZO High-Rise Envelopes" class="w-full h-full object-cover object-center rounded-none">
+                        </div>
+                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                            <img src="/images/prod_unitized_facade.jpg" alt="DOZO Unitized Facade Systems" class="w-full h-full object-cover object-center rounded-none">
+                        </div>
+                    </div>
+
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10 rounded-none"></div>
+
+                    <!-- Text Overlay at Bottom Left -->
+                    <div class="absolute bottom-6 left-6 right-6 text-white z-20">
+                        <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
+                            DOZO
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+                            Products
+                        </h3>
+                        <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-xl mb-4 leading-relaxed">
+                            Comprehensive portfolio of premium aluminum windows, high-performance façade systems, and bespoke architectural solutions.
+                        </p>
+                        <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                            <span>Explore Products</span>
+                            <span class="text-sm">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                
             </div>
         </div>
     </section>
@@ -1559,6 +1603,28 @@
         setTimeout(() => {
             facTimer = setInterval(autoAdvanceFacade, 4200);
         }, 2100);
+
+        // DOZO Products Sideways Auto-Slider (Staggered offset)
+        let prodSlideIdx = 0;
+        const totalProdSlides = 4;
+        let prodTimer = null;
+
+        function setProductsSlide(idx) {
+            prodSlideIdx = idx;
+            const track = document.getElementById('productsSliderTrack');
+            if (track) {
+                track.style.transform = `translateX(-${idx * 25}%)`;
+            }
+        }
+
+        function autoAdvanceProducts() {
+            prodSlideIdx = (prodSlideIdx + 1) % totalProdSlides;
+            setProductsSlide(prodSlideIdx);
+        }
+
+        setTimeout(() => {
+            prodTimer = setInterval(autoAdvanceProducts, 4200);
+        }, 1050);
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
