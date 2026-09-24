@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\HeroSlide;
 use App\Models\HeroStat;
+use App\Models\Product;
+use App\Models\Project;
 use App\Models\Quote;
+use App\Models\SiteSetting;
+use App\Models\Solution;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,14 +17,29 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     /**
-     * Render the public landing page with dynamic Hero CMS content.
+     * Render the public landing page with dynamic Hero, Solutions, Products, Projects & Settings CMS data.
      */
     public function home()
     {
         $heroSlides = HeroSlide::where('is_active', true)->orderBy('order')->get();
         $heroStats = HeroStat::orderBy('order')->get();
+        $solutions = Solution::orderBy('order')->get()->keyBy('slug');
+        $products = Product::where('is_featured', true)->orderBy('order')->get();
+        $allProducts = Product::orderBy('order')->get();
+        $projects = Project::where('is_featured', true)->orderBy('order')->get();
+        $allProjects = Project::orderBy('order')->get();
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
 
-        return view('welcome', compact('heroSlides', 'heroStats'));
+        return view('welcome', compact(
+            'heroSlides',
+            'heroStats',
+            'solutions',
+            'products',
+            'allProducts',
+            'projects',
+            'allProjects',
+            'siteSettings'
+        ));
     }
 
     /**
@@ -100,124 +119,10 @@ class AdminController extends Controller
 
         $heroSlides = HeroSlide::orderBy('order')->get();
         $heroStats = HeroStat::orderBy('order')->get();
-
-        // Sample products inventory data
-        $products = [
-            [
-                'id' => 1,
-                'name' => 'Sliding Window System',
-                'category' => 'DOZO Windows',
-                'image' => '/images/prod_sliding_window.jpg',
-                'views' => 1420,
-                'inquiries' => 38,
-                'status' => 'Active',
-                'rating' => '4.9/5',
-                'specs' => 'Multi-Track Aluminium, Dual Acoustic Seal, German Hardware',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Casement Window System',
-                'category' => 'DOZO Windows',
-                'image' => '/images/prod_casement_window.jpg',
-                'views' => 1180,
-                'inquiries' => 29,
-                'status' => 'Active',
-                'rating' => '4.8/5',
-                'specs' => 'Side-Hung Multipoint Locking, 42dB Sound Reduction',
-            ],
-            [
-                'id' => 3,
-                'name' => 'Unitized Glass Facade',
-                'category' => 'DOZO Façades',
-                'image' => '/images/prod_unitized_facade.jpg',
-                'views' => 2890,
-                'inquiries' => 54,
-                'status' => 'Active',
-                'rating' => '5.0/5',
-                'specs' => 'Factory Pre-Glazed Unitized Curtain Wall, High Wind Load',
-            ],
-            [
-                'id' => 4,
-                'name' => 'Architectural Perforated Panel',
-                'category' => 'DOZO Façades',
-                'image' => '/images/prod_perforated_panel.jpg',
-                'views' => 1940,
-                'inquiries' => 42,
-                'status' => 'Active',
-                'rating' => '4.9/5',
-                'specs' => 'CNC Geometric Laser Cut Solid Aluminium 3mm/4mm',
-            ],
-            [
-                'id' => 5,
-                'name' => 'Thermal Break Slimline Doors',
-                'category' => 'DOZO Windows',
-                'image' => '/images/solution_windows_3.jpg',
-                'views' => 860,
-                'inquiries' => 19,
-                'status' => 'Active',
-                'rating' => '4.8/5',
-                'specs' => 'Minimal Sightline 20mm Interlock, Double Low-E Glass',
-            ],
-            [
-                'id' => 6,
-                'name' => 'Architectural Louvers & Sunshades',
-                'category' => 'DOZO Façades',
-                'image' => '/images/solution_facade_4.jpg',
-                'views' => 740,
-                'inquiries' => 15,
-                'status' => 'Active',
-                'rating' => '4.7/5',
-                'specs' => 'Extruded Aerofoil Blades, Integrated Solar Shading',
-            ],
-        ];
-
-        // Sample projects portfolio data
-        $projects = [
-            [
-                'id' => 1,
-                'title' => 'Residential Tower Kolkata',
-                'location' => 'New Town, Kolkata',
-                'type' => 'Residential High-Rise (32 Floors)',
-                'scope' => '14,000 sq.m Double Glazed Envelope + Casements',
-                'image' => '/images/proj_residential_tower.jpg',
-                'status' => 'Under Construction',
-                'progress' => '82%',
-                'client' => 'Roy Group Architects',
-            ],
-            [
-                'id' => 2,
-                'title' => 'Commercial Complex Bangalore',
-                'location' => 'Outer Ring Road, Bangalore',
-                'type' => 'Tech Park & Commercial Hub',
-                'scope' => 'Unitized Structural Glazing & Solar Shading',
-                'image' => '/images/proj_commercial_complex.jpg',
-                'status' => 'Completed & Handed Over',
-                'progress' => '100%',
-                'client' => 'Prestige Infrastructure',
-            ],
-            [
-                'id' => 3,
-                'title' => 'IT Park Hyderabad',
-                'location' => 'HITEC City, Hyderabad',
-                'type' => 'Corporate Headquarter Campus',
-                'scope' => 'Aluminium Composite Cladding & Fixed Glazing',
-                'image' => '/images/proj_it_park.jpg',
-                'status' => 'Phase 2 Installation',
-                'progress' => '65%',
-                'client' => 'Cyber Towers Corp',
-            ],
-            [
-                'id' => 4,
-                'title' => 'Luxury Beachfront Residence Goa',
-                'location' => 'Candolim, Goa',
-                'type' => 'Ultra-Luxury Private Villa',
-                'scope' => 'Heavy-Duty Slim Sliding Doors & Marine Anodized Frames',
-                'image' => '/images/proj_luxury_residence.jpg',
-                'status' => 'Completed',
-                'progress' => '100%',
-                'client' => 'Private Client',
-            ],
-        ];
+        $solutions = Solution::orderBy('order')->get();
+        $products = Product::orderBy('order')->get();
+        $projects = Project::orderBy('order')->get();
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
 
         return view('admin.dashboard', compact(
             'quotes',
@@ -227,8 +132,10 @@ class AdminController extends Controller
             'completedCount',
             'heroSlides',
             'heroStats',
+            'solutions',
             'products',
-            'projects'
+            'projects',
+            'siteSettings'
         ));
     }
 
@@ -250,7 +157,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_upload')) {
             $file = $request->file('image_upload');
-            $filename = 'hero_' . strtolower($slide->name) . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'hero_' . strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $slide->name)) . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images'), $filename);
             $validated['image'] = '/images/' . $filename;
         }
@@ -291,6 +198,227 @@ class AdminController extends Controller
         }
 
         return back()->with('success', 'Stat updated successfully!');
+    }
+
+    /**
+     * Update Solution Card (Windows, Facade, Products).
+     */
+    public function updateSolution(Request $request, Solution $solution)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:100',
+            'eyebrow' => 'nullable|string|max:50',
+            'desc' => 'required|string',
+            'cta_text' => 'required|string|max:100',
+            'cta_link' => 'required|string|max:255',
+        ]);
+
+        $images = $solution->images ?? [];
+
+        // Handle up to 4 image uploads
+        for ($i = 0; $i < 4; $i++) {
+            if ($request->hasFile("image_upload_{$i}")) {
+                $file = $request->file("image_upload_{$i}");
+                $filename = 'sol_' . $solution->slug . '_' . $i . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images'), $filename);
+                $images[$i] = '/images/' . $filename;
+            } elseif ($request->filled("image_url_{$i}")) {
+                $images[$i] = $request->input("image_url_{$i}");
+            }
+        }
+
+        $validated['images'] = array_values($images);
+        $solution->update($validated);
+
+        return back()->with('success', 'Solution section "' . $solution->title . '" updated successfully!');
+    }
+
+    /**
+     * Store a new Product.
+     */
+    public function storeProduct(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:100',
+            'theme' => 'required|string|in:light,dark',
+            'short_desc' => 'required|string',
+            'material_grade' => 'nullable|string|max:150',
+            'finish_options' => 'nullable|string|max:150',
+            'acoustic_rating' => 'nullable|string|max:150',
+            'wind_load' => 'nullable|string|max:150',
+            'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer',
+        ]);
+
+        $imagePath = '/images/prod_sliding_window.jpg';
+        if ($request->hasFile('image_upload')) {
+            $file = $request->file('image_upload');
+            $filename = 'prod_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $imagePath = '/images/' . $filename;
+        } elseif ($request->filled('image')) {
+            $imagePath = $request->input('image');
+        }
+
+        $validated['image'] = $imagePath;
+        $validated['is_featured'] = $request->has('is_featured');
+        $validated['order'] = $validated['order'] ?? (Product::max('order') + 1);
+
+        $product = Product::create($validated);
+
+        return back()->with('success', 'Product "' . $product->name . '" created successfully!');
+    }
+
+    /**
+     * Update an existing Product.
+     */
+    public function updateProduct(Request $request, Product $product)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:100',
+            'theme' => 'required|string|in:light,dark',
+            'short_desc' => 'required|string',
+            'material_grade' => 'nullable|string|max:150',
+            'finish_options' => 'nullable|string|max:150',
+            'acoustic_rating' => 'nullable|string|max:150',
+            'wind_load' => 'nullable|string|max:150',
+            'image' => 'nullable|string|max:255',
+            'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer',
+        ]);
+
+        if ($request->hasFile('image_upload')) {
+            $file = $request->file('image_upload');
+            $filename = 'prod_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $validated['image'] = '/images/' . $filename;
+        }
+
+        $validated['is_featured'] = $request->has('is_featured');
+        $product->update($validated);
+
+        return back()->with('success', 'Product "' . $product->name . '" updated successfully!');
+    }
+
+    /**
+     * Delete a Product.
+     */
+    public function deleteProduct(Product $product)
+    {
+        $name = $product->name;
+        $product->delete();
+
+        return back()->with('success', 'Product "' . $name . '" deleted successfully.');
+    }
+
+    /**
+     * Store a new Project.
+     */
+    public function storeProject(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'location' => 'required|string|max:150',
+            'type' => 'nullable|string|max:150',
+            'scope' => 'nullable|string|max:255',
+            'client' => 'nullable|string|max:150',
+            'status' => 'required|string|max:100',
+            'progress' => 'nullable|string|max:20',
+            'description' => 'required|string',
+            'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer',
+        ]);
+
+        $imagePath = '/images/proj_residential_tower.jpg';
+        if ($request->hasFile('image_upload')) {
+            $file = $request->file('image_upload');
+            $filename = 'proj_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $imagePath = '/images/' . $filename;
+        } elseif ($request->filled('image')) {
+            $imagePath = $request->input('image');
+        }
+
+        $validated['image'] = $imagePath;
+        $validated['is_featured'] = $request->has('is_featured');
+        $validated['order'] = $validated['order'] ?? (Project::max('order') + 1);
+
+        $project = Project::create($validated);
+
+        return back()->with('success', 'Project "' . $project->title . '" added successfully!');
+    }
+
+    /**
+     * Update an existing Project.
+     */
+    public function updateProject(Request $request, Project $project)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'location' => 'required|string|max:150',
+            'type' => 'nullable|string|max:150',
+            'scope' => 'nullable|string|max:255',
+            'client' => 'nullable|string|max:150',
+            'status' => 'required|string|max:100',
+            'progress' => 'nullable|string|max:20',
+            'description' => 'required|string',
+            'image' => 'nullable|string|max:255',
+            'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer',
+        ]);
+
+        if ($request->hasFile('image_upload')) {
+            $file = $request->file('image_upload');
+            $filename = 'proj_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $validated['image'] = '/images/' . $filename;
+        }
+
+        $validated['is_featured'] = $request->has('is_featured');
+        $project->update($validated);
+
+        return back()->with('success', 'Project "' . $project->title . '" updated successfully!');
+    }
+
+    /**
+     * Delete a Project.
+     */
+    public function deleteProject(Project $project)
+    {
+        $title = $project->title;
+        $project->delete();
+
+        return back()->with('success', 'Project "' . $title . '" deleted successfully.');
+    }
+
+    /**
+     * Update General & Site Settings.
+     */
+    public function updateSiteSettings(Request $request)
+    {
+        $settings = $request->except(['_token', 'catalogue_file']);
+
+        if ($request->hasFile('catalogue_file')) {
+            $file = $request->file('catalogue_file');
+            $filename = 'dozo_catalogue_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path(), $filename);
+            $settings['catalogue_url'] = '/' . $filename;
+        }
+
+        if ($request->hasFile('story_image_file')) {
+            $file = $request->file('story_image_file');
+            $filename = 'story_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $settings['story_image'] = '/images/' . $filename;
+        }
+
+        foreach ($settings as $key => $value) {
+            SiteSetting::set($key, $value);
+        }
+
+        return back()->with('success', 'Site & Contact Settings saved successfully!');
     }
 
     /**

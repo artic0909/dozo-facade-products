@@ -23,6 +23,22 @@ Route::prefix('admin')->group(function () {
         // Hero CMS Edit Routes
         Route::post('/hero-slides/{slide}', [AdminController::class, 'updateHeroSlide'])->name('admin.hero.slide.update');
         Route::post('/hero-stats/{stat}', [AdminController::class, 'updateHeroStat'])->name('admin.hero.stat.update');
+
+        // Solutions CMS Routes
+        Route::post('/solutions/{solution}', [AdminController::class, 'updateSolution'])->name('admin.solutions.update');
+
+        // Products CRUD Routes
+        Route::post('/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+        Route::post('/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+        Route::delete('/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+
+        // Projects CRUD Routes
+        Route::post('/projects', [AdminController::class, 'storeProject'])->name('admin.projects.store');
+        Route::post('/projects/{project}', [AdminController::class, 'updateProject'])->name('admin.projects.update');
+        Route::delete('/projects/{project}', [AdminController::class, 'deleteProject'])->name('admin.projects.delete');
+
+        // Site Settings Route
+        Route::post('/settings', [AdminController::class, 'updateSiteSettings'])->name('admin.settings.update');
     });
 });
 

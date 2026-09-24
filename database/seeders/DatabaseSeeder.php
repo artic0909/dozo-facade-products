@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             QuoteSeeder::class,
             HeroSeeder::class,
+            CmsSeeder::class,
         ]);
     }
 }

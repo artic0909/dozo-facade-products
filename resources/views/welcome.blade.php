@@ -366,18 +366,19 @@
                     <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
                         <!-- Horizontal Slider Track -->
                         <div id="windowsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_windows.jpg" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_windows_2.jpg" alt="DOZO Casement Panorama" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_windows_3.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_windows_4.jpg" alt="DOZO Architectural Glazing" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
+                            @php
+                                $winImages = (isset($solutions) && isset($solutions['windows']) && is_array($solutions['windows']->images)) ? $solutions['windows']->images : [
+                                    '/images/solution_windows.jpg',
+                                    '/images/solution_windows_2.jpg',
+                                    '/images/solution_windows_3.jpg',
+                                    '/images/solution_windows_4.jpg',
+                                ];
+                            @endphp
+                            @foreach($winImages as $wImg)
+                                <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                    <img src="{{ $wImg }}" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center rounded-none">
+                                </div>
+                            @endforeach
                         </div>
 
                         <!-- Gradient Overlay -->
@@ -386,16 +387,16 @@
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
-                                DOZO
+                                {{ isset($solutions['windows']) ? $solutions['windows']->eyebrow : 'DOZO' }}
                             </div>
                             <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                                Windows
+                                {{ isset($solutions['windows']) ? $solutions['windows']->title : 'Windows' }}
                             </h3>
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
-                                Engineered for comfort, performance and modern living.
+                                {{ isset($solutions['windows']) ? $solutions['windows']->desc : 'Engineered for comfort, performance and modern living.' }}
                             </p>
-                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
-                                <span>Explore Windows</span>
+                            <a href="{{ isset($solutions['windows']) ? $solutions['windows']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                                <span>{{ isset($solutions['windows']) ? $solutions['windows']->cta_text : 'Explore Windows' }}</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
                         </div>
@@ -468,18 +469,19 @@
                     <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
                         <!-- Horizontal Slider Track -->
                         <div id="facadeSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_facade.jpg" alt="DOZO Façade Architecture Perforated" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_facade_2.jpg" alt="DOZO Unitized Curtain Wall" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_facade_3.jpg" alt="DOZO Modern Cladding" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="/images/solution_facade_4.jpg" alt="DOZO Architectural Louvers" class="w-full h-full object-cover object-center rounded-none">
-                            </div>
+                            @php
+                                $facImages = (isset($solutions) && isset($solutions['facade']) && is_array($solutions['facade']->images)) ? $solutions['facade']->images : [
+                                    '/images/solution_facade.jpg',
+                                    '/images/solution_facade_2.jpg',
+                                    '/images/solution_facade_3.jpg',
+                                    '/images/solution_facade_4.jpg',
+                                ];
+                            @endphp
+                            @foreach($facImages as $fImg)
+                                <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                    <img src="{{ $fImg }}" alt="DOZO Façade Architecture" class="w-full h-full object-cover object-center rounded-none">
+                                </div>
+                            @endforeach
                         </div>
 
                         <!-- Gradient Overlay -->
@@ -488,16 +490,16 @@
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
-                                DOZO
+                                {{ isset($solutions['facade']) ? $solutions['facade']->eyebrow : 'DOZO' }}
                             </div>
                             <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                                Façade
+                                {{ isset($solutions['facade']) ? $solutions['facade']->title : 'Façade' }}
                             </h3>
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
-                                Architectural freedom with precision and durability.
+                                {{ isset($solutions['facade']) ? $solutions['facade']->desc : 'Architectural freedom with precision and durability.' }}
                             </p>
-                            <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
-                                <span>Explore Facade</span>
+                            <a href="{{ isset($solutions['facade']) ? $solutions['facade']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                                <span>{{ isset($solutions['facade']) ? $solutions['facade']->cta_text : 'Explore Facade' }}</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
                         </div>
@@ -571,18 +573,19 @@
                 <div class="relative h-[320px] sm:h-[400px] w-full rounded-none overflow-hidden group shadow-xs">
                     <!-- Horizontal Slider Track -->
                     <div id="productsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                            <img src="/images/hero_building.jpg" alt="DOZO Architectural Systems" class="w-full h-full object-cover object-center rounded-none">
-                        </div>
-                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                            <img src="/images/prod_sliding_window.jpg" alt="DOZO Sliding Systems" class="w-full h-full object-cover object-center rounded-none">
-                        </div>
-                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                            <img src="/images/proj_residential_tower.jpg" alt="DOZO High-Rise Envelopes" class="w-full h-full object-cover object-center rounded-none">
-                        </div>
-                        <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                            <img src="/images/prod_unitized_facade.jpg" alt="DOZO Unitized Facade Systems" class="w-full h-full object-cover object-center rounded-none">
-                        </div>
+                        @php
+                            $prodImages = (isset($solutions) && isset($solutions['products']) && is_array($solutions['products']->images)) ? $solutions['products']->images : [
+                                '/images/hero_building.jpg',
+                                '/images/prod_sliding_window.jpg',
+                                '/images/proj_residential_tower.jpg',
+                                '/images/prod_unitized_facade.jpg',
+                            ];
+                        @endphp
+                        @foreach($prodImages as $pImg)
+                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <img src="{{ $pImg }}" alt="DOZO Architectural Systems" class="w-full h-full object-cover object-center rounded-none">
+                            </div>
+                        @endforeach
                     </div>
 
                     <!-- Gradient Overlay -->
@@ -591,22 +594,20 @@
                     <!-- Text Overlay at Bottom Left -->
                     <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                         <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
-                            DOZO
+                            {{ isset($solutions['products']) ? $solutions['products']->eyebrow : 'DOZO' }}
                         </div>
                         <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                            Products
+                            {{ isset($solutions['products']) ? $solutions['products']->title : 'Products' }}
                         </h3>
                         <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-xl mb-4 leading-relaxed">
-                            Comprehensive portfolio of premium aluminum windows, high-performance façade systems, and bespoke architectural solutions.
+                            {{ isset($solutions['products']) ? $solutions['products']->desc : 'Comprehensive portfolio of premium aluminum windows, high-performance façade systems, and bespoke architectural solutions.' }}
                         </p>
-                        <a href="#featured-products" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
-                            <span>Explore Products</span>
+                        <a href="{{ isset($solutions['products']) ? $solutions['products']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                            <span>{{ isset($solutions['products']) ? $solutions['products']->cta_text : 'Explore Products' }}</span>
                             <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </section>
@@ -629,69 +630,42 @@
                 </a>
             </div>
 
-            <!-- 4 Big Product Cards in One Row (Zero Border Radius) -->
+            <!-- Dynamic 4 Big Product Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- 1. Sliding Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
-                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                @if(isset($products) && $products->count())
+                    @foreach($products as $prod)
+                        @php
+                            $isDark = ($prod->theme === 'dark');
+                        @endphp
+                        <div class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
+                             onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
+                            <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden {{ $isDark ? 'bg-[#0d131a]' : 'bg-[#f0f2f5]' }}">
+                                <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-4 flex items-center justify-between {{ $isDark ? 'bg-[#161e27] border-gray-800' : 'bg-white border-gray-100' }} border-t rounded-none">
+                                <span class="text-sm sm:text-[15px] font-bold truncate {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }}">{{ $prod->name }}</span>
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full {{ $isDark ? 'bg-white/10 border border-white/20 text-white' : 'bg-black text-white' }} flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Fallback Static Cards -->
+                    <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
+                        <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                            <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100 rounded-none">
+                            <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
+                            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </span>
+                        </div>
                     </div>
-                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100 rounded-none">
-                        <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
-                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 2. Casement Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Casement Window System', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
-                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100 rounded-none">
-                        <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Casement Window</span>
-                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 3. Unitized Glass Facade -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
-                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#0d131a]">
-                        <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800 rounded-none">
-                        <span class="text-sm sm:text-[15px] font-bold text-white truncate">Unitized Glass Facade</span>
-                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 4. Perforated Panel -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Architectural Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
-                    <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#0d131a]">
-                        <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800 rounded-none">
-                        <span class="text-sm sm:text-[15px] font-bold text-white truncate">Perforated Panel</span>
-                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
+                @endif
             </div>
         </div>
     </section>
@@ -714,53 +688,32 @@
                 </a>
             </div>
 
-            <!-- 4 Big Project Cards in One Row (Zero Border Radius) -->
+            <!-- Dynamic 4 Big Project Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Project 1: Residential Tower Kolkata -->
-                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Residential Tower, Kolkata', 'Luxury residential high-rise featuring custom acoustic DOZO casement windows and panoramic glass facades designed for urban sound isolation.')">
-                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                @if(isset($projects) && $projects->count())
+                    @foreach($projects as $proj)
+                        <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('{{ addslashes($proj->title) }} ({{ addslashes($proj->location) }})', '{{ addslashes($proj->description) }}', '{{ addslashes($proj->type ?? 'Architectural System') }}', '{{ addslashes($proj->scope ?? 'Full Envelope') }}', 'Status: {{ addslashes($proj->status) }}', 'Progress: {{ addslashes($proj->progress) }}')">
+                            <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                                <img src="{{ $proj->image }}" alt="{{ $proj->title }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="pt-3 pb-1">
+                                <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">{{ $proj->title }}</h4>
+                                <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">{{ $proj->location }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Fallback Static Project Card -->
+                    <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer">
+                        <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
+                            <img src="/images/proj_residential_tower.jpg" alt="Residential Tower" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="pt-3 pb-1">
+                            <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20]">Residential Tower</h4>
+                            <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5">Kolkata</p>
+                        </div>
                     </div>
-                    <div class="pt-3 pb-1">
-                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Residential Tower</h4>
-                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Kolkata</p>
-                    </div>
-                </div>
-
-                <!-- Project 2: Commercial Complex Bangalore (Accent Blue Title) -->
-                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Commercial Complex, Bangalore', 'State-of-the-art commercial tech hub envelope engineered with unitized double-glazed facade panels and integrated solar shading louvers.')">
-                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="pt-3 pb-1">
-                        <h4 class="text-sm sm:text-[15px] font-bold text-[#3b82f6] leading-snug group-hover:underline">Commercial Complex</h4>
-                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Bangalore</p>
-                    </div>
-                </div>
-
-                <!-- Project 3: IT Park Hyderabad -->
-                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('IT Park, Hyderabad', 'Expansive IT campus building with solid aluminum cladding panels and high-efficiency thermal fixed glass systems.')">
-                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="pt-3 pb-1">
-                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">IT Park</h4>
-                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Hyderabad</p>
-                    </div>
-                </div>
-
-                <!-- Project 4: Luxury Residence Goa -->
-                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Luxury Residence, Goa', 'Coastal luxury villa equipped with weather-resistant heavy-duty sliding glass doors and minimalist slim-profile frame geometry.')">
-                    <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="pt-3 pb-1">
-                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Luxury Residence</h4>
-                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Goa</p>
-                    </div>
-                </div>
-
+                @endif
             </div>
         </div>
     </section>
@@ -1214,26 +1167,26 @@
                 </svg>
             </button>
             
-            <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Product Specification</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Specification & Overview</div>
             <h3 id="modalProductTitle" class="text-2xl font-extrabold text-gray-900 mb-2">Product Title</h3>
             <p id="modalProductDesc" class="text-sm text-gray-600 leading-relaxed mb-5">Product details description.</p>
 
             <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100 mb-5 space-y-2">
                 <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Material Grade:</span>
-                    <span class="font-semibold text-gray-800">Architectural T6 Aluminum</span>
+                    <span class="text-gray-500">Material / Type:</span>
+                    <span id="modalProductMaterial" class="font-semibold text-gray-800">Architectural T6 Aluminum</span>
                 </div>
                 <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Finish Options:</span>
-                    <span class="font-semibold text-gray-800">PVDF Coating / Anodized</span>
+                    <span class="text-gray-500">Finish / Scope:</span>
+                    <span id="modalProductFinish" class="font-semibold text-gray-800">PVDF Coating / Anodized</span>
                 </div>
                 <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Acoustic Rating:</span>
-                    <span class="font-semibold text-gray-800">Up to 42 dB Isolation</span>
+                    <span class="text-gray-500">Acoustic / Status:</span>
+                    <span id="modalProductAcoustic" class="font-semibold text-gray-800">Up to 42 dB Isolation</span>
                 </div>
                 <div class="flex justify-between text-xs py-1">
-                    <span class="text-gray-500">Wind Load Resistance:</span>
-                    <span class="font-semibold text-gray-800">Engineered to 3.5 kPa</span>
+                    <span class="text-gray-500">Wind Load / Progress:</span>
+                    <span id="modalProductWind" class="font-semibold text-gray-800">Engineered to 3.5 kPa</span>
                 </div>
             </div>
 
@@ -1241,7 +1194,7 @@
                 <button type="button" onclick="closeProductModal(); openQuoteModal();" class="flex-1 bg-[#1b1e23] hover:bg-black text-white font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
                     Get Quote
                 </button>
-                <a href="/catelogue.pdf" target="_blank" class="flex-1 border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
+                <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="flex-1 border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
                     Download Specs
                 </a>
             </div>
@@ -1257,15 +1210,19 @@
                 </svg>
             </button>
             <div class="aspect-video w-full rounded-2xl overflow-hidden bg-gray-950 flex items-center justify-center">
-                <div class="text-center p-6 text-white">
-                    <div class="w-14 h-14 rounded-full bg-sky-500/20 text-sky-400 border border-sky-400/40 flex items-center justify-center mx-auto mb-3">
-                        <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
+                @if(!empty($siteSettings['story_video_url']))
+                    <iframe class="w-full h-full" src="{{ $siteSettings['story_video_url'] }}" title="DOZO Architectural Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                @else
+                    <div class="text-center p-6 text-white">
+                        <div class="w-14 h-14 rounded-full bg-sky-500/20 text-sky-400 border border-sky-400/40 flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-1">DOZO Architectural Story</h4>
+                        <p class="text-xs text-gray-400 max-w-sm mx-auto">Discover how DOZO integrates cutting-edge engineering with sustainable facade architecture across India.</p>
                     </div>
-                    <h4 class="text-lg font-bold mb-1">DOZO Architectural Story</h4>
-                    <p class="text-xs text-gray-400 max-w-sm mx-auto">Discover how DOZO integrates cutting-edge engineering with sustainable facade architecture across India.</p>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -1356,9 +1313,13 @@
             });
         }
 
-        function openProductModal(title, desc) {
-            document.getElementById('modalProductTitle').innerText = title;
-            document.getElementById('modalProductDesc').innerText = desc;
+        function openProductModal(title, desc, material, finish, acoustic, wind) {
+            document.getElementById('modalProductTitle').innerText = title || 'Product Specification';
+            document.getElementById('modalProductDesc').innerText = desc || '';
+            document.getElementById('modalProductMaterial').innerText = material || 'Architectural T6 Aluminum';
+            document.getElementById('modalProductFinish').innerText = finish || 'PVDF Coating / Anodized';
+            document.getElementById('modalProductAcoustic').innerText = acoustic || 'Up to 42 dB Isolation';
+            document.getElementById('modalProductWind').innerText = wind || 'Engineered to 3.5 kPa';
             document.getElementById('productModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
