@@ -135,15 +135,15 @@
 
                     <!-- Desktop Navigation Links (More Prominent & Highly Visible) -->
                     <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
-                        <a href="#home" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
-                        <a href="#windows" class="hover:text-sky-600 transition-colors">Windows</a>
-                        <a href="#facade" class="hover:text-sky-600 transition-colors">Facade</a>
-                        <a href="#about" class="hover:text-sky-600 transition-colors">About Us</a>
-                        <a href="#projects" class="hover:text-sky-600 transition-colors">Projects</a>
+                        <a href="#" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
+                        <a href="#" class="hover:text-sky-600 transition-colors">Windows</a>
+                        <a href="#" class="hover:text-sky-600 transition-colors">Façade</a>
+                        <a href="#about" class="hover:text-sky-600 transition-colors">Products</a>
+                        <!-- <a href="#projects" class="hover:text-sky-600 transition-colors">Projects</a> -->
                         <a href="/catelogue.pdf" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
-                            Downloads
+                            Catalogue
                         </a>
-                        <a href="#contact" class="hover:text-sky-600 transition-colors">Contact</a>
+                        <!-- <a href="#contact" class="hover:text-sky-600 transition-colors">Contact</a> -->
                     </nav>
 
                     <!-- Action / Search Buttons -->
@@ -612,7 +612,7 @@
         </div>
     </section>
 
-    <!-- FEATURED PRODUCTS SECTION -->
+    <!-- DOZO WINDOWS SECTION -->
     <section id="featured-products" class="py-12 sm:py-16 bg-white">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -620,12 +620,12 @@
             <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-3">
                     <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#1a1d20] uppercase">
-                        FEATURED PRODUCTS
+                        DOZO WINDOWS
                     </h2>
                     <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
                 <a href="#featured-products" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
-                    <span>View All Products</span>
+                    <span>View All</span>
                     <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>
             </div>
@@ -710,7 +710,7 @@
                     <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
                 <a href="#projects" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
-                    <span>View All Projects</span>
+                    <span>View All</span>
                     <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>
             </div>
