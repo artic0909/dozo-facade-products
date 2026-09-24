@@ -178,15 +178,14 @@
                     <a href="#home" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
                     <a href="#windows" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Windows</a>
                     <a href="#facade" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Facade</a>
-                    <a href="#about" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">About Us</a>
-                    <a href="#projects" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Projects</a>
+                    <a href="#projects" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Products</a>
                     <a href="/catelogue.pdf" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                         <span>Downloads (Catalogue)</span>
                         <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                         </svg>
                     </a>
-                    <a href="#contact" onclick="toggleMobileMenu()" class="py-1 hover:text-sky-600">Contact</a>
+                    <!-- <a href="#contact" onclick="toggleMobileMenu()" class="py-1 hover:text-sky-600">Contact</a> -->
                     
                     <div class="pt-2 flex flex-col gap-2">
                         <button type="button" onclick="toggleMobileMenu(); openQuoteModal();" class="w-full bg-[#1b1e23] text-white py-3 rounded-xl font-bold text-center text-sm shadow-md">
