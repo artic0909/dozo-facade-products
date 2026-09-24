@@ -97,9 +97,23 @@
 
     <!-- HERO SECTION WITH INTEGRATED HEADER & 100% VIEWPORT HEIGHT -->
     <div class="hero-container w-full border-b border-gray-100">
-        <!-- Full building background element with custom gradient mask -->
+        <!-- 5 Interactive Carousel Background Images with smooth crossfade -->
         <div class="hero-building-bg">
-            <img src="/images/hero_building.jpg" alt="DOZO Windows & Facades Architecture" class="w-full h-full">
+            <div id="heroBg0" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
+                <img src="/images/hero_building.jpg" alt="Design - DOZO Architecture" class="w-full h-full">
+            </div>
+            <div id="heroBg1" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                <img src="/images/hero_engineer.jpg" alt="Engineer - DOZO Façades" class="w-full h-full">
+            </div>
+            <div id="heroBg2" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                <img src="/images/hero_fabricate.jpg" alt="Fabricate - DOZO Precision" class="w-full h-full">
+            </div>
+            <div id="heroBg3" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                <img src="/images/hero_install.jpg" alt="Install - DOZO Turnkey" class="w-full h-full">
+            </div>
+            <div id="heroBg4" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+                <img src="/images/hero_support.jpg" alt="Support - DOZO Care" class="w-full h-full">
+            </div>
         </div>
 
         <!-- TOP NAVIGATION BAR -->
@@ -175,53 +189,72 @@
             </div>
         </header>
 
-        <!-- HERO MAIN BODY -->
+        <!-- HERO MAIN BODY WITH INTERACTIVE CAROUSEL CONTENT -->
         <div id="home" class="relative z-10 max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 flex flex-col justify-center">
             <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                 
-                <!-- Hero Left: Typography -->
+                <!-- Hero Left: Dynamic Carousel Typography -->
                 <div class="lg:col-span-7 flex flex-col justify-center">
                     <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2.5">
-                        <span class="text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.16em] uppercase text-gray-400">
+                        <span id="heroEyebrow" class="text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.16em] uppercase text-gray-400 transition-opacity duration-300">
                             Build A Better Tomorrow
                         </span>
                     </div>
 
                     <!-- Exact Stacked Headline -->
-                    <h1 class="text-[32px] sm:text-[44px] lg:text-[min(4vw,54px)] tracking-[-0.035em] leading-[1.03] text-[#1a1d20] mb-2 sm:mb-3 uppercase">
+                    <h1 id="heroHeadline" class="text-[32px] sm:text-[44px] lg:text-[min(4vw,54px)] tracking-[-0.035em] leading-[1.03] text-[#1a1d20] mb-2 sm:mb-3 uppercase transition-opacity duration-300">
                         <span class="font-black block">WINDOWS</span>
                         <span class="font-black block">FAÇADES</span>
                         <span class="font-light block text-[#25282d]">FOR A BRIGHTER</span>
                         <span class="font-light block text-[#25282d]">WORLD</span>
                     </h1>
 
-                    <p class="text-gray-500 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed max-w-md mb-4 sm:mb-5">
+                    <p id="heroDesc" class="text-gray-500 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed max-w-md mb-4 sm:mb-5 transition-opacity duration-300">
                         Innovative. Sustainable. Elegant.<br>
                         Complete Building Envelope Solutions.
                     </p>
 
-                    <!-- CTA Button -->
-                    <div>
-                        <a href="#solutions" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5">
-                            <span>Explore Our Solutions</span>
+                    <!-- Dynamic CTA Button -->
+                    <div class="flex items-center gap-3">
+                        <a id="heroCta" href="#solutions" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5">
+                            <span id="heroCtaText">Explore Our Solutions</span>
                             <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
+
+                    <!-- Mobile Carousel Points Strip -->
+                    <div class="flex lg:hidden items-center gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
+                        <button type="button" onclick="setHeroSlide(0)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold bg-black text-white shrink-0" data-idx="0">Design</button>
+                        <button type="button" onclick="setHeroSlide(1)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="1">Engineer</button>
+                        <button type="button" onclick="setHeroSlide(2)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="2">Fabricate</button>
+                        <button type="button" onclick="setHeroSlide(3)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="3">Install</button>
+                        <button type="button" onclick="setHeroSlide(4)" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0" data-idx="4">Support</button>
+                    </div>
                 </div>
 
-                <!-- Hero Right Overlay on Image: Process Pillars -->
-                <div class="lg:col-span-5 hidden lg:flex flex-col justify-between items-end h-[280px] xl:h-[320px] pointer-events-none text-right pr-4">
-                    <!-- Top Right Stack -->
-                    <div class="text-white/90 font-medium text-xs sm:text-[13px] space-y-1 drop-shadow-md">
-                        <div class="hover:text-white">Design</div>
-                        <div class="hover:text-white">Engineer</div>
-                        <div class="hover:text-white">Fabricate</div>
-                        <div class="hover:text-white">Install</div>
-                        <div class="hover:text-white pb-0.5 border-b border-white/60 inline-block">Support</div>
+                <!-- Hero Right: Interactive 5 Pillars Carousel Menu (Design, Engineer, Fabricate, Install, Support) -->
+                <div class="lg:col-span-5 hidden lg:flex flex-col justify-between items-end h-[280px] xl:h-[320px] text-right pr-4 z-20">
+                    <!-- 5 Clickable Carousel Points -->
+                    <div class="space-y-1 drop-shadow-md">
+                        <button type="button" onclick="setHeroSlide(0)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white font-bold" data-index="0">
+                            <span class="inline-block pb-0.5 border-b border-white">Design</span>
+                        </button>
+                        <button type="button" onclick="setHeroSlide(1)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="1">
+                            <span class="inline-block pb-0.5 border-b border-transparent">Engineer</span>
+                        </button>
+                        <button type="button" onclick="setHeroSlide(2)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="2">
+                            <span class="inline-block pb-0.5 border-b border-transparent">Fabricate</span>
+                        </button>
+                        <button type="button" onclick="setHeroSlide(3)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="3">
+                            <span class="inline-block pb-0.5 border-b border-transparent">Install</span>
+                        </button>
+                        <button type="button" onclick="setHeroSlide(4)" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium" data-index="4">
+                            <span class="inline-block pb-0.5 border-b border-transparent">Support</span>
+                        </button>
                     </div>
 
                     <!-- Bottom Right Badge -->
-                    <div class="text-white/90 font-medium text-[11.5px] sm:text-[12px] leading-tight drop-shadow-md">
+                    <div class="text-white/90 font-medium text-[11.5px] sm:text-[12px] leading-tight drop-shadow-md pointer-events-none">
                         <div>Architecture</div>
                         <div>Meets Performance</div>
                     </div>
@@ -230,7 +263,7 @@
             </div>
         </div>
 
-        <!-- HERO BOTTOM STATS ROW -->
+        <!-- HERO BOTTOM STATS ROW (STAYS FIXED / DOES NOT CHANGE) -->
         <div class="relative z-10 w-full shrink-0 bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none border-t border-gray-200/50 py-3 sm:py-3.5">
             <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-wrap items-center justify-start sm:justify-between lg:justify-start gap-4 sm:gap-6 lg:gap-10 text-left">
@@ -1239,6 +1272,140 @@
                 dot.className = i === idx ? 'w-1.5 h-1.5 rounded-full bg-[#0284c7] m-dot' : 'w-1.5 h-1.5 rounded-full bg-gray-300 m-dot';
             });
         }
+
+        // Hero 5-Pillar Carousel Controller (Design, Engineer, Fabricate, Install, Support)
+        const heroSlides = [
+            {
+                name: "Design",
+                eyebrow: "Build A Better Tomorrow",
+                headline: '<span class="font-black block">WINDOWS</span><span class="font-black block">FAÇADES</span><span class="font-light block text-[#25282d]">FOR A BRIGHTER</span><span class="font-light block text-[#25282d]">WORLD</span>',
+                desc: "Innovative. Sustainable. Elegant.<br>Complete Building Envelope Solutions.",
+                ctaText: "Explore Our Solutions",
+                ctaLink: "#solutions"
+            },
+            {
+                name: "Engineer",
+                eyebrow: "Structural Precision & Performance",
+                headline: '<span class="font-black block">PRECISION</span><span class="font-black block">ENGINEERED</span><span class="font-light block text-[#25282d]">FOR STRUCTURAL</span><span class="font-light block text-[#25282d]">MASTERY</span>',
+                desc: "High wind-load structural simulations, seismic resistance, acoustic damping, and advanced thermal boundary modeling.",
+                ctaText: "Discover Engineering Specs",
+                ctaLink: "#facade"
+            },
+            {
+                name: "Fabricate",
+                eyebrow: "Automated CNC Manufacturing",
+                headline: '<span class="font-black block">ADVANCED</span><span class="font-black block">FABRICATION</span><span class="font-light block text-[#25282d]">TO EUROPEAN</span><span class="font-light block text-[#25282d]">STANDARDS</span>',
+                desc: "State-of-the-art automated CNC milling, robotic corner crimping, and precision pre-glazed unitized curtain wall assembly.",
+                ctaText: "Explore Product Quality",
+                ctaLink: "#featured-products"
+            },
+            {
+                name: "Install",
+                eyebrow: "Turnkey Site Execution",
+                headline: '<span class="font-black block">SEAMLESS</span><span class="font-black block">INSTALLATION</span><span class="font-light block text-[#25282d]">ON TIME &</span><span class="font-light block text-[#25282d]">ON BUDGET</span>',
+                desc: "Certified facade engineers delivering zero-leakage, airtight fixing, and rigorous on-site quality assurance across India.",
+                ctaText: "View Featured Projects",
+                ctaLink: "#projects"
+            },
+            {
+                name: "Support",
+                eyebrow: "Lifelong Post-Handover Care",
+                headline: '<span class="font-black block">DEDICATED</span><span class="font-black block">SUPPORT</span><span class="font-light block text-[#25282d]">WARRANTY &</span><span class="font-light block text-[#25282d]">MAINTENANCE</span>',
+                desc: "Comprehensive multi-year warranty, regular architectural facade audits, and 24/7 responsive technical engineering support.",
+                ctaText: "Contact Our Engineers",
+                ctaLink: "#contact"
+            }
+        ];
+
+        let currentHeroIndex = 0;
+        let heroTimer = null;
+
+        function setHeroSlide(idx) {
+            currentHeroIndex = idx;
+            const slide = heroSlides[idx];
+            if (!slide) return;
+
+            // 1. Update Background Layers
+            for (let i = 0; i < 5; i++) {
+                const bgEl = document.getElementById('heroBg' + i);
+                if (bgEl) {
+                    if (i === idx) {
+                        bgEl.classList.remove('opacity-0', 'pointer-events-none');
+                        bgEl.classList.add('opacity-100');
+                    } else {
+                        bgEl.classList.remove('opacity-100');
+                        bgEl.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                }
+            }
+
+            // 2. Update Desktop Point Buttons (Design, Engineer, Fabricate, Install, Support)
+            const desktopBtns = document.querySelectorAll('.hero-point-btn');
+            desktopBtns.forEach((btn, i) => {
+                const span = btn.querySelector('span');
+                if (i === idx) {
+                    btn.className = 'hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white font-bold cursor-pointer';
+                    if (span) span.className = 'inline-block pb-0.5 border-b-2 border-white';
+                } else {
+                    btn.className = 'hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium cursor-pointer';
+                    if (span) span.className = 'inline-block pb-0.5 border-b-2 border-transparent';
+                }
+            });
+
+            // 3. Update Mobile Point Buttons
+            const mobBtns = document.querySelectorAll('.mob-hero-btn');
+            mobBtns.forEach((btn, i) => {
+                if (i === idx) {
+                    btn.className = 'mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold bg-black text-white shrink-0 shadow-xs';
+                } else {
+                    btn.className = 'mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0';
+                }
+            });
+
+            // 4. Smooth Typography Transitions
+            const eyebrowEl = document.getElementById('heroEyebrow');
+            const headlineEl = document.getElementById('heroHeadline');
+            const descEl = document.getElementById('heroDesc');
+            const ctaTextEl = document.getElementById('heroCtaText');
+            const ctaLinkEl = document.getElementById('heroCta');
+
+            if (eyebrowEl) eyebrowEl.style.opacity = '0.2';
+            if (headlineEl) headlineEl.style.opacity = '0.2';
+            if (descEl) descEl.style.opacity = '0.2';
+
+            setTimeout(() => {
+                if (eyebrowEl) {
+                    eyebrowEl.innerText = slide.eyebrow;
+                    eyebrowEl.style.opacity = '1';
+                }
+                if (headlineEl) {
+                    headlineEl.innerHTML = slide.headline;
+                    headlineEl.style.opacity = '1';
+                }
+                if (descEl) {
+                    descEl.innerHTML = slide.desc;
+                    descEl.style.opacity = '1';
+                }
+                if (ctaTextEl) ctaTextEl.innerText = slide.ctaText;
+                if (ctaLinkEl) ctaLinkEl.href = slide.ctaLink;
+            }, 180);
+
+            // Reset auto-advance timer on interaction
+            resetHeroTimer();
+        }
+
+        function nextHeroSlide() {
+            let nextIdx = (currentHeroIndex + 1) % heroSlides.length;
+            setHeroSlide(nextIdx);
+        }
+
+        function resetHeroTimer() {
+            if (heroTimer) clearInterval(heroTimer);
+            heroTimer = setInterval(nextHeroSlide, 5500);
+        }
+
+        // Start carousel autoplay on load
+        resetHeroTimer();
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
