@@ -477,35 +477,35 @@
     </section>
 
     <!-- FEATURED PRODUCTS SECTION -->
-    <section id="featured-products" class="py-10 sm:py-12 bg-white">
+    <section id="featured-products" class="py-12 sm:py-16 bg-white">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-3">
-                    <h2 class="text-lg sm:text-xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#1a1d20] uppercase">
                         FEATURED PRODUCTS
                     </h2>
-                    <span class="w-8 sm:w-10 h-[2px] bg-[#3b82f6] inline-block"></span>
+                    <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#featured-products" class="text-xs sm:text-[13px] font-medium text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="#featured-products" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All Products</span>
-                    <span class="text-[#3b82f6] text-sm">&rarr;</span>
+                    <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>
             </div>
 
-            <!-- 6 Product Cards Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            <!-- 4 Big Product Cards in One Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- 1. Sliding Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Sliding Window', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                <div class="group flex flex-col bg-white border border-gray-200/90 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
+                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#f0f2f5]">
                         <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100">
+                        <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
+                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
@@ -513,74 +513,44 @@
                 </div>
 
                 <!-- 2. Casement Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Casement Window', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                <div class="group flex flex-col bg-white border border-gray-200/90 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Casement Window System', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
+                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#f0f2f5]">
                         <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Casement Window</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <div class="p-4 flex items-center justify-between bg-white border-t border-gray-100">
+                        <span class="text-sm sm:text-[15px] font-bold text-[#1a1d20] truncate">Casement Window</span>
+                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- 3. Fixed Window -->
-                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Fixed Window', 'Minimalist architectural fixed glass picture window designed to maximize daylight penetration while ensuring exceptional thermal and energy efficiency.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_fixed_window.jpg" alt="Fixed Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Fixed Window</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 4. Unitized Glass Facade -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#0d131a]">
+                <!-- 3. Unitized Glass Facade -->
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
+                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#0d131a]">
                         <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-[#161e27] text-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-white truncate">Unitized Glass Facade</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800">
+                        <span class="text-sm sm:text-[15px] font-bold text-white truncate">Unitized Glass Facade</span>
+                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- 5. Metal Cladding Panel -->
-                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Metal Cladding Panel', 'Architectural solid aluminum and composite cladding panels featuring customized coatings, non-combustible cores, and crisp geometric detailing.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/prod_metal_cladding.jpg" alt="Metal Cladding Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Metal Cladding Panel</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 6. Perforated Panel -->
-                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
-                    <div class="aspect-square w-full overflow-hidden bg-[#0d131a]">
+                <!-- 4. Perforated Panel -->
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 rounded-sm" onclick="openProductModal('Architectural Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
+                    <div class="aspect-[4/3.2] w-full overflow-hidden bg-[#0d131a]">
                         <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-[#161e27] text-white">
-                        <span class="text-xs sm:text-[12px] font-bold text-white truncate">Perforated Panel</span>
-                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center shrink-0 ml-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <div class="p-4 flex items-center justify-between bg-[#161e27] text-white border-t border-gray-800">
+                        <span class="text-sm sm:text-[15px] font-bold text-white truncate">Perforated Panel</span>
+                        <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
@@ -592,78 +562,67 @@
     </section>
 
     <!-- FEATURED PROJECTS SECTION -->
-    <section id="projects" class="py-10 sm:py-12 bg-white">
+    <section id="projects" class="py-12 sm:py-16 bg-white border-t border-gray-100">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-3">
-                    <h2 class="text-lg sm:text-xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#1a1d20] uppercase">
                         FEATURED PROJECTS
                     </h2>
-                    <span class="w-8 sm:w-10 h-[2px] bg-[#3b82f6] inline-block"></span>
+                    <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#projects" class="text-xs sm:text-[13px] font-medium text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="#projects" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All Projects</span>
-                    <span class="text-[#3b82f6] text-sm">&rarr;</span>
+                    <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>
             </div>
 
-            <!-- 5 Project Cards Grid in a Row -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+            <!-- 4 Big Project Cards in One Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Project 1: Residential Tower Kolkata -->
                 <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Residential Tower, Kolkata', 'Luxury residential high-rise featuring custom acoustic DOZO casement windows and panoramic glass facades designed for urban sound isolation.')">
-                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
                         <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="pt-2.5 pb-1">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Residential Tower</h4>
-                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Kolkata</p>
+                    <div class="pt-3 pb-1">
+                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Residential Tower</h4>
+                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Kolkata</p>
                     </div>
                 </div>
 
                 <!-- Project 2: Commercial Complex Bangalore (Accent Blue Title) -->
                 <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Commercial Complex, Bangalore', 'State-of-the-art commercial tech hub envelope engineered with unitized double-glazed facade panels and integrated solar shading louvers.')">
-                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
                         <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="pt-2.5 pb-1">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-[#3b82f6] leading-snug">Commercial Complex</h4>
-                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Bangalore</p>
+                    <div class="pt-3 pb-1">
+                        <h4 class="text-sm sm:text-[15px] font-bold text-[#3b82f6] leading-snug group-hover:underline">Commercial Complex</h4>
+                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Bangalore</p>
                     </div>
                 </div>
 
                 <!-- Project 3: IT Park Hyderabad -->
                 <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('IT Park, Hyderabad', 'Expansive IT campus building with solid aluminum cladding panels and high-efficiency thermal fixed glass systems.')">
-                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
                         <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="pt-2.5 pb-1">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">IT Park</h4>
-                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Hyderabad</p>
+                    <div class="pt-3 pb-1">
+                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">IT Park</h4>
+                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Hyderabad</p>
                     </div>
                 </div>
 
                 <!-- Project 4: Luxury Residence Goa -->
                 <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Luxury Residence, Goa', 'Coastal luxury villa equipped with weather-resistant heavy-duty sliding glass doors and minimalist slim-profile frame geometry.')">
-                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#f0f2f5] rounded-sm">
                         <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="pt-2.5 pb-1">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Luxury Residence</h4>
-                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Goa</p>
-                    </div>
-                </div>
-
-                <!-- Project 5: Institutional Building Delhi -->
-                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Institutional Building, Delhi', 'Prestigious institutional architecture featuring custom stone & perforated metal facade cladding with high wind-load engineering.')">
-                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
-                        <img src="/images/proj_institutional_delhi.jpg" alt="Institutional Building Delhi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="pt-2.5 pb-1">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Institutional Building</h4>
-                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Delhi</p>
+                    <div class="pt-3 pb-1">
+                        <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Luxury Residence</h4>
+                        <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">Goa</p>
                     </div>
                 </div>
 
