@@ -364,18 +364,19 @@
                 <div id="windows" class="flex flex-col rounded-none">
                     <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
                     <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
+                        @php
+                            $winImages = (isset($solutions) && isset($solutions['windows']) && is_array($solutions['windows']->images)) ? $solutions['windows']->images : [
+                                '/images/solution_windows.jpg',
+                                '/images/solution_windows_2.jpg',
+                                '/images/solution_windows_3.jpg',
+                                '/images/solution_windows_4.jpg',
+                            ];
+                            $winCount = max(1, count($winImages));
+                        @endphp
                         <!-- Horizontal Slider Track -->
-                        <div id="windowsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                            @php
-                                $winImages = (isset($solutions) && isset($solutions['windows']) && is_array($solutions['windows']->images)) ? $solutions['windows']->images : [
-                                    '/images/solution_windows.jpg',
-                                    '/images/solution_windows_2.jpg',
-                                    '/images/solution_windows_3.jpg',
-                                    '/images/solution_windows_4.jpg',
-                                ];
-                            @endphp
+                        <div id="windowsSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $winCount * 100 }}%;">
                             @foreach($winImages as $wImg)
-                                <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $winCount }}%;">
                                     <img src="{{ $wImg }}" alt="DOZO Windows Luxury Living" class="w-full h-full object-cover object-center rounded-none">
                                 </div>
                             @endforeach
@@ -467,18 +468,19 @@
                 <div id="facade" class="flex flex-col rounded-none">
                     <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
                     <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
+                        @php
+                            $facImages = (isset($solutions) && isset($solutions['facade']) && is_array($solutions['facade']->images)) ? $solutions['facade']->images : [
+                                '/images/solution_facade.jpg',
+                                '/images/solution_facade_2.jpg',
+                                '/images/solution_facade_3.jpg',
+                                '/images/solution_facade_4.jpg',
+                            ];
+                            $facCount = max(1, count($facImages));
+                        @endphp
                         <!-- Horizontal Slider Track -->
-                        <div id="facadeSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                            @php
-                                $facImages = (isset($solutions) && isset($solutions['facade']) && is_array($solutions['facade']->images)) ? $solutions['facade']->images : [
-                                    '/images/solution_facade.jpg',
-                                    '/images/solution_facade_2.jpg',
-                                    '/images/solution_facade_3.jpg',
-                                    '/images/solution_facade_4.jpg',
-                                ];
-                            @endphp
+                        <div id="facadeSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $facCount * 100 }}%;">
                             @foreach($facImages as $fImg)
-                                <div class="w-1/4 h-full shrink-0 relative rounded-none">
+                                <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $facCount }}%;">
                                     <img src="{{ $fImg }}" alt="DOZO Façade Architecture" class="w-full h-full object-cover object-center rounded-none">
                                 </div>
                             @endforeach
@@ -571,19 +573,20 @@
             <div id="products-division" class="w-full flex flex-col rounded-none mt-8 lg:mt-10">
                 <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
                 <div class="relative h-[320px] sm:h-[400px] w-full rounded-none overflow-hidden group shadow-xs">
+                    @php
+                        $prodImages = (isset($solutions) && isset($solutions['products']) && is_array($solutions['products']->images)) ? $solutions['products']->images : [
+                            '/images/hero_building.jpg',
+                            '/images/prod_sliding_window.jpg',
+                            '/images/proj_residential_tower.jpg',
+                            '/images/solution_windows_3.jpg',
+                        ];
+                        $prodCount = max(1, count($prodImages));
+                    @endphp
                     <!-- Horizontal Slider Track -->
-                    <div id="productsSliderTrack" class="flex w-[400%] h-full rounded-none transition-transform duration-700 ease-out">
-                        @php
-                            $prodImages = (isset($solutions) && isset($solutions['products']) && is_array($solutions['products']->images)) ? $solutions['products']->images : [
-                                '/images/hero_building.jpg',
-                                '/images/prod_sliding_window.jpg',
-                                '/images/proj_residential_tower.jpg',
-                                '/images/prod_unitized_facade.jpg',
-                            ];
-                        @endphp
+                    <div id="productsSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $prodCount * 100 }}%;">
                         @foreach($prodImages as $pImg)
-                            <div class="w-1/4 h-full shrink-0 relative rounded-none">
-                                <img src="{{ $pImg }}" alt="DOZO Architectural Systems" class="w-full h-full object-cover object-center rounded-none">
+                            <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $prodCount }}%;">
+                                <img src="{{ $pImg }}" alt="DOZO Full Width Products Reel" class="w-full h-full object-cover object-center rounded-none">
                             </div>
                         @endforeach
                     </div>
@@ -1523,19 +1526,21 @@
 
         // DOZO Windows Sideways Auto-Slider
         let winSlideIdx = 0;
-        const totalWinSlides = 4;
         let winTimer = null;
 
         function setWindowsSlide(idx) {
             winSlideIdx = idx;
             const track = document.getElementById('windowsSliderTrack');
-            if (track) {
-                track.style.transform = `translateX(-${idx * 25}%)`;
+            if (track && track.children.length > 0) {
+                const step = 100 / track.children.length;
+                track.style.transform = `translateX(-${idx * step}%)`;
             }
         }
 
         function autoAdvanceWindows() {
-            winSlideIdx = (winSlideIdx + 1) % totalWinSlides;
+            const track = document.getElementById('windowsSliderTrack');
+            const total = track ? track.children.length : 1;
+            winSlideIdx = (winSlideIdx + 1) % total;
             setWindowsSlide(winSlideIdx);
         }
 
@@ -1543,19 +1548,21 @@
 
         // DOZO Facade Sideways Auto-Slider (Staggered offset)
         let facSlideIdx = 0;
-        const totalFacSlides = 4;
         let facTimer = null;
 
         function setFacadeSlide(idx) {
             facSlideIdx = idx;
             const track = document.getElementById('facadeSliderTrack');
-            if (track) {
-                track.style.transform = `translateX(-${idx * 25}%)`;
+            if (track && track.children.length > 0) {
+                const step = 100 / track.children.length;
+                track.style.transform = `translateX(-${idx * step}%)`;
             }
         }
 
         function autoAdvanceFacade() {
-            facSlideIdx = (facSlideIdx + 1) % totalFacSlides;
+            const track = document.getElementById('facadeSliderTrack');
+            const total = track ? track.children.length : 1;
+            facSlideIdx = (facSlideIdx + 1) % total;
             setFacadeSlide(facSlideIdx);
         }
 
@@ -1566,19 +1573,21 @@
 
         // DOZO Products Sideways Auto-Slider (Staggered offset)
         let prodSlideIdx = 0;
-        const totalProdSlides = 4;
         let prodTimer = null;
 
         function setProductsSlide(idx) {
             prodSlideIdx = idx;
             const track = document.getElementById('productsSliderTrack');
-            if (track) {
-                track.style.transform = `translateX(-${idx * 25}%)`;
+            if (track && track.children.length > 0) {
+                const step = 100 / track.children.length;
+                track.style.transform = `translateX(-${idx * step}%)`;
             }
         }
 
         function autoAdvanceProducts() {
-            prodSlideIdx = (prodSlideIdx + 1) % totalProdSlides;
+            const track = document.getElementById('productsSliderTrack');
+            const total = track ? track.children.length : 1;
+            prodSlideIdx = (prodSlideIdx + 1) % total;
             setProductsSlide(prodSlideIdx);
         }
 

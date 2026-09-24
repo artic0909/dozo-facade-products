@@ -201,7 +201,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Update Solution Card (Windows, Facade, Products).
+     * Update Solution Card (Windows, Facade, Products) with dynamic multi-image upload & list.
      */
     public function updateSolution(Request $request, Solution $solution)
     {
@@ -211,26 +211,53 @@ class AdminController extends Controller
             'desc' => 'required|string',
             'cta_text' => 'required|string|max:100',
             'cta_link' => 'required|string|max:255',
+            'images_list' => 'nullable|array',
+            'images_list.*' => 'nullable|string',
         ]);
 
-        $images = $solution->images ?? [];
+        $images = [];
 
-        // Handle up to 4 image uploads
-        for ($i = 0; $i < 4; $i++) {
-            if ($request->hasFile("image_upload_{$i}")) {
-                $file = $request->file("image_upload_{$i}");
-                $filename = 'sol_' . $solution->slug . '_' . $i . '_' . time() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('images'), $filename);
-                $images[$i] = '/images/' . $filename;
-            } elseif ($request->filled("image_url_{$i}")) {
-                $images[$i] = $request->input("image_url_{$i}");
+        // 1. Collect submitted image URLs from the dynamic list
+        if ($request->has('images_list') && is_array($request->input('images_list'))) {
+            foreach ($request->input('images_list') as $imgUrl) {
+                $trimmed = trim($imgUrl);
+                if (!empty($trimmed)) {
+                    $images[] = $trimmed;
+                }
             }
         }
 
-        $validated['images'] = array_values($images);
+        // 2. Handle indexed single image file uploads (e.g. replacing a specific slot)
+        if ($request->has('image_uploads') && is_array($request->file('image_uploads'))) {
+            foreach ($request->file('image_uploads') as $idx => $file) {
+                if ($file && $file->isValid()) {
+                    $filename = 'sol_' . $solution->slug . '_' . $idx . '_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path('images'), $filename);
+                    $images[$idx] = '/images/' . $filename;
+                }
+            }
+        }
+
+        // 3. Handle multiple new image uploads at once
+        if ($request->hasFile('new_image_files')) {
+            foreach ($request->file('new_image_files') as $file) {
+                if ($file && $file->isValid()) {
+                    $filename = 'sol_' . $solution->slug . '_' . time() . '_' . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path('images'), $filename);
+                    $images[] = '/images/' . $filename;
+                }
+            }
+        }
+
+        // Fallback to existing images if none provided
+        if (empty($images)) {
+            $images = $solution->images ?? [];
+        }
+
+        $validated['images'] = array_values(array_filter($images));
         $solution->update($validated);
 
-        return back()->with('success', 'Solution section "' . $solution->title . '" updated successfully!');
+        return back()->with('success', 'Solution "' . $solution->title . '" updated successfully with ' . count($validated['images']) . ' sliding images!');
     }
 
     /**
