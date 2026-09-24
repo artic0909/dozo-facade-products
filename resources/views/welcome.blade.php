@@ -103,47 +103,47 @@
         </div>
 
         <!-- TOP NAVIGATION BAR -->
-        <header class="relative z-30 w-full shrink-0 pt-2 sm:pt-4 pb-1">
+        <header class="relative z-30 w-full shrink-0 pt-3 sm:pt-4 pb-2">
             <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 sm:h-18">
-                    <!-- Brand Logo -->
+                <div class="flex items-center justify-between h-16 sm:h-20">
+                    <!-- Brand Logo (Enlarged) -->
                     <a href="/" class="flex items-center gap-2 group shrink-0">
-                        <img src="/logo.png" alt="DOZO Windows & Facades" class="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]">
+                        <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]">
                     </a>
 
-                    <!-- Desktop Navigation Links -->
-                    <nav class="hidden lg:flex items-center gap-7 xl:gap-8 text-[13.5px] xl:text-[14px] font-medium text-gray-700">
-                        <a href="#home" class="text-black font-semibold hover:text-black transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
-                        <a href="#windows" class="hover:text-black transition-colors">Windows</a>
-                        <a href="#facade" class="hover:text-black transition-colors">Facade</a>
-                        <a href="#about" class="hover:text-black transition-colors">About Us</a>
-                        <a href="#projects" class="hover:text-black transition-colors">Projects</a>
-                        <a href="/catelogue.pdf" target="_blank" class="hover:text-black transition-colors flex items-center gap-1">
+                    <!-- Desktop Navigation Links (More Prominent & Highly Visible) -->
+                    <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
+                        <a href="#home" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
+                        <a href="#windows" class="hover:text-sky-600 transition-colors">Windows</a>
+                        <a href="#facade" class="hover:text-sky-600 transition-colors">Facade</a>
+                        <a href="#about" class="hover:text-sky-600 transition-colors">About Us</a>
+                        <a href="#projects" class="hover:text-sky-600 transition-colors">Projects</a>
+                        <a href="/catelogue.pdf" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
                             Downloads
                         </a>
-                        <a href="#contact" class="hover:text-black transition-colors">Contact</a>
+                        <a href="#contact" class="hover:text-sky-600 transition-colors">Contact</a>
                     </nav>
 
                     <!-- Action / Search Buttons -->
                     <div class="hidden lg:flex items-center gap-3.5">
-                        <button type="button" onclick="openSearchModal()" class="w-8.5 h-8.5 rounded-full flex items-center justify-center text-gray-700 hover:text-black hover:bg-black/5 transition-colors" title="Search">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        <button type="button" onclick="openSearchModal()" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 hover:text-black hover:bg-black/5 transition-colors" title="Search">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
-                        <button type="button" onclick="openQuoteModal()" class="bg-[#1b1e23] hover:bg-black text-white text-[12.5px] font-semibold px-5 py-2 rounded-full transition-all duration-200 shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+                        <button type="button" onclick="openQuoteModal()" class="bg-[#1b1e23] hover:bg-black text-white text-[13px] font-bold px-6 py-2.5 rounded-full transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-[0.98]">
                             Get a Quote
                         </button>
                     </div>
 
                     <!-- Mobile Hamburger Button -->
                     <div class="flex items-center gap-1.5 lg:hidden">
-                        <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-gray-800 hover:bg-white/60 transition-colors focus:outline-none" aria-label="Toggle navigation menu">
-                            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-gray-900 hover:bg-white/60 transition-colors focus:outline-none" aria-label="Toggle navigation menu">
+                            <svg id="menuIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 6h16M4 12h16M4 18h16"/>
                             </svg>
-                            <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/>
+                            <svg id="closeIcon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M6 18L18 6M6 6l12 12"/>
                             </svg>
                         </button>
                     </div>
@@ -152,22 +152,22 @@
 
             <!-- Mobile Drawer Menu -->
             <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 shadow-lg">
-                <div class="flex flex-col gap-3 text-[14px] font-medium text-gray-800">
+                <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
                     <a href="#home" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
-                    <a href="#windows" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100">Windows</a>
-                    <a href="#facade" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100">Facade</a>
-                    <a href="#about" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100">About Us</a>
-                    <a href="#projects" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100">Projects</a>
-                    <a href="/catelogue.pdf" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between">
+                    <a href="#windows" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Windows</a>
+                    <a href="#facade" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Facade</a>
+                    <a href="#about" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">About Us</a>
+                    <a href="#projects" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Projects</a>
+                    <a href="/catelogue.pdf" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                         <span>Downloads (Catalogue)</span>
-                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                         </svg>
                     </a>
-                    <a href="#contact" onclick="toggleMobileMenu()" class="py-1">Contact</a>
+                    <a href="#contact" onclick="toggleMobileMenu()" class="py-1 hover:text-sky-600">Contact</a>
                     
-                    <div class="pt-1 flex flex-col gap-2">
-                        <button type="button" onclick="toggleMobileMenu(); openQuoteModal();" class="w-full bg-[#1b1e23] text-white py-2.5 rounded-xl font-semibold text-center text-xs shadow-sm">
+                    <div class="pt-2 flex flex-col gap-2">
+                        <button type="button" onclick="toggleMobileMenu(); openQuoteModal();" class="w-full bg-[#1b1e23] text-white py-3 rounded-xl font-bold text-center text-sm shadow-md">
                             Get a Quote &rarr;
                         </button>
                     </div>
@@ -825,47 +825,162 @@
 
     <!-- FOOTER / CALL TO ACTION BANNER -->
     <!-- Desktop Footer -->
-    <footer id="contact" class="hidden sm:block bg-[#1b1e23] text-white pt-8 pb-10 mt-6">
+    <footer id="contact" class="hidden sm:block bg-[#161a1e] text-white pt-12 pb-10 mt-10 border-t border-gray-800">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Main CTA Container -->
-            <div class="flex items-center justify-between gap-6 pb-6 border-b border-gray-800/80">
-                
-                <!-- Left: DOZO Logo -->
-                <div class="flex items-center gap-3 shrink-0">
-                    <div class="bg-white/10 p-2 rounded-xl backdrop-blur-xs">
-                        <img src="/logo.png" alt="DOZO" class="h-9 w-auto invert brightness-200">
+            <!-- Top CTA Banner Container -->
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 pb-10 border-b border-gray-800/90">
+                <div class="max-w-2xl text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-widest mb-1.5">
+                        <span>●</span> Engineering Architectural Excellence
                     </div>
-                </div>
-
-                <!-- Center: Catchphrase -->
-                <div class="flex-1 max-w-xl">
-                    <h3 class="text-lg font-bold tracking-tight text-white">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
                         Let's Build Something Exceptional Together
                     </h3>
-                    <p class="text-xs text-gray-400 mt-0.5">
-                        Get in touch for your next project.
+                    <p class="text-sm text-gray-400 mt-1.5">
+                        Connect with our building envelope specialists for custom facade engineering, technical specs, and project estimation.
                     </p>
                 </div>
 
-                <!-- Right: Contact CTA Button -->
-                <div class="shrink-0 flex items-center gap-3">
-                    <button type="button" onclick="openQuoteModal()" class="bg-white hover:bg-gray-100 text-[#1b1e23] text-xs font-bold px-6 py-2.5 rounded-full transition-all duration-200 shadow-sm flex items-center gap-1.5">
-                        <span>Contact Us</span>
-                        <span>&rarr;</span>
+                <div class="shrink-0 flex items-center gap-3.5">
+                    <button type="button" onclick="openQuoteModal()" class="bg-white hover:bg-gray-100 text-[#161a1e] text-sm font-bold px-7 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-2">
+                        <span>Request a Quote</span>
+                        <span class="text-base">&rarr;</span>
                     </button>
+                    <a href="/catelogue.pdf" target="_blank" class="border border-gray-700 hover:border-gray-500 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        <span>Technical Catalogue</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Multi-Column Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 py-12 border-b border-gray-800/80">
+                
+                <!-- Col 1: Brand Info & Socials (Span 4) -->
+                <div class="lg:col-span-4 flex flex-col justify-between">
+                    <div>
+                        <!-- Enlarged Footer Logo -->
+                        <a href="/" class="inline-block mb-4">
+                            <img src="/logo.png" alt="DOZO Windows & Facades" class="h-12 sm:h-14 md:h-16 w-auto object-contain invert brightness-200">
+                        </a>
+                        <p class="text-xs sm:text-[13px] text-gray-400 leading-relaxed mb-6 max-w-sm">
+                            DOZO is India's premier manufacturer and contractor of high-performance architectural aluminum windows, unitized curtain wall facades, and bespoke metallic building envelopes.
+                        </p>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Follow DOZO</div>
+                        <div class="flex items-center gap-3">
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0077b5] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="LinkedIn">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#e1306c] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="Instagram">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <!-- YouTube -->
+                            <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#ff0000] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="YouTube">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                            </a>
+                            <!-- Facebook -->
+                            <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#1877f2] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="Facebook">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/>
+                                </svg>
+                            </a>
+                            <!-- X (Twitter) -->
+                            <a href="https://twitter.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-black text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="X (Twitter)">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                            <!-- WhatsApp Direct -->
+                            <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#25d366] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="WhatsApp">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Windows Solutions (Span 3) -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                        DOZO Windows
+                    </h4>
+                    <ul class="space-y-2.5 text-xs sm:text-[13px] text-gray-400">
+                        <li><a href="#featured-products" onclick="openProductModal('Sliding Windows', 'Multi-track sliding systems with ultra-smooth heavy duty rollers.')" class="hover:text-white transition-colors">Sliding Window Systems</a></li>
+                        <li><a href="#featured-products" onclick="openProductModal('Casement Windows', 'Side-hung acoustic casement windows with multipoint locks.')" class="hover:text-white transition-colors">Acoustic Casement Windows</a></li>
+                        <li><a href="#featured-products" onclick="openProductModal('Fixed Picture Windows', 'Minimalist fixed panoramic glass systems.')" class="hover:text-white transition-colors">Fixed Picture Windows</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Tilt & Turn German Systems</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Minimalist Slimline Sliding Doors</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Thermal Break Energy Glazing</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Acoustic Sound Isolation Glass</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Façade Engineering (Span 3) -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                        Façade Systems
+                    </h4>
+                    <ul class="space-y-2.5 text-xs sm:text-[13px] text-gray-400">
+                        <li><a href="#featured-products" onclick="openProductModal('Unitized Glass Facade', 'Prefabricated unitized curtain wall systems for commercial towers.')" class="hover:text-white transition-colors">Unitized Curtain Walls</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Semi-Unitized Structural Glazing</a></li>
+                        <li><a href="#featured-products" onclick="openProductModal('Metal Cladding Panel', 'Architectural solid aluminum and composite cladding.')" class="hover:text-white transition-colors">Solid Aluminum & ACP Cladding</a></li>
+                        <li><a href="#featured-products" onclick="openProductModal('Perforated Panel', 'Precision CNC perforated metallic shading panels.')" class="hover:text-white transition-colors">CNC Perforated Façades</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Aerodynamic Louvers & Fins</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Spider & Point-Fixed Glazing</a></li>
+                        <li><a href="#featured-products" class="hover:text-white transition-colors">Custom Architectural Metalwork</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Quick Links & Contact Info (Span 2) -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                        Company & Info
+                    </h4>
+                    <ul class="space-y-2.5 text-xs sm:text-[13px] text-gray-400 mb-6">
+                        <li><a href="#about" class="hover:text-white transition-colors">About DOZO</a></li>
+                        <li><a href="#projects" class="hover:text-white transition-colors">Featured Projects</a></li>
+                        <li><a href="/catelogue.pdf" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">Downloads (PDF)</a></li>
+                        <li><a href="#contact" onclick="openQuoteModal()" class="hover:text-white transition-colors">Get Consultation</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Quality Standards</a></li>
+                    </ul>
+
+                    <div class="text-xs text-gray-400 space-y-1.5 pt-2 border-t border-gray-800">
+                        <div class="font-bold text-gray-200">Head Office</div>
+                        <div>+91 98765 43210</div>
+                        <div class="text-[11px] text-gray-500">info@dozofacades.com</div>
+                        <div class="text-[11px] text-gray-500">Pan India Presence</div>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- Bottom Sub-Footer Links -->
-            <div class="pt-6 flex items-center justify-between text-[11px] text-gray-500">
-                <p>&copy; {{ date('Y') }} DOZO Façade & Windows. All rights reserved.</p>
-                <div class="flex items-center gap-5">
-                    <a href="#windows" class="hover:text-gray-300 transition-colors">Windows Division</a>
-                    <a href="#facade" class="hover:text-gray-300 transition-colors">Façade Engineering</a>
-                    <a href="/catelogue.pdf" target="_blank" class="hover:text-gray-300 transition-colors">Technical Catalog</a>
-                    <a href="#about" class="hover:text-gray-300 transition-colors">About Us</a>
+            <!-- Bottom Sub-Footer Bar -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; {{ date('Y') }} DOZO Façade Products Pvt. Ltd. All rights reserved. | ISO 9001:2015 Certified</p>
+                <div class="flex items-center gap-6 text-gray-400">
+                    <a href="#home" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#home" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="/catelogue.pdf" target="_blank" class="hover:text-white transition-colors">Technical Specs</a>
+                    <a href="#home" class="hover:text-white transition-colors">Back to Top &uarr;</a>
                 </div>
             </div>
 
@@ -873,26 +988,64 @@
     </footer>
 
     <!-- Mobile Footer -->
-    <footer class="sm:hidden bg-[#1b1e23] text-white p-6 mt-4">
-        <div class="text-left mb-4">
-            <h3 class="text-base font-bold text-white">Let's Build Together</h3>
-            <p class="text-xs text-gray-400 mt-0.5">Get in touch for your project.</p>
+    <footer class="sm:hidden bg-[#161a1e] text-white p-6 mt-6 border-t border-gray-800">
+        <!-- Enlarged Logo for Mobile -->
+        <div class="mb-4 text-left">
+            <a href="/" class="inline-block mb-3">
+                <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 w-auto object-contain invert brightness-200">
+            </a>
+            <h3 class="text-base font-bold text-white leading-snug">Precision Building Envelope Solutions</h3>
+            <p class="text-xs text-gray-400 mt-1">High-performance windows and architectural facade systems across India.</p>
         </div>
 
-        <div class="flex flex-col gap-2.5">
-            <button type="button" onclick="openQuoteModal()" class="w-full bg-white text-[#1b1e23] text-xs font-bold py-3 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm">
-                <span>Get a Quote</span>
-                <span>&rarr;</span>
-            </button>
-            <a href="tel:+919876543210" class="w-full border border-gray-700 bg-white/5 text-gray-200 text-xs font-semibold py-3 rounded-xl text-center flex items-center justify-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        <!-- Social Media Icons Row for Mobile -->
+        <div class="flex items-center gap-3 py-3 border-y border-gray-800 my-4">
+            <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="LinkedIn">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
-                <span>Call Now</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="Instagram">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="YouTube">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="WhatsApp">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
             </a>
         </div>
 
-        <div class="text-center text-[10px] text-gray-500 mt-6">
+        <!-- Quick Links in Mobile -->
+        <div class="grid grid-cols-2 gap-2 text-xs text-gray-400 mb-5">
+            <a href="#windows" class="py-1">Windows Division</a>
+            <a href="#facade" class="py-1">Façade Engineering</a>
+            <a href="#featured-products" class="py-1">Featured Products</a>
+            <a href="#projects" class="py-1">Projects Portfolio</a>
+            <a href="/catelogue.pdf" target="_blank" class="py-1">Technical Catalogue</a>
+            <a href="#about" class="py-1">About Company</a>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+            <button type="button" onclick="openQuoteModal()" class="w-full bg-white text-[#161a1e] text-xs font-bold py-3.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-md">
+                <span>Request a Quote</span>
+                <span>&rarr;</span>
+            </button>
+            <a href="tel:+919876543210" class="w-full border border-gray-700 bg-white/5 text-gray-200 text-xs font-semibold py-3 rounded-xl text-center flex items-center justify-center gap-2">
+                <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <span>Call Us (+91 98765 43210)</span>
+            </a>
+        </div>
+
+        <div class="text-center text-[11px] text-gray-500 mt-6">
             &copy; {{ date('Y') }} DOZO. All rights reserved.
         </div>
     </footer>
