@@ -477,111 +477,111 @@
     </section>
 
     <!-- FEATURED PRODUCTS SECTION -->
-    <section id="featured-products" class="py-12 lg:py-16">
+    <section id="featured-products" class="py-10 sm:py-12 bg-white">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center justify-between mb-8">
-                <div class="flex items-center">
-                    <h2 class="text-lg sm:text-xl lg:text-[22px] font-black tracking-tight text-[#1a1d20] uppercase">
-                        Featured Products
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-lg sm:text-xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                        FEATURED PRODUCTS
                     </h2>
-                    <span class="accent-blue-line"></span>
+                    <span class="w-8 sm:w-10 h-[2px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#featured-products" class="text-xs sm:text-sm font-semibold text-gray-600 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="#featured-products" class="text-xs sm:text-[13px] font-medium text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All Products</span>
-                    <span>&rarr;</span>
+                    <span class="text-[#3b82f6] text-sm">&rarr;</span>
                 </a>
             </div>
 
             <!-- 6 Product Cards Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
                 
-                <!-- Product 1: Sliding Window -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Sliding Window', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover img-zoom">
+                <!-- 1. Sliding Window -->
+                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Sliding Window', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Sliding Window</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Sliding Window</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- Product 2: Casement Window -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Casement Window', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover img-zoom">
+                <!-- 2. Casement Window -->
+                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Casement Window', 'High-performance side-hung casement window with multipoint locking mechanism, acoustic insulation gaskets, and optimal airflow ventilation.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_casement_window.jpg" alt="Casement Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Casement Window</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Casement Window</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- Product 3: Fixed Window -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Fixed Window', 'Minimalist architectural fixed glass picture window designed to maximize daylight penetration while ensuring exceptional thermal and energy efficiency.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_fixed_window.jpg" alt="Fixed Window" class="w-full h-full object-cover img-zoom">
+                <!-- 3. Fixed Window -->
+                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Fixed Window', 'Minimalist architectural fixed glass picture window designed to maximize daylight penetration while ensuring exceptional thermal and energy efficiency.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_fixed_window.jpg" alt="Fixed Window" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Fixed Window</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Fixed Window</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- Product 4: Unitized Glass Facade -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover img-zoom">
+                <!-- 4. Unitized Glass Facade -->
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Unitized Glass Facade', 'Factory pre-fabricated unitized curtain wall system delivering rapid on-site installation, seismic performance, and high structural reliability for commercial skyscrapers.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#0d131a]">
+                        <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Unitized Glass Facade</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-[#161e27] text-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-white truncate">Unitized Glass Facade</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- Product 5: Metal Cladding Panel -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Metal Cladding Panel', 'Architectural solid aluminum and composite cladding panels featuring customized coatings, non-combustible cores, and crisp geometric detailing.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_metal_cladding.jpg" alt="Metal Cladding Panel" class="w-full h-full object-cover img-zoom">
+                <!-- 5. Metal Cladding Panel -->
+                <div class="group flex flex-col bg-white border border-gray-200/80 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Metal Cladding Panel', 'Architectural solid aluminum and composite cladding panels featuring customized coatings, non-combustible cores, and crisp geometric detailing.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/prod_metal_cladding.jpg" alt="Metal Cladding Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Metal Cladding Panel</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-[#1a1d20] truncate">Metal Cladding Panel</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- Product 6: Perforated Panel -->
-                <div class="group relative rounded-2xl overflow-hidden bg-white shadow-xs border border-gray-100 card-hover-zoom cursor-pointer" onclick="openProductModal('Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
-                    <div class="aspect-square overflow-hidden bg-gray-100">
-                        <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover img-zoom">
+                <!-- 6. Perforated Panel -->
+                <div class="group flex flex-col bg-[#161e27] border border-gray-800 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300" onclick="openProductModal('Perforated Panel', 'Precision CNC perforated metallic panels designed for solar shading, dynamic light diffusion, and bespoke artistic facade patterns.')">
+                    <div class="aspect-square w-full overflow-hidden bg-[#0d131a]">
+                        <img src="/images/prod_perforated_panel.jpg" alt="Perforated Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3 sm:p-3.5 flex items-center justify-between bg-white">
-                        <h4 class="text-xs sm:text-[13px] font-bold text-gray-900 truncate">Perforated Panel</h4>
-                        <span class="w-6 h-6 rounded-full bg-[#1b1e23] group-hover:bg-black text-white flex items-center justify-center shrink-0 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <div class="p-2.5 sm:p-3 flex items-center justify-between bg-[#161e27] text-white">
+                        <span class="text-xs sm:text-[12px] font-bold text-white truncate">Perforated Panel</span>
+                        <span class="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center shrink-0 ml-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </span>
                     </div>
@@ -591,165 +591,171 @@
         </div>
     </section>
 
-    <!-- FEATURED PROJECTS SECTION (Desktop 5-cards Grid) -->
-    <section id="projects" class="hidden sm:block py-12 lg:py-16 bg-white border-y border-gray-100">
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-10 sm:py-12 bg-white">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center justify-between mb-8">
-                <div class="flex items-center">
-                    <h2 class="text-lg sm:text-xl lg:text-[22px] font-black tracking-tight text-[#1a1d20] uppercase">
-                        Featured Projects
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-lg sm:text-xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                        FEATURED PROJECTS
                     </h2>
-                    <span class="accent-blue-line"></span>
+                    <span class="w-8 sm:w-10 h-[2px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#projects" class="text-xs sm:text-sm font-semibold text-gray-600 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="#projects" class="text-xs sm:text-[13px] font-medium text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All Projects</span>
-                    <span>&rarr;</span>
+                    <span class="text-[#3b82f6] text-sm">&rarr;</span>
                 </a>
             </div>
 
-            <!-- Desktop 5 Projects Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+            <!-- 5 Project Cards Grid in a Row -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
                 
                 <!-- Project 1: Residential Tower Kolkata -->
-                <div class="group rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 card-hover-zoom">
-                    <div class="h-40 lg:h-44 overflow-hidden">
-                        <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover img-zoom">
+                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Residential Tower, Kolkata', 'Luxury residential high-rise featuring custom acoustic DOZO casement windows and panoramic glass facades designed for urban sound isolation.')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_residential_tower.jpg" alt="Residential Tower Kolkata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3.5 bg-white">
-                        <h4 class="text-[13px] font-bold text-gray-900 leading-tight">Residential Tower</h4>
-                        <p class="text-[11.5px] text-gray-400 font-medium mt-0.5">Kolkata</p>
+                    <div class="pt-2.5 pb-1">
+                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Residential Tower</h4>
+                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Kolkata</p>
                     </div>
                 </div>
 
-                <!-- Project 2: Commercial Complex Bangalore -->
-                <div class="group rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 card-hover-zoom">
-                    <div class="h-40 lg:h-44 overflow-hidden">
-                        <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover img-zoom">
+                <!-- Project 2: Commercial Complex Bangalore (Accent Blue Title) -->
+                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Commercial Complex, Bangalore', 'State-of-the-art commercial tech hub envelope engineered with unitized double-glazed facade panels and integrated solar shading louvers.')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_commercial_complex.jpg" alt="Commercial Complex Bangalore" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3.5 bg-white">
-                        <h4 class="text-[13px] font-bold text-gray-900 leading-tight">Commercial Complex</h4>
-                        <p class="text-[11.5px] text-gray-400 font-medium mt-0.5">Bangalore</p>
+                    <div class="pt-2.5 pb-1">
+                        <h4 class="text-xs sm:text-[13px] font-bold text-[#3b82f6] leading-snug">Commercial Complex</h4>
+                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Bangalore</p>
                     </div>
                 </div>
 
                 <!-- Project 3: IT Park Hyderabad -->
-                <div class="group rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 card-hover-zoom">
-                    <div class="h-40 lg:h-44 overflow-hidden">
-                        <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover img-zoom">
+                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('IT Park, Hyderabad', 'Expansive IT campus building with solid aluminum cladding panels and high-efficiency thermal fixed glass systems.')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_it_park.jpg" alt="IT Park Hyderabad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3.5 bg-white">
-                        <h4 class="text-[13px] font-bold text-gray-900 leading-tight">IT Park</h4>
-                        <p class="text-[11.5px] text-gray-400 font-medium mt-0.5">Hyderabad</p>
+                    <div class="pt-2.5 pb-1">
+                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">IT Park</h4>
+                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Hyderabad</p>
                     </div>
                 </div>
 
                 <!-- Project 4: Luxury Residence Goa -->
-                <div class="group rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 card-hover-zoom">
-                    <div class="h-40 lg:h-44 overflow-hidden">
-                        <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover img-zoom">
+                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Luxury Residence, Goa', 'Coastal luxury villa equipped with weather-resistant heavy-duty sliding glass doors and minimalist slim-profile frame geometry.')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_luxury_residence.jpg" alt="Luxury Residence Goa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3.5 bg-white">
-                        <h4 class="text-[13px] font-bold text-gray-900 leading-tight">Luxury Residence</h4>
-                        <p class="text-[11.5px] text-gray-400 font-medium mt-0.5">Goa</p>
+                    <div class="pt-2.5 pb-1">
+                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Luxury Residence</h4>
+                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Goa</p>
                     </div>
                 </div>
 
                 <!-- Project 5: Institutional Building Delhi -->
-                <div class="group rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 card-hover-zoom">
-                    <div class="h-40 lg:h-44 overflow-hidden">
-                        <img src="/images/proj_institutional_delhi.jpg" alt="Institutional Building Delhi" class="w-full h-full object-cover img-zoom">
+                <div class="group flex flex-col bg-white overflow-hidden cursor-pointer" onclick="openProductModal('Institutional Building, Delhi', 'Prestigious institutional architecture featuring custom stone & perforated metal facade cladding with high wind-load engineering.')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[#f0f2f5]">
+                        <img src="/images/proj_institutional_delhi.jpg" alt="Institutional Building Delhi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-3.5 bg-white">
-                        <h4 class="text-[13px] font-bold text-gray-900 leading-tight">Institutional Building</h4>
-                        <p class="text-[11.5px] text-gray-400 font-medium mt-0.5">Delhi</p>
+                    <div class="pt-2.5 pb-1">
+                        <h4 class="text-xs sm:text-[13px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">Institutional Building</h4>
+                        <p class="text-[11px] text-gray-500 font-normal mt-0.5">Delhi</p>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </section>
 
     <!-- WHY CHOOSE DOZO & STORY VIDEO SECTION -->
-    <section id="about" class="py-12 lg:py-16">
+    <section id="about" class="py-10 sm:py-12 bg-white">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Title Header -->
-            <div class="flex items-center mb-8">
-                <h2 class="text-lg sm:text-xl lg:text-[22px] font-black tracking-tight text-[#1a1d20] uppercase">
-                    Why Choose DOZO
+            <div class="flex items-center gap-3 mb-8">
+                <h2 class="text-lg sm:text-xl font-bold tracking-tight text-[#1a1d20] uppercase">
+                    WHY CHOOSE DOZO
                 </h2>
-                <span class="accent-blue-line"></span>
+                <span class="w-8 sm:w-10 h-[2px] bg-[#3b82f6] inline-block"></span>
             </div>
 
-            <!-- Desktop View: 6 Icons + Video Banner -->
-            <div class="hidden sm:grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Two-Column Layout: 6 Icons + Video Banner -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
                 
-                <!-- Left: 6 Value Proposition Icons Grid -->
-                <div class="lg:col-span-7 flex flex-col justify-between">
-                    <div class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-6 gap-3 text-center">
+                <!-- Left: 6 Icons Grid (exact shapes as reference) -->
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-2 text-center">
                         
-                        <!-- Value 1: Premium Quality -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        <!-- 1. Premium Quality -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.5l7 3.5v6c0 5-3.5 8.8-7 10.5-3.5-1.7-7-5.5-7-10.5V6l7-3.5z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7l4 3-2 4h-4l-2-4 4-3z"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Premium<br>Quality</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Premium<br>Quality</span>
                         </div>
 
-                        <!-- Value 2: Innovative Solutions -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        <!-- 2. Innovative Solutions -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3C8 7.5 6 11 6 15a6 6 0 0 0 12 0c0-4-2-7.5-6-12z"/>
+                                    <circle cx="10" cy="13" r="0.75" fill="currentColor"/>
+                                    <circle cx="14" cy="13" r="0.75" fill="currentColor"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 15.5a2.5 2.5 0 0 0 5 0"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Innovative<br>Solutions</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Innovative<br>Solutions</span>
                         </div>
 
-                        <!-- Value 3: Energy Efficient -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        <!-- 3. Energy Efficient -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3C7.5 7.5 5.5 11 5.5 15a6.5 6.5 0 0 0 13 0c0-4-2-7.5-6.5-12z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5v9.5M12 11.5l3.5-2.5M12 14.5l-3.5-2.5"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Energy<br>Efficient</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Energy<br>Efficient</span>
                         </div>
 
-                        <!-- Value 4: Aesthetic Design -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        <!-- 4. Aesthetic Design -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.5l7 3.5v6c0 5-3.5 8.8-7 10.5-3.5-1.7-7-5.5-7-10.5V6l7-3.5z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.5v17.5M5.5 8.5L12 13l6.5-4.5"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Aesthetic<br>Design</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Aesthetic<br>Design</span>
                         </div>
 
-                        <!-- Value 5: Expert Installation -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <!-- 5. Expert Installation -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Expert<br>Installation</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Expert<br>Installation</span>
                         </div>
 
-                        <!-- Value 6: Dedicated Support -->
-                        <div class="flex flex-col items-center group">
-                            <div class="w-13 h-13 rounded-2xl bg-white border border-gray-100 shadow-xs flex items-center justify-center text-gray-700 group-hover:scale-105 transition-all duration-200 mb-2.5">
-                                <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        <!-- 6. Dedicated Support -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 flex items-center justify-center text-gray-700 mb-2">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+                                    <circle cx="12" cy="12" r="8.5"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                                 </svg>
                             </div>
-                            <span class="text-[11.5px] font-bold text-gray-800 leading-tight">Dedicated<br>Support</span>
+                            <span class="text-xs font-medium text-gray-800 leading-tight">Dedicated<br>Support</span>
                         </div>
 
                     </div>
@@ -757,74 +763,29 @@
 
                 <!-- Right: "Turning Architectural Visions into Reality" Story Card -->
                 <div class="lg:col-span-5">
-                    <div class="relative h-full min-h-[170px] rounded-2xl sm:rounded-3xl overflow-hidden bg-gray-900 text-white shadow-md group cursor-pointer" onclick="openVideoModal()">
+                    <div class="relative h-[170px] sm:h-[185px] overflow-hidden bg-[#161e27] text-white shadow-md group cursor-pointer" onclick="openVideoModal()">
                         <img src="/images/story_banner.jpg" alt="Turning Architectural Visions into Reality" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
 
-                        <div class="absolute inset-0 p-6 flex flex-col justify-center">
-                            <h3 class="text-base sm:text-xl font-bold tracking-tight text-white mb-3.5 max-w-xs leading-snug">
-                                Turning Architectural Visions into Reality
+                        <div class="absolute inset-0 p-5 sm:p-6 flex flex-col justify-center">
+                            <h3 class="text-base sm:text-lg lg:text-[19px] font-bold tracking-tight text-white mb-4 max-w-xs leading-snug">
+                                Turning<br>
+                                Architectural Visions<br>
+                                into Reality
                             </h3>
                             
-                            <div class="inline-flex items-center gap-2.5 text-white group-hover:text-sky-300 transition-colors">
-                                <span class="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all">
-                                    <svg class="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+                            <div class="inline-flex items-center gap-2.5 text-white group-hover:text-gray-200 transition-colors">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-black flex items-center justify-center shadow-md shrink-0">
+                                    <svg class="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-black ml-0.5" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"/>
                                     </svg>
                                 </span>
-                                <span class="text-xs sm:text-sm font-semibold tracking-wide">Watch Our Story</span>
+                                <span class="text-xs sm:text-[12.5px] font-semibold text-white tracking-wide">Watch Our Story</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Mobile View: 2x2 Why Choose DOZO Grid -->
-            <div class="sm:hidden">
-                <div class="grid grid-cols-2 gap-3.5 text-center my-4">
-                    
-                    <!-- 1. Premium Quality -->
-                    <div class="flex flex-col items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-xs">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-800 mb-2">
-                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-900 leading-tight">Premium<br>Quality</span>
-                    </div>
-
-                    <!-- 2. Energy Efficient -->
-                    <div class="flex flex-col items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-xs">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-800 mb-2">
-                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-900 leading-tight">Energy<br>Efficient</span>
-                    </div>
-
-                    <!-- 3. Innovative Solutions -->
-                    <div class="flex flex-col items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-xs">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-800 mb-2">
-                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-900 leading-tight">Innovative<br>Solutions</span>
-                    </div>
-
-                    <!-- 4. Expert Support -->
-                    <div class="flex flex-col items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-xs">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-800 mb-2">
-                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-900 leading-tight">Expert<br>Support</span>
-                    </div>
-
-                </div>
             </div>
 
         </div>
