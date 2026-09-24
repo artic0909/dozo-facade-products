@@ -349,14 +349,6 @@
                         <!-- Gradient Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
 
-                        <!-- Top Right Carousel Dots Indicator -->
-                        <div class="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full border border-white/20">
-                            <button type="button" onclick="setWindowsSlide(0)" class="w-1.5 h-1.5 rounded-full bg-white win-dot transition-all" aria-label="Slide 1"></button>
-                            <button type="button" onclick="setWindowsSlide(1)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 2"></button>
-                            <button type="button" onclick="setWindowsSlide(2)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 3"></button>
-                            <button type="button" onclick="setWindowsSlide(3)" class="w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all" aria-label="Slide 4"></button>
-                        </div>
-
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
@@ -458,14 +450,6 @@
 
                         <!-- Gradient Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 pointer-events-none z-10"></div>
-
-                        <!-- Top Right Carousel Dots Indicator -->
-                        <div class="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full border border-white/20">
-                            <button type="button" onclick="setFacadeSlide(0)" class="w-1.5 h-1.5 rounded-full bg-white fac-dot transition-all" aria-label="Slide 1"></button>
-                            <button type="button" onclick="setFacadeSlide(1)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 2"></button>
-                            <button type="button" onclick="setFacadeSlide(2)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 3"></button>
-                            <button type="button" onclick="setFacadeSlide(3)" class="w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all" aria-label="Slide 4"></button>
-                        </div>
 
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
@@ -1458,10 +1442,6 @@
             if (track) {
                 track.style.transform = `translateX(-${idx * 25}%)`;
             }
-            const dots = document.querySelectorAll('.win-dot');
-            dots.forEach((dot, i) => {
-                dot.className = i === idx ? 'w-3 h-1.5 rounded-full bg-white win-dot transition-all' : 'w-1.5 h-1.5 rounded-full bg-white/40 win-dot transition-all';
-            });
         }
 
         function autoAdvanceWindows() {
@@ -1482,10 +1462,6 @@
             if (track) {
                 track.style.transform = `translateX(-${idx * 25}%)`;
             }
-            const dots = document.querySelectorAll('.fac-dot');
-            dots.forEach((dot, i) => {
-                dot.className = i === idx ? 'w-3 h-1.5 rounded-full bg-white fac-dot transition-all' : 'w-1.5 h-1.5 rounded-full bg-white/40 fac-dot transition-all';
-            });
         }
 
         function autoAdvanceFacade() {
