@@ -95,6 +95,47 @@
                 </div>
             </div>
 
+            <!-- Card 3: Footer & SEO Configuration -->
+            <div class="white-liquid-card rounded-3xl p-6 sm:p-7 space-y-4 lg:col-span-2">
+                <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                    <span class="p-2 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </span>
+                    <h3 class="text-base font-bold text-slate-900">Footer, Call-to-Action &amp; SEO Content</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Footer Top CTA Headline</label>
+                        <input type="text" name="cta_headline" value="{{ $siteSettings['cta_headline'] ?? 'Let\'s Build Something Exceptional Together' }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Footer Top CTA Subheadline</label>
+                        <input type="text" name="cta_subheadline" value="{{ $siteSettings['cta_subheadline'] ?? 'Connect with our building envelope specialists for custom facade engineering, 3.0 kPa wind load calculations, acoustic simulations, and turnkey estimation.' }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Footer Brand &amp; Architectural Summary (SEO)</label>
+                    <textarea name="footer_about" rows="3" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">{{ $siteSettings['footer_about'] ?? 'DOZO is India\'s premier manufacturer and contractor of high-performance architectural aluminum windows, unitized curtain wall facades, and bespoke metallic building envelopes.' }}</textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Certifications &amp; Standards</label>
+                        <input type="text" name="certifications_text" value="{{ $siteSettings['certifications_text'] ?? 'ISO 9001:2015 Certified | Green Building LEED Compliant | 100% Recyclable Aluminium' }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Business &amp; Support Hours</label>
+                        <input type="text" name="business_hours" value="{{ $siteSettings['business_hours'] ?? 'Mon – Sat: 9:00 AM – 7:00 PM IST' }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Regional Presence &amp; AMC</label>
+                        <input type="text" name="pan_india_presence" value="{{ $siteSettings['pan_india_presence'] ?? 'Pan India Project Execution & AMC Support' }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="flex items-center justify-end">
