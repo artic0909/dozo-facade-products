@@ -37,8 +37,8 @@
                 <!-- Desktop Navigation Links -->
                 <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
                     <a href="{{ route('home') }}" class="hover:text-sky-600 transition-colors">Home</a>
-                    <a href="{{ route('windows.index') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Windows</a>
                     <a href="{{ route('facade.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
+                    <a href="{{ route('windows.index') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Windows</a>
                     <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
                     <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
                         Catalogue
@@ -74,9 +74,9 @@
         <!-- Mobile Drawer Menu -->
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 shadow-lg">
             <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
-                <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
-                <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
+                <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Home</a>
                 <a href="{{ route('facade.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
+                <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">DOZO Windows</a>
                 <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products</a>
                 <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                     <span>Downloads (Catalogue)</span>
