@@ -13,7 +13,7 @@
                 DOZO Products & Categories Catalog
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
-                Manage architectural window and façade products, dynamic categories with auto slugs, and live featured status.
+                Manage architectural window and façade products with dynamic category grouping, auto-generated URL slugs, and live featured status.
             </p>
         </div>
         <div class="flex items-center gap-3">
@@ -49,7 +49,7 @@
                     <tr class="bg-slate-50/80 text-slate-600 border-b border-slate-200 font-bold uppercase tracking-wider text-[11px]">
                         <th class="py-3.5 pl-4 w-12 text-center">#</th>
                         <th class="py-3.5 px-3">Thumbnail</th>
-                        <th class="py-3.5 px-3">Product Name & URL Slug</th>
+                        <th class="py-3.5 px-3">Product Name & Auto Slug</th>
                         <th class="py-3.5 px-3">Category (Dynamic)</th>
                         <th class="py-3.5 px-3">Theme</th>
                         <th class="py-3.5 px-3">Specs (Acoustic / Wind Load)</th>
@@ -132,7 +132,7 @@
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
                 <div>
                     <h3 id="productModalTitle" class="text-lg font-black text-slate-900">Add Product</h3>
-                    <p class="text-xs text-slate-500">Configure dynamic category, URL slug, specifications and media.</p>
+                    <p class="text-xs text-slate-500">Configure technical specifications, dynamic category, and media. Slugs are auto-generated from product name.</p>
                 </div>
                 <button type="button" onclick="closeProductModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg bg-slate-100">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -145,11 +145,11 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Product Name *</label>
-                        <input type="text" id="prodName" name="name" oninput="handleProdNameInput(this.value)" required placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodName" name="name" required placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Dynamic Category *</label>
-                        <select id="prodCategoryId" name="category_id" required class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <select id="prodCategoryId" name="category_id" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                             @foreach ($categories as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name }} ({{ $cat->slug }})</option>
                             @endforeach
@@ -157,51 +157,39 @@
                     </div>
                 </div>
 
-                <!-- Product URL Slug Field -->
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1 flex items-center justify-between">
-                        <span>Product URL Slug *</span>
-                        <span class="text-[10px] text-slate-400 font-normal">Auto-generated from name or custom</span>
-                    </label>
-                    <div class="relative">
-                        <span class="absolute left-3.5 top-2 text-xs text-slate-400 font-mono">/products/</span>
-                        <input type="text" id="prodSlug" name="slug" placeholder="sliding-window-system" class="w-full pl-22 pr-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 font-mono font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50">
-                    </div>
-                </div>
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Theme Card Style *</label>
-                        <select id="prodTheme" name="theme" required class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <select id="prodTheme" name="theme" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                             <option value="light">Light Glass (White card)</option>
                             <option value="dark">Dark Obsidian (Black card)</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Acoustic Rating</label>
-                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Material Grade</label>
-                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Wind Load Performance</label>
-                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Finish Options</label>
-                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Description & Engineering Specs *</label>
-                    <textarea id="prodDesc" name="short_desc" rows="3" required placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <textarea id="prodDesc" name="short_desc" rows="3" required placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
                 </div>
 
                 <div>
@@ -232,8 +220,8 @@
         <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 max-h-[92vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
                 <div>
-                    <h3 class="text-lg font-black text-slate-900">Dynamic Product Categories & Slugs</h3>
-                    <p class="text-xs text-slate-500">Create, edit, and organize product categories with dynamic URL slugs.</p>
+                    <h3 class="text-lg font-black text-slate-900">Dynamic Product Categories</h3>
+                    <p class="text-xs text-slate-500">Create and organize product categories. Slugs are automatically generated.</p>
                 </div>
                 <button type="button" onclick="closeCategoryManagerModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg bg-slate-100">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -248,19 +236,13 @@
                 </div>
                 <form id="categoryForm" action="{{ route('admin.categories.store') }}" method="POST" class="space-y-3">
                     @csrf
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Category Name *</label>
-                            <input type="text" id="catName" name="name" oninput="handleCatNameInput(this.value)" required placeholder="e.g. Curtain Wall Systems" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Category Slug *</label>
-                            <input type="text" id="catSlug" name="slug" placeholder="curtain-wall-systems" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 font-mono font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
-                        </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Category Name *</label>
+                        <input type="text" id="catName" name="name" required placeholder="e.g. Curtain Wall Systems" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">Description (Optional)</label>
-                        <input type="text" id="catDesc" name="description" placeholder="Brief overview of this system category..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <input type="text" id="catDesc" name="description" placeholder="Brief overview of this system category..." class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                     </div>
                     <div class="flex items-center justify-between pt-1">
                         <div class="flex items-center gap-2">
@@ -325,38 +307,6 @@
 
 @push('scripts')
 <script>
-    let isEditingCustomProdSlug = false;
-    let isEditingCustomCatSlug = false;
-
-    function slugify(text) {
-        return text.toString().toLowerCase()
-            .replace(/\s+/g, '-')           // Replace spaces with -
-            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-            .replace(/^-+/, '')             // Trim - from start of text
-            .replace(/-+$/, '');            // Trim - from end of text
-    }
-
-    function handleProdNameInput(val) {
-        if (!isEditingCustomProdSlug) {
-            document.getElementById('prodSlug').value = slugify(val);
-        }
-    }
-
-    document.getElementById('prodSlug').addEventListener('input', function() {
-        isEditingCustomProdSlug = true;
-    });
-
-    function handleCatNameInput(val) {
-        if (!isEditingCustomCatSlug) {
-            document.getElementById('catSlug').value = slugify(val);
-        }
-    }
-
-    document.getElementById('catSlug').addEventListener('input', function() {
-        isEditingCustomCatSlug = true;
-    });
-
     // Category Filter in Products Table
     function filterCategory(catId) {
         document.querySelectorAll('.cat-filter-btn').forEach(btn => {
@@ -383,8 +333,6 @@
         form.action = "{{ route('admin.products.store') }}";
         document.getElementById('productModalTitle').textContent = 'Add New Product System';
         document.getElementById('prodName').value = '';
-        document.getElementById('prodSlug').value = '';
-        isEditingCustomProdSlug = false;
         document.getElementById('prodTheme').value = 'light';
         document.getElementById('prodAcoustic').value = '';
         document.getElementById('prodMaterial').value = '';
@@ -402,8 +350,6 @@
         form.action = `/admin/products/${prod.id}`;
         document.getElementById('productModalTitle').textContent = 'Edit Product: ' + prod.name;
         document.getElementById('prodName').value = prod.name;
-        document.getElementById('prodSlug').value = prod.slug || slugify(prod.name);
-        isEditingCustomProdSlug = true;
         if (prod.category_id) {
             document.getElementById('prodCategoryId').value = prod.category_id;
         }
@@ -438,8 +384,6 @@
         form.action = `/admin/categories/${cat.id}`;
         document.getElementById('catFormTitle').textContent = 'Edit Category: ' + cat.name;
         document.getElementById('catName').value = cat.name;
-        document.getElementById('catSlug').value = cat.slug;
-        isEditingCustomCatSlug = true;
         document.getElementById('catDesc').value = cat.description || '';
         document.getElementById('catIsActive').checked = Boolean(cat.is_active);
         document.getElementById('catSubmitBtn').textContent = 'Save Changes';
@@ -451,8 +395,6 @@
         form.action = "{{ route('admin.categories.store') }}";
         document.getElementById('catFormTitle').textContent = 'Add New Category';
         document.getElementById('catName').value = '';
-        document.getElementById('catSlug').value = '';
-        isEditingCustomCatSlug = false;
         document.getElementById('catDesc').value = '';
         document.getElementById('catIsActive').checked = true;
         document.getElementById('catSubmitBtn').textContent = '+ Save Category';
