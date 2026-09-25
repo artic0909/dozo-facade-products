@@ -137,7 +137,7 @@
                     <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
                         <a href="{{ route('home') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
                         <a href="{{ route('windows.index') }}" class="hover:text-sky-600 transition-colors">Windows</a>
-                        <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
+                        <a href="{{ route('facade.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
                         <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
                         <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
                             Catalogue
@@ -175,7 +175,7 @@
                 <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
                     <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
                     <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
-                    <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
+                    <a href="{{ route('facade.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
                     <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products </a>
                     <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                         <span>Downloads (Catalogue)</span>
@@ -394,7 +394,7 @@
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 {{ isset($solutions['windows']) ? $solutions['windows']->desc : 'Engineered for comfort, performance and modern living.' }}
                             </p>
-                            <a href="{{ isset($solutions['windows']) ? $solutions['windows']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                            <a href="{{ isset($solutions['windows']) && $solutions['windows']->cta_link && $solutions['windows']->cta_link !== '#featured-products' ? $solutions['windows']->cta_link : route('windows.index') }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
                                 <span>{{ isset($solutions['windows']) ? $solutions['windows']->cta_text : 'Explore Windows' }}</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
@@ -498,7 +498,7 @@
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
                                 {{ isset($solutions['facade']) ? $solutions['facade']->desc : 'Architectural freedom with precision and durability.' }}
                             </p>
-                            <a href="{{ isset($solutions['facade']) ? $solutions['facade']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                            <a href="{{ isset($solutions['facade']) && $solutions['facade']->cta_link && $solutions['facade']->cta_link !== '#featured-products' ? $solutions['facade']->cta_link : route('facade.index') }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
                                 <span>{{ isset($solutions['facade']) ? $solutions['facade']->cta_text : 'Explore Facade' }}</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>

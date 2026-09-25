@@ -106,6 +106,41 @@ class AdminController extends Controller
     }
 
     /**
+     * Render the public DOZO Façade solution & catalog page with 'Our Solutions CMS' façade data.
+     */
+    public function facadePage(Request $request, $categorySlug = null)
+    {
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
+        $solution = Solution::where('slug', 'facade')->first();
+        
+        // Get categories associated with products/façades
+        $categories = ProductCategory::where('is_active', true)
+            ->whereHas('products', function($q) {
+                $q->where('type', 'products');
+            })
+            ->withCount(['products' => function($q) {
+                $q->where('type', 'products');
+            }])
+            ->orderBy('order')
+            ->get();
+
+        $selectedCategory = null;
+        if ($categorySlug) {
+            $selectedCategory = ProductCategory::where('slug', $categorySlug)->first();
+        }
+
+        $query = Product::where('type', 'products')->with('productCategory')->orderBy('order');
+        if ($selectedCategory) {
+            $query->where('category_id', $selectedCategory->id);
+        }
+
+        $products = $query->get();
+        $totalCount = Product::where('type', 'products')->count();
+
+        return view('facade', compact('solution', 'products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings'));
+    }
+
+    /**
      * Render the public DOZO Products & Façade listing catalog page with dynamic category filtering.
      */
     public function productsPage(Request $request, $categorySlug = null)

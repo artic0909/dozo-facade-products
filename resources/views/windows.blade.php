@@ -38,7 +38,7 @@
                 <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
                     <a href="{{ route('home') }}" class="hover:text-sky-600 transition-colors">Home</a>
                     <a href="{{ route('windows.index') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Windows</a>
-                    <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
+                    <a href="{{ route('facade.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
                     <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
                     <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
                         Catalogue
@@ -76,7 +76,7 @@
             <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
                 <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
                 <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
-                <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
+                <a href="{{ route('facade.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
                 <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products</a>
                 <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                     <span>Downloads (Catalogue)</span>
@@ -111,23 +111,9 @@
 
             <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-bold uppercase tracking-wider mb-3 border border-sky-100">
-                        <span class="w-2 h-2 rounded-full bg-sky-500"></span>
-                        <span>Architectural Window Systems</span>
-                    </div>
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight">
-                        DOZO Window Systems
+                        DOZO Windows
                     </h1>
-                    <p class="text-sm sm:text-base text-gray-600 mt-2 max-w-2xl leading-relaxed">
-                        Acoustically isolated, thermally broken, and weather-tight sliding and casement window systems crafted for luxury residential and commercial architecture.
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-3 shrink-0">
-                    <div class="px-5 py-3 rounded-2xl bg-white border border-gray-200/90 shadow-2xs">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 block">Total Live Systems</span>
-                        <span class="text-2xl font-black text-slate-900 font-mono">{{ $products->count() }} Systems</span>
-                    </div>
                 </div>
             </div>
 
