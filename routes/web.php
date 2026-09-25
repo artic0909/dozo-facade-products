@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
-// Public Landing Page
+// Public Landing Page & Product Catalog Routes
 Route::get('/', [AdminController::class, 'home'])->name('home');
+Route::get('/windows/{category_slug?}', [AdminController::class, 'windowsPage'])->name('windows.index');
+Route::get('/products/{category_slug?}', [AdminController::class, 'productsPage'])->name('products.index');
 Route::post('/quotes', [AdminController::class, 'storePublicQuote'])->name('quotes.store');
 
 // Admin Authentication Routes

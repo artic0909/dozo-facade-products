@@ -135,15 +135,13 @@
 
                     <!-- Desktop Navigation Links (More Prominent & Highly Visible) -->
                     <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
-                        <a href="#" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
-                        <a href="#" class="hover:text-sky-600 transition-colors">Windows</a>
-                        <a href="#" class="hover:text-sky-600 transition-colors">Façade</a>
-                        <a href="#about" class="hover:text-sky-600 transition-colors">Products</a>
-                        <!-- <a href="#projects" class="hover:text-sky-600 transition-colors">Projects</a> -->
-                        <a href="/catelogue.pdf" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
+                        <a href="{{ route('home') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Home</a>
+                        <a href="{{ route('windows.index') }}" class="hover:text-sky-600 transition-colors">Windows</a>
+                        <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Façade</a>
+                        <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
+                        <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
                             Catalogue
                         </a>
-                        <!-- <a href="#contact" class="hover:text-sky-600 transition-colors">Contact</a> -->
                     </nav>
 
                     <!-- Action / Search Buttons -->
@@ -175,11 +173,11 @@
             <!-- Mobile Drawer Menu -->
             <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 shadow-lg">
                 <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
-                    <a href="#home" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
-                    <a href="#windows" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Windows</a>
-                    <a href="#facade" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Facade</a>
-                    <a href="#projects" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Products</a>
-                    <a href="/catelogue.pdf" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
+                    <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">Home</a>
+                    <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
+                    <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Façades</a>
+                    <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products </a>
+                    <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
                         <span>Downloads (Catalogue)</span>
                         <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
@@ -627,7 +625,7 @@
                     </h2>
                     <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#featured-products" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="{{ route('windows.index') }}" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All</span>
                     <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>
@@ -690,7 +688,7 @@
                     </h2>
                     <span class="w-10 sm:w-12 h-[2.5px] bg-[#3b82f6] inline-block"></span>
                 </div>
-                <a href="#projects" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
+                <a href="{{ route('products.index') }}" class="text-xs sm:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1.5 transition-colors">
                     <span>View All</span>
                     <span class="text-[#3b82f6] text-base">&rarr;</span>
                 </a>

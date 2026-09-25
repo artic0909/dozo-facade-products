@@ -72,6 +72,74 @@ class AdminController extends Controller
     }
 
     /**
+     * Render the public DOZO Windows listing catalog page with dynamic category filtering.
+     */
+    public function windowsPage(Request $request, $categorySlug = null)
+    {
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
+        
+        // Get categories associated with windows
+        $categories = ProductCategory::where('is_active', true)
+            ->whereHas('products', function($q) {
+                $q->where('type', 'windows');
+            })
+            ->withCount(['products' => function($q) {
+                $q->where('type', 'windows');
+            }])
+            ->orderBy('order')
+            ->get();
+
+        $selectedCategory = null;
+        if ($categorySlug) {
+            $selectedCategory = ProductCategory::where('slug', $categorySlug)->first();
+        }
+
+        $query = Product::where('type', 'windows')->with('productCategory')->orderBy('order');
+        if ($selectedCategory) {
+            $query->where('category_id', $selectedCategory->id);
+        }
+
+        $products = $query->get();
+        $totalCount = Product::where('type', 'windows')->count();
+
+        return view('windows', compact('products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings'));
+    }
+
+    /**
+     * Render the public DOZO Products & Façade listing catalog page with dynamic category filtering.
+     */
+    public function productsPage(Request $request, $categorySlug = null)
+    {
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
+        
+        // Get categories associated with products/façades
+        $categories = ProductCategory::where('is_active', true)
+            ->whereHas('products', function($q) {
+                $q->where('type', 'products');
+            })
+            ->withCount(['products' => function($q) {
+                $q->where('type', 'products');
+            }])
+            ->orderBy('order')
+            ->get();
+
+        $selectedCategory = null;
+        if ($categorySlug) {
+            $selectedCategory = ProductCategory::where('slug', $categorySlug)->first();
+        }
+
+        $query = Product::where('type', 'products')->with('productCategory')->orderBy('order');
+        if ($selectedCategory) {
+            $query->where('category_id', $selectedCategory->id);
+        }
+
+        $products = $query->get();
+        $totalCount = Product::where('type', 'products')->count();
+
+        return view('products', compact('products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings'));
+    }
+
+    /**
      * Display the white liquid glass login screen.
      */
     public function showLogin()
