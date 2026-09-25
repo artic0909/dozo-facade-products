@@ -800,7 +800,7 @@
             <!-- Dynamic 4 Big Product Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @if(isset($windowProducts) && $windowProducts->count())
-                    @foreach($windowProducts as $prod)
+                    @foreach($windowProducts->take(4) as $prod)
                         @php
                             $isDark = ($prod->theme === 'dark');
                         @endphp
@@ -863,7 +863,7 @@
             <!-- Dynamic 4 Big Product Cards in One Row (Zero Border Radius - Original Clean Showcase Style) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @if(isset($dozoProducts) && $dozoProducts->count())
-                    @foreach($dozoProducts as $prod)
+                    @foreach($dozoProducts->take(4) as $prod)
                         <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
                             <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
                                 <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
