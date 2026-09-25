@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FacadeSlide;
 use App\Models\HeroSlide;
 use App\Models\HeroStat;
 use App\Models\Product;
@@ -113,6 +114,7 @@ class AdminController extends Controller
         $siteSettings = SiteSetting::all()->pluck('value', 'key');
         $solution = Solution::where('slug', 'facade')->first();
         $heroStats = HeroStat::orderBy('order')->get();
+        $facadeSlides = FacadeSlide::where('is_active', true)->orderBy('order')->get();
         
         // Get categories associated with products/façades
         $categories = ProductCategory::where('is_active', true)
@@ -138,7 +140,7 @@ class AdminController extends Controller
         $products = $query->get();
         $totalCount = Product::where('type', 'products')->count();
 
-        return view('facade', compact('solution', 'products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings', 'heroStats'));
+        return view('facade', compact('solution', 'products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings', 'heroStats', 'facadeSlides'));
     }
 
     /**
@@ -252,6 +254,7 @@ class AdminController extends Controller
 
         $heroSlides = HeroSlide::orderBy('order')->get();
         $heroStats = HeroStat::orderBy('order')->get();
+        $facadeSlides = FacadeSlide::orderBy('order')->get();
         $solutions = Solution::orderBy('order')->get();
         $products = Product::orderBy('order')->get();
         $projects = Project::orderBy('order')->get();
@@ -265,6 +268,7 @@ class AdminController extends Controller
             'completedCount',
             'heroSlides',
             'heroStats',
+            'facadeSlides',
             'solutions',
             'products',
             'projects',
@@ -384,6 +388,54 @@ class AdminController extends Controller
         }
 
         return back()->with('success', 'Hero Pillar "' . $slide->name . '" updated successfully!');
+    }
+
+    /**
+     * Render Façade Carousel & 5 Pillars CMS Page.
+     */
+    public function facadeHeroIndex()
+    {
+        $facadeSlides = FacadeSlide::orderBy('order')->get();
+
+        return view('admin.facade.index', compact('facadeSlides'));
+    }
+
+    /**
+     * Update an individual Façade Slide / Pillar.
+     */
+    public function updateFacadeSlide(Request $request, FacadeSlide $slide)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'eyebrow' => 'nullable|string|max:255',
+            'headline' => 'required|string',
+            'desc' => 'required|string',
+            'cta_text' => 'required|string|max:100',
+            'cta_link' => 'required|string|max:255',
+            'image' => 'nullable|string|max:255',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        if ($request->hasFile('image_upload')) {
+            $file = $request->file('image_upload');
+            $filename = 'facade_' . strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $slide->name)) . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $validated['image'] = '/images/' . $filename;
+        }
+
+        $validated['is_active'] = $request->has('is_active');
+
+        $slide->update($validated);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Façade Pillar "' . $slide->name . '" updated successfully!',
+                'slide' => $slide,
+            ]);
+        }
+
+        return back()->with('success', 'Façade Pillar "' . $slide->name . '" updated successfully!');
     }
 
     /**

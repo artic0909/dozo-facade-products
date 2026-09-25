@@ -96,47 +96,21 @@
 </head>
 <body class="antialiased selection:bg-black selection:text-white">
 
-    <!-- HERO SECTION WITH INTEGRATED HEADER & 100% VIEWPORT HEIGHT (EXACT WELCOME PAGE DESIGN & DYNAMIC FAÇADE DATA) -->
+    <!-- HERO SECTION WITH INTEGRATED HEADER & 100% VIEWPORT HEIGHT (EXACT WELCOME PAGE DESIGN & DYNAMIC FAÇADE CMS DATA) -->
     <div class="hero-container w-full border-b border-gray-100">
-        @php
-            $facImages = (isset($solution) && is_array($solution->images) && count($solution->images)) ? array_values($solution->images) : [
-                '/images/solution_facade.jpg',
-                '/images/solution_facade_2.jpg',
-                '/images/solution_facade_3.jpg',
-                '/images/solution_facade_4.jpg',
-                '/images/hero_engineer.jpg'
-            ];
-            while(count($facImages) < 5) {
-                $facImages[] = $facImages[0] ?? '/images/solution_facade.jpg';
-            }
-
-            $badges = (isset($solution) && is_array($solution->badges) && count($solution->badges)) ? $solution->badges : [
-                ['title' => 'Façade Cladding', 'icon' => 'cladding'],
-                ['title' => 'Architectural Panels', 'icon' => 'panels'],
-                ['title' => 'Louvers & Sun Shades', 'icon' => 'louvers'],
-                ['title' => 'Flashings & Accessories', 'icon' => 'flashings'],
-                ['title' => 'Custom Fabrication', 'icon' => 'fabrication'],
-            ];
-
-            // Ensure 5 badges for 5-pillar carousel
-            $defaultBadgeTitles = ['Façade Cladding', 'Architectural Panels', 'Louvers & Sun Shades', 'Flashings & Accessories', 'Custom Fabrication'];
-            $slideItems = [];
-            for($i = 0; $i < 5; $i++) {
-                $bTitle = $badges[$i]['title'] ?? $defaultBadgeTitles[$i];
-                $slideItems[] = [
-                    'name' => $bTitle,
-                    'image' => $facImages[$i % count($facImages)]
-                ];
-            }
-        @endphp
-
-        <!-- 5 Interactive Carousel Background Images with smooth crossfade -->
+        <!-- Dynamic Interactive Carousel Background Images with smooth crossfade -->
         <div class="hero-building-bg">
-            @foreach($slideItems as $idx => $sItem)
-                <div id="heroBg{{ $idx }}" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none' }}">
-                    <img src="{{ $sItem['image'] }}" alt="{{ $sItem['name'] }} - DOZO Façade Architecture" class="w-full h-full">
+            @if(isset($facadeSlides) && $facadeSlides->count())
+                @foreach($facadeSlides as $idx => $slide)
+                    <div id="heroBg{{ $idx }}" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none' }}">
+                        <img src="{{ $slide->image }}" alt="{{ $slide->name }} - DOZO Façade Architecture" class="w-full h-full">
+                    </div>
+                @endforeach
+            @else
+                <div id="heroBg0" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
+                    <img src="/images/solution_facade.jpg" alt="Façade Cladding - DOZO Architecture" class="w-full h-full">
                 </div>
-            @endforeach
+            @endif
         </div>
 
         <!-- TOP NAVIGATION BAR -->
@@ -208,7 +182,7 @@
             </div>
         </header>
 
-        <!-- HERO MAIN BODY WITH INTERACTIVE CAROUSEL CONTENT (DYNAMIC FAÇADE DATA) -->
+        <!-- HERO MAIN BODY WITH INTERACTIVE CAROUSEL CONTENT (DYNAMIC FAÇADE CMS DATA) -->
         <div id="home" class="relative z-10 max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 flex flex-col justify-center">
             <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                 
@@ -216,37 +190,42 @@
                 <div class="lg:col-span-7 flex flex-col justify-center">
                     <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2.5">
                         <span id="heroEyebrow" class="text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.16em] uppercase text-gray-400 transition-opacity duration-300">
-                            {{ $solution->eyebrow ?? 'ENGINEERED ARCHITECTURAL ENVELOPE' }}
+                            {{ isset($facadeSlides) && $facadeSlides->first() ? $facadeSlides->first()->eyebrow : 'Unitized Curtain Walls & Cladding' }}
                         </span>
                     </div>
 
                     <!-- Exact Stacked Headline Typography -->
+                    @php
+                        $firstHeadline = isset($facadeSlides) && $facadeSlides->first() ? $facadeSlides->first()->headline : "DOZO\nFAÇADES\nFOR ARCHITECTURAL\nEXCELLENCE";
+                        $firstLines = array_filter(array_map('trim', explode("\n", str_replace("\r", "", $firstHeadline))));
+                    @endphp
                     <h1 id="heroHeadline" class="text-[32px] sm:text-[44px] lg:text-[min(4vw,54px)] tracking-[-0.035em] leading-[1.03] text-[#1a1d20] mb-2 sm:mb-3 uppercase transition-opacity duration-300">
-                        <span class="font-black block">DOZO</span>
-                        <span class="font-black block">FAÇADES</span>
-                        <span class="font-light block text-[#25282d]">FOR ARCHITECTURAL</span>
-                        <span class="font-light block text-[#25282d]">EXCELLENCE</span>
+                        @foreach($firstLines as $i => $line)
+                            <span class="{{ $i < 2 ? 'font-black block' : 'font-light block text-[#25282d]' }}">{{ $line }}</span>
+                        @endforeach
                     </h1>
 
                     <p id="heroDesc" class="text-gray-500 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed max-w-md mb-4 sm:mb-5 transition-opacity duration-300">
-                        {{ $solution->desc ?? 'Architectural freedom with precision and durability. High-performance unitized curtain walls, CNC perforated panels, and bespoke metallic facades engineered for enduring beauty.' }}
+                        {{ isset($facadeSlides) && $facadeSlides->first() ? $facadeSlides->first()->desc : 'Architectural freedom with precision and durability. Complete building envelope solutions engineered for thermal mastery and acoustic comfort.' }}
                     </p>
 
                     <!-- Dynamic CTA Button -->
                     <div class="flex items-center gap-3">
-                        <button type="button" onclick="openQuoteModal()" id="heroCta" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5 cursor-pointer">
-                            <span id="heroCtaText">{{ $solution->cta_text ?? 'Request Façade Consultation' }}</span>
+                        <a id="heroCta" href="{{ isset($facadeSlides) && $facadeSlides->first() ? $facadeSlides->first()->cta_link : '#contact' }}" onclick="{{ (isset($facadeSlides) && $facadeSlides->first() && $facadeSlides->first()->cta_link === '#contact') ? 'openQuoteModal(); return false;' : '' }}" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5 cursor-pointer">
+                            <span id="heroCtaText">{{ isset($facadeSlides) && $facadeSlides->first() ? $facadeSlides->first()->cta_text : 'Request Façade Consultation' }}</span>
                             <span class="text-sm">&rarr;</span>
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Mobile Carousel Points Strip -->
                     <div class="flex lg:hidden items-center gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
-                        @foreach($slideItems as $idx => $sItem)
-                            <button type="button" onclick="setHeroSlide({{ $idx }})" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold {{ $idx === 0 ? 'bg-black text-white' : 'bg-gray-200/80 text-gray-700' }} shrink-0" data-idx="{{ $idx }}">
-                                {{ $sItem['name'] }}
-                            </button>
-                        @endforeach
+                        @if(isset($facadeSlides) && $facadeSlides->count())
+                            @foreach($facadeSlides as $idx => $slide)
+                                <button type="button" onclick="setHeroSlide({{ $idx }})" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold {{ $idx === 0 ? 'bg-black text-white' : 'bg-gray-200/80 text-gray-700' }} shrink-0" data-idx="{{ $idx }}">
+                                    {{ $slide->name }}
+                                </button>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
@@ -254,11 +233,13 @@
                 <div class="lg:col-span-5 hidden lg:flex flex-col justify-between items-end h-[280px] xl:h-[320px] text-right pr-4 z-20">
                     <!-- Clickable Carousel Points -->
                     <div class="space-y-1 drop-shadow-md">
-                        @foreach($slideItems as $idx => $sItem)
-                            <button type="button" onclick="setHeroSlide({{ $idx }})" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 {{ $idx === 0 ? 'text-white font-bold' : 'text-white/70 hover:text-white font-medium' }}" data-index="{{ $idx }}">
-                                <span class="inline-block pb-0.5 border-b {{ $idx === 0 ? 'border-white' : 'border-transparent' }}">{{ $sItem['name'] }}</span>
-                            </button>
-                        @endforeach
+                        @if(isset($facadeSlides) && $facadeSlides->count())
+                            @foreach($facadeSlides as $idx => $slide)
+                                <button type="button" onclick="setHeroSlide({{ $idx }})" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 {{ $idx === 0 ? 'text-white font-bold' : 'text-white/70 hover:text-white font-medium' }}" data-index="{{ $idx }}">
+                                    <span class="inline-block pb-0.5 border-b {{ $idx === 0 ? 'border-white' : 'border-transparent' }}">{{ $slide->name }}</span>
+                                </button>
+                            @endforeach
+                        @endif
                     </div>
 
                     <!-- Bottom Right Badge -->
@@ -705,43 +686,27 @@
         }
 
         @php
-            $facadeSlideDefinitions = [];
-            $eyebrows = [
-                'Unitized Curtain Walls & Cladding',
-                'Architectural Panels & Perforation',
-                'Louvers & Solar Shading Solutions',
-                'Flashings & Weatherproofing Trims',
-                'Custom Architectural Fabrication'
-            ];
-            $headlines = [
-                '<span class="font-black block">DOZO</span><span class="font-black block">FAÇADES</span><span class="font-light block text-[#25282d]">FOR ARCHITECTURAL</span><span class="font-light block text-[#25282d]">EXCELLENCE</span>',
-                '<span class="font-black block">PRECISION</span><span class="font-black block">PANELS</span><span class="font-light block text-[#25282d]">PERFORATED &</span><span class="font-light block text-[#25282d]">STRUCTURED</span>',
-                '<span class="font-black block">ENGINEERED</span><span class="font-black block">LOUVERS</span><span class="font-light block text-[#25282d]">OPTIMAL SHADE</span><span class="font-light block text-[#25282d]">& AIRFLOW</span>',
-                '<span class="font-black block">WEATHERPROOF</span><span class="font-black block">ENVELOPE</span><span class="font-light block text-[#25282d]">SEAMLESS FINISH</span><span class="font-light block text-[#25282d]">& PROTECTION</span>',
-                '<span class="font-black block">BESPOKE</span><span class="font-black block">FABRICATION</span><span class="font-light block text-[#25282d]">TAILORED TO</span><span class="font-light block text-[#25282d]">DESIGN</span>'
-            ];
-            $descriptions = [
-                $solution->desc ?? "Architectural freedom with precision and durability. Complete building envelope solutions engineered for thermal mastery and acoustic comfort.",
-                "Precision CNC perforated metallic envelopes, solid aluminum cassettes, and composite panels offering bespoke aesthetics and solar mitigation.",
-                "Aerodynamic louvers, continuous sun-fins, and intelligent architectural shading devices engineered for high wind-pressure resistance.",
-                "High-grade aluminum flashings, weather-tight gaskets, and tailored perimeter trims ensuring zero-leakage durability across multi-storey elevations.",
-                "Turnkey custom fabrication to European engineering tolerances with state-of-the-art automated CNC milling and robotic structural bonding."
-            ];
-
-            for($i = 0; $i < 5; $i++) {
-                $facadeSlideDefinitions[] = [
-                    'name' => $slideItems[$i]['name'] ?? $defaultBadgeTitles[$i],
-                    'eyebrow' => $eyebrows[$i],
-                    'headline' => $headlines[$i],
-                    'desc' => $descriptions[$i],
-                    'ctaText' => 'Request Façade Consultation',
-                    'image' => $slideItems[$i]['image']
+            $facadeSlidesJson = (isset($facadeSlides) && $facadeSlides->count()) ? $facadeSlides->map(function($s) {
+                $lines = array_filter(array_map('trim', explode("\n", str_replace("\r", "", $s->headline))));
+                $formattedHeadline = '';
+                foreach($lines as $i => $line) {
+                    $class = $i < 2 ? 'font-black block' : 'font-light block text-[#25282d]';
+                    $formattedHeadline .= '<span class="' . $class . '">' . e($line) . '</span>';
+                }
+                return [
+                    'name' => $s->name,
+                    'eyebrow' => $s->eyebrow,
+                    'headline' => $formattedHeadline,
+                    'desc' => nl2br(e($s->desc)),
+                    'ctaText' => $s->cta_text,
+                    'ctaLink' => $s->cta_link,
+                    'image' => $s->image
                 ];
-            }
+            })->values() : null;
         @endphp
 
         // Façade 5-Pillar Carousel Controller (Dynamic CMS)
-        const heroSlides = {!! json_encode($facadeSlideDefinitions) !!};
+        const heroSlides = {!! $facadeSlidesJson ? json_encode($facadeSlidesJson) : json_encode([]) !!};
 
         let currentHeroIndex = 0;
         let heroTimer = null;
@@ -793,6 +758,7 @@
             const headlineEl = document.getElementById('heroHeadline');
             const descEl = document.getElementById('heroDesc');
             const ctaTextEl = document.getElementById('heroCtaText');
+            const ctaLinkEl = document.getElementById('heroCta');
 
             if (eyebrowEl) eyebrowEl.style.opacity = '0.2';
             if (headlineEl) headlineEl.style.opacity = '0.2';
@@ -812,6 +778,10 @@
                     descEl.style.opacity = '1';
                 }
                 if (ctaTextEl) ctaTextEl.innerText = slide.ctaText;
+                if (ctaLinkEl) {
+                    ctaLinkEl.href = slide.ctaLink || '#contact';
+                    ctaLinkEl.onclick = (slide.ctaLink === '#contact') ? function(e) { e.preventDefault(); openQuoteModal(); } : null;
+                }
             }, 180);
 
             // Reset auto-advance timer on interaction

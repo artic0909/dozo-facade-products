@@ -32,6 +32,10 @@ Route::prefix('admin')->group(function () {
         Route::post('/hero-slides/{slide}', [AdminController::class, 'updateHeroSlide'])->name('admin.hero.slide.update');
         Route::post('/hero-stats/{stat}', [AdminController::class, 'updateHeroStat'])->name('admin.hero.stat.update');
 
+        // 3.1 Façade Section CMS Routes
+        Route::get('/facade-cms', [AdminController::class, 'facadeHeroIndex'])->name('admin.facade.index');
+        Route::post('/facade-slides/{slide}', [AdminController::class, 'updateFacadeSlide'])->name('admin.facade.slide.update');
+
         // 4. Solutions CMS Routes
         Route::get('/solutions', [AdminController::class, 'solutionsIndex'])->name('admin.solutions.index');
         Route::post('/solutions/{solution}', [AdminController::class, 'updateSolution'])->name('admin.solutions.update');

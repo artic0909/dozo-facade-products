@@ -142,6 +142,19 @@
                 </div>
             </a>
 
+            <a href="{{ route('admin.facade.index') }}" class="p-4 rounded-2xl bg-white/80 hover:bg-white border border-slate-200/90 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="p-2 rounded-xl bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </span>
+                    <span class="text-xs font-mono font-bold text-slate-400 group-hover:text-teal-600">&rarr;</span>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-900 text-xs">Façade Section CMS</div>
+                    <div class="text-[11px] text-slate-400">{{ $facadeSlides->count() }} Façade Pillars</div>
+                </div>
+            </a>
+
             <a href="{{ route('admin.solutions.index') }}" class="p-4 rounded-2xl bg-white/80 hover:bg-white border border-slate-200/90 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between">
                 <div class="flex items-center justify-between mb-3">
                     <span class="p-2 rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
