@@ -262,18 +262,6 @@
                             <dt class="font-bold text-gray-900">Wind Load Testing</dt>
                             <dd class="text-gray-600 sm:col-span-2">{{ $product->wind_load ?: 'Tested up to 3.0 kPa (Wind Pressure Resistance)' }}</dd>
                         </div>
-                        <div class="py-2.5 sm:py-3 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                            <dt class="font-bold text-gray-900">Water Tightness</dt>
-                            <dd class="text-gray-600 sm:col-span-2">0.30 kPa (300 Pa) Static Water Penetration Resistance</dd>
-                        </div>
-                        <div class="py-2.5 sm:py-3 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                            <dt class="font-bold text-gray-900">Glass Compatibility</dt>
-                            <dd class="text-gray-600 sm:col-span-2">4mm to 24mm (Single, Laminated PVB & Insulated Double Glazing Units)</dd>
-                        </div>
-                        <div class="py-2.5 sm:py-3 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                            <dt class="font-bold text-gray-900">Warranty Coverage</dt>
-                            <dd class="text-gray-600 sm:col-span-2 font-medium text-emerald-700">25 Years Aluminium Material &bull; 15 Years Powder Coating &bull; 5 Years Hardware</dd>
-                        </div>
                     </dl>
                 </div>
 
