@@ -186,26 +186,13 @@
             <!-- Left Column: Product Visuals / High-Res Showcase (Span 6) -->
             <div class="lg:col-span-6 flex flex-col gap-4">
                 
-                <!-- Main Image Card with Floating Badges -->
-                <div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-[#f0f2f5] border border-gray-200/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm group">
-                    <img id="mainProductImage" src="{{ $product->image ?: '/images/hero_building.jpg' }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
-                    
-                    <!-- Floating Type / Badge Tags -->
-                    <div class="absolute top-4 left-4 flex flex-col gap-2 z-10">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider shadow-sm">
-                            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
-                            {{ $product->type === 'windows' ? 'DOZO Windows System' : 'DOZO Architectural Product' }}
-                        </span>
-                        @if($product->is_featured)
-                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-600/90 backdrop-blur-md text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
-                                Premium Architectural Line
-                            </span>
-                        @endif
-                    </div>
+                <!-- Main Image Card with Floating Badges (Object-Contain so no image is cut off) -->
+                <div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-white border border-gray-200/90 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xs group flex items-center justify-center p-4 sm:p-6 md:p-8">
+                    <img id="mainProductImage" src="{{ $product->image ?: '/images/hero_building.jpg' }}" alt="{{ $product->name }}" class="max-w-full max-h-full w-auto h-auto object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-out">
 
                     <div class="absolute bottom-4 right-4 z-10">
-                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md text-gray-800 text-[11px] font-bold shadow-xs">
-                            <svg class="w-3.5 h-3.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-900/80 backdrop-blur-md text-white text-[11px] font-bold shadow-xs">
+                            <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             6063-T6 Tested
                         </span>
                     </div>
@@ -467,8 +454,8 @@
                             $isDark = ($rel->theme === 'dark');
                         @endphp
                         <a href="{{ route('product.details', $rel->slug ?: $rel->id) }}" class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden hover:shadow-xl transition-all duration-300">
-                            <div class="aspect-[4/3] w-full rounded-none overflow-hidden {{ $isDark ? 'bg-[#0d131a]' : 'bg-[#f0f2f5]' }} relative">
-                                <img src="{{ $rel->image }}" alt="{{ $rel->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                            <div class="aspect-[4/3] w-full rounded-none overflow-hidden {{ $isDark ? 'bg-[#0d131a]' : 'bg-[#f0f2f5]' }} relative flex items-center justify-center p-3">
+                                <img src="{{ $rel->image }}" alt="{{ $rel->name }}" class="max-w-full max-h-full w-auto h-auto object-contain rounded-none group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 flex items-center justify-between {{ $isDark ? 'bg-[#161e27] border-gray-800' : 'bg-white border-gray-100' }} border-t rounded-none">
                                 <div class="min-w-0 flex-1">
