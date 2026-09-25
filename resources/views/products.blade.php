@@ -239,19 +239,6 @@
                 </div>
             </div>
 
-            <!-- Dynamic Category Filter Pills Bar -->
-            <div class="flex items-center gap-2 overflow-x-auto pt-8 pb-1 text-xs">
-                <a href="{{ route('products.index') }}" class="px-4 py-2 rounded-xl {{ empty($selectedCategory) ? 'bg-[#0f172a] text-white' : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200' }} font-bold transition-all shrink-0">
-                    All Products ({{ $totalCount }})
-                </a>
-                @foreach($categories as $cat)
-                    <a href="{{ route('products.index', $cat->slug) }}" class="px-4 py-2 rounded-xl {{ !empty($selectedCategory) && $selectedCategory->id === $cat->id ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200' }} font-bold transition-all shrink-0 flex items-center gap-2">
-                        <span>{{ $cat->name }}</span>
-                        <span class="px-1.5 py-0.2 rounded-md {{ !empty($selectedCategory) && $selectedCategory->id === $cat->id ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600' }} font-mono text-[10px] font-bold">{{ $cat->products_count }}</span>
-                    </a>
-                @endforeach
-            </div>
-
         </div>
     </section>
 

@@ -184,24 +184,13 @@ class AdminController extends Controller
             ->with('productCategory')
             ->firstOrFail();
 
-        // 4 Related Products of the same type
+        // Strictly related products of the SAME type only (windows for windows, products for products)
         $relatedProducts = Product::where('id', '!=', $product->id)
             ->where('type', $product->type)
             ->with('productCategory')
             ->inRandomOrder()
             ->take(4)
             ->get();
-
-        // Fallback related products if not enough of same type
-        if ($relatedProducts->count() < 4) {
-            $more = Product::where('id', '!=', $product->id)
-                ->whereNotIn('id', $relatedProducts->pluck('id'))
-                ->with('productCategory')
-                ->inRandomOrder()
-                ->take(4 - $relatedProducts->count())
-                ->get();
-            $relatedProducts = $relatedProducts->concat($more);
-        }
 
         return view('product-details', compact('product', 'relatedProducts', 'siteSettings'));
     }
