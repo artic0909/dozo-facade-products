@@ -404,112 +404,118 @@
     </footer>
 
     <!-- INTERACTIVE MODAL: GET A QUOTE -->
-    <div id="quoteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
-            <button type="button" onclick="closeQuoteModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            
-            <div class="mb-5">
-                <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Inquiry Form</div>
-                <h3 class="text-2xl font-extrabold text-gray-900">Request a Consultation & Quote</h3>
-                <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
-            </div>
-
-            <form id="publicQuoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-3.5">
-                @csrf
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
-                    <input type="text" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
-                        <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
-                        <input type="email" name="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
-                        <select name="product_interest" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
-                            <option value="DOZO Windows">DOZO Windows</option>
-                            <option value="DOZO Façade Systems">DOZO Façade Systems</option>
-                            <option value="Both Windows & Façade">Both Windows & Façade</option>
-                            <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Project Location</label>
-                        <input type="text" name="city" placeholder="e.g. Mumbai / Bangalore" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
-                    <textarea name="message" rows="3" placeholder="Tell us about the project scale, glass type, or architectural specs..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
-                </div>
-
-                <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm">
-                    Submit Inquiry &rarr;
+    <div id="quoteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-3 sm:p-4 md:p-6" onclick="if(event.target === this) closeQuoteModal()">
+        <div class="min-h-full flex items-center justify-center py-4 sm:py-6" onclick="if(event.target === this) closeQuoteModal()">
+            <div class="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 md:p-8 shadow-2xl border border-gray-100 relative my-auto max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+                <button type="button" onclick="closeQuoteModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-1.5 sm:p-2 rounded-full transition-colors z-10" aria-label="Close modal">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
-            </form>
+                
+                <div class="mb-4 sm:mb-5 pr-6 sm:pr-8">
+                    <div class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-600 mb-0.5 sm:mb-1">Inquiry Form</div>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-tight">Request a Consultation &amp; Quote</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
+                </div>
+
+                <form id="publicQuoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-3 sm:space-y-3.5">
+                    @csrf
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                        <input type="text" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+                            <input type="email" name="email" required placeholder="name@company.com" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
+                            <select name="product_interest" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                                <option value="DOZO Windows" selected>DOZO Windows</option>
+                                <option value="DOZO Façade Systems">DOZO Façade Systems</option>
+                                <option value="Both Windows & Façade">Both Windows & Façade</option>
+                                <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Project Location</label>
+                            <input type="text" name="city" placeholder="e.g. Mumbai / Bangalore" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
+                        <textarea name="message" rows="2" placeholder="Tell us about the project scale, glass type, or architectural specs..." class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-2.5 sm:py-3 rounded-xl transition-all shadow-md text-sm cursor-pointer">
+                        Submit Inquiry &rarr;
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- INTERACTIVE MODAL: PRODUCT DETAIL -->
-    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
-            <button type="button" onclick="closeProductModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            
-            <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Specification & Overview</div>
-            <h3 id="modalProductTitle" class="text-2xl font-extrabold text-gray-900 mb-2">Product Title</h3>
-            <p id="modalProductDesc" class="text-sm text-gray-600 leading-relaxed mb-5">Product details description.</p>
-
-            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100 mb-5 space-y-2">
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Material Grade:</span>
-                    <span id="modalProductMaterial" class="font-semibold text-gray-800">Architectural T6 Aluminum</span>
-                </div>
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Finish Options:</span>
-                    <span id="modalProductFinish" class="font-semibold text-gray-800">PVDF Coating / Anodized</span>
-                </div>
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Acoustic Rating:</span>
-                    <span id="modalProductAcoustic" class="font-semibold text-gray-800">Up to 42 dB Isolation</span>
-                </div>
-                <div class="flex justify-between text-xs py-1">
-                    <span class="text-gray-500">Wind Load:</span>
-                    <span id="modalProductWind" class="font-semibold text-gray-800">Engineered to 3.5 kPa</span>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <button type="button" onclick="closeProductModal(); openQuoteModal();" class="flex-1 bg-[#1b1e23] hover:bg-black text-white font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
-                    Get Quote
+    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-3 sm:p-4 md:p-6" onclick="if(event.target === this) closeProductModal()">
+        <div class="min-h-full flex items-center justify-center py-4 sm:py-6" onclick="if(event.target === this) closeProductModal()">
+            <div class="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 md:p-8 shadow-2xl border border-gray-100 relative my-auto max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+                <button type="button" onclick="closeProductModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-1.5 sm:p-2 rounded-full transition-colors z-10" aria-label="Close modal">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
-                <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="flex-1 border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
-                    Download Specs
-                </a>
+                
+                <div class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-600 mb-0.5 sm:mb-1">Specification &amp; Overview</div>
+                <h3 id="modalProductTitle" class="text-xl sm:text-2xl font-extrabold text-gray-900 mb-2 leading-tight">Product Title</h3>
+                <p id="modalProductDesc" class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4 sm:mb-5">Product details description.</p>
+
+                <div class="bg-gray-50 rounded-2xl p-3.5 sm:p-4 border border-gray-100 mb-4 sm:mb-5 space-y-2">
+                    <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
+                        <span class="text-gray-500">Material Grade:</span>
+                        <span id="modalProductMaterial" class="font-semibold text-gray-800">Architectural T6 Aluminum</span>
+                    </div>
+                    <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
+                        <span class="text-gray-500">Finish Options:</span>
+                        <span id="modalProductFinish" class="font-semibold text-gray-800">PVDF Coating / Anodized</span>
+                    </div>
+                    <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
+                        <span class="text-gray-500">Acoustic Rating:</span>
+                        <span id="modalProductAcoustic" class="font-semibold text-gray-800">Up to 42 dB Isolation</span>
+                    </div>
+                    <div class="flex justify-between text-xs py-1">
+                        <span class="text-gray-500">Wind Load:</span>
+                        <span id="modalProductWind" class="font-semibold text-gray-800">Engineered to 3.5 kPa</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="closeProductModal(); openQuoteModal();" class="flex-1 bg-[#1b1e23] hover:bg-black text-white font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center cursor-pointer">
+                        Get Quote
+                    </button>
+                    <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="flex-1 border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold py-2.5 rounded-xl text-xs sm:text-sm text-center">
+                        Download Specs
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- INTERACTIVE MODAL: SEARCH -->
-    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 pt-20">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl border border-gray-100 relative">
-            <div class="flex items-center gap-3 border-b border-gray-200 pb-3">
-                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                <input id="searchInput" type="text" placeholder="Search window systems..." class="w-full text-sm focus:outline-none text-gray-800 placeholder-gray-400">
-                <button type="button" onclick="closeSearchModal()" class="text-xs font-semibold text-gray-500 hover:text-black bg-gray-100 px-2 py-1 rounded-md">ESC</button>
+    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-3 sm:p-4 pt-12 sm:pt-20" onclick="if(event.target === this) closeSearchModal()">
+        <div class="max-w-lg mx-auto w-full">
+            <div class="bg-white rounded-2xl w-full p-4 sm:p-5 shadow-2xl border border-gray-100 relative">
+                <div class="flex items-center gap-3 border-b border-gray-200 pb-3">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input id="searchInput" type="text" placeholder="Search window systems..." class="w-full text-sm focus:outline-none text-gray-800 placeholder-gray-400">
+                    <button type="button" onclick="closeSearchModal()" class="text-xs font-semibold text-gray-500 hover:text-black bg-gray-100 px-2 py-1 rounded-md">ESC</button>
+                </div>
             </div>
         </div>
     </div>

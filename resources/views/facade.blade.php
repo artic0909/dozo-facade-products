@@ -48,17 +48,24 @@
             transform: scale(1.04);
         }
 
-        /* Hero 100% Viewport Height */
+        /* Hero Responsive Viewport Height */
         .hero-container {
             background-color: #fbfbfb;
             position: relative;
-            height: 100vh;
-            height: 100dvh;
-            min-height: 580px;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-container {
+                height: 100vh;
+                height: 100dvh;
+                min-height: 580px;
+            }
         }
 
         .hero-building-bg {
@@ -544,86 +551,90 @@
     </footer>
 
     <!-- INTERACTIVE MODAL: GET A QUOTE -->
-    <div id="quoteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
-            <button type="button" onclick="closeQuoteModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-            
-            <div class="mb-5">
-                <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Inquiry Form</div>
-                <h3 class="text-2xl font-extrabold text-gray-900">Request a Consultation & Quote</h3>
-                <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
-            </div>
-
-            <form id="publicQuoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-3.5">
-                @csrf
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
-                    <input type="text" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
-                        <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
-                        <input type="email" name="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
-                        <select name="product_interest" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
-                            <option value="DOZO Façade Systems" selected>DOZO Façade Systems</option>
-                            <option value="Both Windows & Façade">Both Windows & Façade</option>
-                            <option value="DOZO Windows">DOZO Windows</option>
-                            <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Project Location</label>
-                        <input type="text" name="city" placeholder="e.g. Mumbai / Bangalore" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
-                    <textarea name="message" rows="3" placeholder="Tell us about the facade area, glass specs, or architectural drawings..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
-                </div>
-
-                <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm">
-                    Submit Inquiry &rarr;
+    <div id="quoteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-3 sm:p-4 md:p-6" onclick="if(event.target === this) closeQuoteModal()">
+        <div class="min-h-full flex items-center justify-center py-4 sm:py-6" onclick="if(event.target === this) closeQuoteModal()">
+            <div class="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 md:p-8 shadow-2xl border border-gray-100 relative my-auto max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+                <button type="button" onclick="closeQuoteModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-1.5 sm:p-2 rounded-full transition-colors z-10" aria-label="Close modal">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
                 </button>
-            </form>
+                
+                <div class="mb-4 sm:mb-5 pr-6 sm:pr-8">
+                    <div class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-600 mb-0.5 sm:mb-1">Inquiry Form</div>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-tight">Request a Consultation &amp; Quote</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
+                </div>
+
+                <form id="publicQuoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-3 sm:space-y-3.5">
+                    @csrf
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                        <input type="text" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+                            <input type="email" name="email" required placeholder="name@company.com" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
+                            <select name="product_interest" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                                <option value="DOZO Façade Systems" selected>DOZO Façade Systems</option>
+                                <option value="Both Windows & Façade">Both Windows & Façade</option>
+                                <option value="DOZO Windows">DOZO Windows</option>
+                                <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Project Location</label>
+                            <input type="text" name="city" placeholder="e.g. Mumbai / Bangalore" class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
+                        <textarea name="message" rows="2" placeholder="Tell us about the facade area, glass specs, or architectural drawings..." class="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-2.5 sm:py-3 rounded-xl transition-all shadow-md text-sm cursor-pointer">
+                        Submit Inquiry &rarr;
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- INTERACTIVE MODAL: SEARCH -->
-    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 pt-20">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl border border-gray-100 relative">
-            <div class="flex items-center gap-3 border-b border-gray-200 pb-3">
-                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input id="searchInput" type="text" placeholder="Search facade systems, curtain walls, cladding..." class="w-full text-sm focus:outline-none text-gray-800 placeholder-gray-400">
-                <button type="button" onclick="closeSearchModal()" class="text-xs font-semibold text-gray-500 hover:text-black bg-gray-100 px-2 py-1 rounded-md">
-                    ESC
-                </button>
-            </div>
-            <div class="mt-3 space-y-2 text-xs sm:text-sm text-gray-600">
-                <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('facade.index') }}';">
-                    <div class="font-bold text-gray-800">Unitized Glass & Perforated Façade</div>
-                    <div class="text-[11px] text-gray-400">Architectural cladding, sun shades, commercial curtain walls</div>
+    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm p-3 sm:p-4 pt-12 sm:pt-20" onclick="if(event.target === this) closeSearchModal()">
+        <div class="max-w-lg mx-auto w-full">
+            <div class="bg-white rounded-2xl w-full p-4 sm:p-5 shadow-2xl border border-gray-100 relative">
+                <div class="flex items-center gap-3 border-b border-gray-200 pb-3">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input id="searchInput" type="text" placeholder="Search facade systems, curtain walls, cladding..." class="w-full text-sm focus:outline-none text-gray-800 placeholder-gray-400">
+                    <button type="button" onclick="closeSearchModal()" class="text-xs font-semibold text-gray-500 hover:text-black bg-gray-100 px-2 py-1 rounded-md">
+                        ESC
+                    </button>
                 </div>
-                <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('windows.index') }}';">
-                    <div class="font-bold text-gray-800">DOZO Sliding & Casement Windows</div>
-                    <div class="text-[11px] text-gray-400">Thermal insulation, acoustic reduction, weather resistant systems</div>
+                <div class="mt-3 space-y-2 text-xs sm:text-sm text-gray-600">
+                    <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('facade.index') }}';">
+                        <div class="font-bold text-gray-800">Unitized Glass & Perforated Façade</div>
+                        <div class="text-[11px] text-gray-400">Architectural cladding, sun shades, commercial curtain walls</div>
+                    </div>
+                    <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('windows.index') }}';">
+                        <div class="font-bold text-gray-800">DOZO Sliding & Casement Windows</div>
+                        <div class="text-[11px] text-gray-400">Thermal insulation, acoustic reduction, weather resistant systems</div>
+                    </div>
                 </div>
             </div>
         </div>
