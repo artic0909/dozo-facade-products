@@ -7,7 +7,9 @@
     <title>DOZO Windows — Premium Engineered Window Systems Catalog</title>
     <meta name="description" content="Explore DOZO high-performance aluminum sliding, casement, and slimline window systems engineered for acoustic insulation and structural endurance.">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="shortcut icon" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
