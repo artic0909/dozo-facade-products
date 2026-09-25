@@ -804,14 +804,13 @@
                         @php
                             $isDark = ($prod->theme === 'dark');
                         @endphp
-                        <div class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
-                             onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
+                        <a href="{{ route('product.details', $prod->slug ?: $prod->id) }}" class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden hover:shadow-xl transition-all duration-300">
                             <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden {{ $isDark ? 'bg-[#0d131a]' : 'bg-[#f0f2f5]' }}">
                                 <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 flex items-center justify-between {{ $isDark ? 'bg-[#161e27] border-gray-800' : 'bg-white border-gray-100' }} border-t rounded-none">
                                 <div class="min-w-0 flex-1">
-                                    <span class="text-sm sm:text-[15px] font-bold truncate block {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }}">{{ $prod->name }}</span>
+                                    <span class="text-sm sm:text-[15px] font-bold truncate block {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }} group-hover:text-sky-600 transition-colors">{{ $prod->name }}</span>
                                     @if($prod->productCategory)
                                         <span class="text-[11px] {{ $isDark ? 'text-sky-400' : 'text-sky-600' }} font-medium uppercase tracking-wider truncate block mt-0.5">{{ $prod->productCategory->name }}</span>
                                     @endif
@@ -822,11 +821,11 @@
                                     </svg>
                                 </span>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 @else
                     <!-- Fallback Static Cards -->
-                    <div class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300" onclick="openProductModal('Sliding Window System', 'Premium multi-track sliding aluminum window system engineered for ultra-smooth operation, expansive glass views, and superior weather tightness.')">
+                    <a href="{{ route('windows.index') }}" class="group flex flex-col bg-white border border-gray-200/90 rounded-none overflow-hidden hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
                             <img src="/images/prod_sliding_window.jpg" alt="Sliding Window" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                         </div>
@@ -836,7 +835,7 @@
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </span>
                         </div>
-                    </div>
+                    </a>
                 @endif
             </div>
         </div>
@@ -864,7 +863,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @if(isset($dozoProducts) && $dozoProducts->count())
                     @foreach($dozoProducts->take(4) as $prod)
-                        <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
+                        <a href="{{ route('product.details', $prod->slug ?: $prod->id) }}" class="group flex flex-col bg-white rounded-none overflow-hidden">
                             <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
                                 <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                             </div>
@@ -872,11 +871,11 @@
                                 <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">{{ $prod->name }}</h4>
                                 <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">{{ $prod->productCategory->name ?? $prod->category ?? 'Architectural System' }}</p>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 @else
                     <!-- Fallback Static Product Card -->
-                    <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Unitized Glass Façade', 'Engineered architectural unitized curtain wall glazing systems.')">
+                    <a href="{{ route('products.index') }}" class="group flex flex-col bg-white rounded-none overflow-hidden">
                         <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
                             <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                         </div>
@@ -884,7 +883,7 @@
                             <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20]">Unitized Glass Façade</h4>
                             <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5">Commercial Curtain Wall</p>
                         </div>
-                    </div>
+                    </a>
                 @endif
             </div>
         </div>

@@ -146,7 +146,7 @@
                 <ul class="space-y-2.5 text-xs text-gray-400">
                     @forelse($footerWindows as $winProd)
                         <li>
-                            <a href="{{ route('windows.index') }}" class="hover:text-white transition-colors flex items-center justify-between group">
+                            <a href="{{ route('product.details', $winProd->slug ?: $winProd->id) }}" class="hover:text-white transition-colors flex items-center justify-between group">
                                 <span class="group-hover:text-sky-300 group-hover:translate-x-0.5 transition-all">{{ $winProd->name }}</span>
                             </a>
                         </li>
@@ -171,7 +171,7 @@
                 <ul class="space-y-2.5 text-xs text-gray-400">
                     @forelse($footerPerforations as $perfProd)
                         <li>
-                            <a href="{{ route('products.index') }}" class="hover:text-white transition-colors flex items-center justify-between group">
+                            <a href="{{ route('product.details', $perfProd->slug ?: $perfProd->id) }}" class="hover:text-white transition-colors flex items-center justify-between group">
                                 <span class="group-hover:text-indigo-300 group-hover:translate-x-0.5 transition-all">{{ $perfProd->name }}</span>
                             </a>
                         </li>

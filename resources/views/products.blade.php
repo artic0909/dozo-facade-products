@@ -259,8 +259,7 @@
     <main class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($products as $prod)
-                <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" 
-                     onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
+                <a href="{{ route('product.details', $prod->slug ?: $prod->id) }}" class="group flex flex-col bg-white rounded-none overflow-hidden">
                     
                     <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5] relative">
                         <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
@@ -275,7 +274,7 @@
                         <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">{{ $prod->name }}</h4>
                         <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">{{ $prod->productCategory->name ?? $prod->category ?? 'Architectural Envelope System' }}</p>
                     </div>
-                </div>
+                </a>
             @empty
                 <div class="col-span-full py-16 text-center text-gray-400 bg-white border border-dashed border-gray-200 rounded-3xl">
                     <p class="text-base font-bold text-gray-600">No products found in this category.</p>

@@ -173,6 +173,40 @@ class AdminController extends Controller
     }
 
     /**
+     * Render the public Product Details Page for both DOZO Windows & Products.
+     */
+    public function productDetails($slug)
+    {
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
+
+        $product = Product::where('slug', $slug)
+            ->orWhere('id', $slug)
+            ->with('productCategory')
+            ->firstOrFail();
+
+        // 4 Related Products of the same type
+        $relatedProducts = Product::where('id', '!=', $product->id)
+            ->where('type', $product->type)
+            ->with('productCategory')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        // Fallback related products if not enough of same type
+        if ($relatedProducts->count() < 4) {
+            $more = Product::where('id', '!=', $product->id)
+                ->whereNotIn('id', $relatedProducts->pluck('id'))
+                ->with('productCategory')
+                ->inRandomOrder()
+                ->take(4 - $relatedProducts->count())
+                ->get();
+            $relatedProducts = $relatedProducts->concat($more);
+        }
+
+        return view('product-details', compact('product', 'relatedProducts', 'siteSettings'));
+    }
+
+    /**
      * Display the white liquid glass login screen.
      */
     public function showLogin()

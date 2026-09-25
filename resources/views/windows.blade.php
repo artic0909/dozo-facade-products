@@ -238,8 +238,7 @@
                 @php
                     $isDark = ($prod->theme === 'dark');
                 @endphp
-                <div class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
-                     onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
+                <a href="{{ route('product.details', $prod->slug ?: $prod->id) }}" class="group flex flex-col {{ $isDark ? 'bg-[#161e27] border-gray-800 text-white' : 'bg-white border-gray-200/90 text-gray-900' }} border rounded-none overflow-hidden hover:shadow-xl transition-all duration-300">
                     
                     <div class="aspect-[4/3.2] w-full rounded-none overflow-hidden {{ $isDark ? 'bg-[#0d131a]' : 'bg-[#f0f2f5]' }} relative">
                         <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
@@ -252,7 +251,7 @@
 
                     <div class="p-4 flex items-center justify-between {{ $isDark ? 'bg-[#161e27] border-gray-800' : 'bg-white border-gray-100' }} border-t rounded-none">
                         <div class="min-w-0 flex-1">
-                            <span class="text-sm sm:text-[15px] font-bold truncate block {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }}">{{ $prod->name }}</span>
+                            <span class="text-sm sm:text-[15px] font-bold truncate block {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }} group-hover:text-sky-600 transition-colors">{{ $prod->name }}</span>
                             @if($prod->productCategory)
                                 <span class="text-[11px] {{ $isDark ? 'text-sky-400' : 'text-sky-600' }} font-medium uppercase tracking-wider truncate block mt-0.5">{{ $prod->productCategory->name }}</span>
                             @endif
@@ -269,7 +268,7 @@
                         <span>{{ $prod->acoustic_rating ?? 'Acoustic Rated' }}</span>
                         <span>{{ $prod->wind_load ?? 'Engineered' }}</span>
                     </div>
-                </div>
+                </a>
             @empty
                 <div class="col-span-full py-16 text-center text-gray-400 bg-white border border-dashed border-gray-200 rounded-3xl">
                     <p class="text-base font-bold text-gray-600">No window systems found in this category.</p>

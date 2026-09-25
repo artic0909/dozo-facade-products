@@ -8,6 +8,7 @@ Route::get('/', [AdminController::class, 'home'])->name('home');
 Route::get('/windows/{category_slug?}', [AdminController::class, 'windowsPage'])->name('windows.index');
 Route::get('/facade/{category_slug?}', [AdminController::class, 'facadePage'])->name('facade.index');
 Route::get('/products/{category_slug?}', [AdminController::class, 'productsPage'])->name('products.index');
+Route::get('/product/{slug}', [AdminController::class, 'productDetails'])->name('product.details');
 Route::post('/quotes', [AdminController::class, 'storePublicQuote'])->name('quotes.store');
 
 // Admin Authentication Routes
