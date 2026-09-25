@@ -186,16 +186,9 @@
             <!-- Left Column: Product Visuals / High-Res Showcase (Span 6) -->
             <div class="lg:col-span-6 flex flex-col gap-4">
                 
-                <!-- Main Image Card with Floating Badges (Object-Contain so no image is cut off) -->
-                <div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-white border border-gray-200/90 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xs group flex items-center justify-center p-4 sm:p-6 md:p-8">
-                    <img id="mainProductImage" src="{{ $product->image ?: '/images/hero_building.jpg' }}" alt="{{ $product->name }}" class="max-w-full max-h-full w-auto h-auto object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-out">
-
-                    <div class="absolute bottom-4 right-4 z-10">
-                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-900/80 backdrop-blur-md text-white text-[11px] font-bold shadow-xs">
-                            <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            6063-T6 Tested
-                        </span>
-                    </div>
+                <!-- Main Image Card (Full Uncut Image Display) -->
+                <div class="relative w-full bg-white border border-gray-200/90 rounded-2xl sm:rounded-3xl shadow-xs flex items-center justify-center p-3 sm:p-5 md:p-6 min-h-[360px] sm:min-h-[480px]">
+                    <img id="mainProductImage" src="{{ $product->image ?: '/images/hero_building.jpg' }}" alt="{{ $product->name }}" class="w-auto h-auto max-w-full max-h-[580px] object-contain mx-auto block rounded-lg">
                 </div>
 
                 <!-- 4 Quick Metric Highlight Cards Below Image -->
