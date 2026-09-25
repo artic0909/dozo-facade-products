@@ -562,24 +562,24 @@
                     </div>
                 </div>
 
-                <!-- DIVISION 2: DOZO FACADE -->
-                <div id="facade" class="flex flex-col rounded-none">
+                <!-- DIVISION 2: DOZO PRODUCTS -->
+                <div id="products-division" class="flex flex-col rounded-none">
                     <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
                     <div class="relative h-[320px] sm:h-[390px] w-full rounded-none overflow-hidden group shadow-xs">
                         @php
-                            $facImages = (isset($solutions) && isset($solutions['facade']) && is_array($solutions['facade']->images)) ? $solutions['facade']->images : [
-                                '/images/solution_facade.jpg',
-                                '/images/solution_facade_2.jpg',
-                                '/images/solution_facade_3.jpg',
-                                '/images/solution_facade_4.jpg',
+                            $prodImages = (isset($solutions) && isset($solutions['products']) && is_array($solutions['products']->images)) ? $solutions['products']->images : [
+                                '/images/hero_building.jpg',
+                                '/images/prod_sliding_window.jpg',
+                                '/images/proj_residential_tower.jpg',
+                                '/images/solution_windows_3.jpg',
                             ];
-                            $facCount = max(1, count($facImages));
+                            $prodCount = max(1, count($prodImages));
                         @endphp
                         <!-- Horizontal Slider Track -->
-                        <div id="facadeSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $facCount * 100 }}%;">
-                            @foreach($facImages as $fImg)
-                                <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $facCount }}%;">
-                                    <img src="{{ $fImg }}" alt="DOZO Façade Architecture" class="w-full h-full object-cover object-center rounded-none">
+                        <div id="productsSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $prodCount * 100 }}%;">
+                            @foreach($prodImages as $pImg)
+                                <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $prodCount }}%;">
+                                    <img src="{{ $pImg }}" alt="DOZO Products Portfolio" class="w-full h-full object-cover object-center rounded-none">
                                 </div>
                             @endforeach
                         </div>
@@ -590,76 +590,83 @@
                         <!-- Text Overlay at Bottom Left -->
                         <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                             <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
-                                {{ isset($solutions['facade']) ? $solutions['facade']->eyebrow : 'DOZO' }}
+                                {{ isset($solutions['products']) ? $solutions['products']->eyebrow : 'DOZO' }}
                             </div>
                             <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                                {{ isset($solutions['facade']) ? $solutions['facade']->title : 'Façade' }}
+                                {{ isset($solutions['products']) ? $solutions['products']->title : 'Products' }}
                             </h3>
                             <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-sm mb-4 leading-relaxed">
-                                {{ isset($solutions['facade']) ? $solutions['facade']->desc : 'Architectural freedom with precision and durability.' }}
+                                {{ isset($solutions['products']) ? $solutions['products']->desc : 'Comprehensive portfolio of premium aluminum windows, high-performance façade systems, and bespoke architectural solutions.' }}
                             </p>
-                            <a href="{{ isset($solutions['facade']) && $solutions['facade']->cta_link && $solutions['facade']->cta_link !== '#featured-products' ? $solutions['facade']->cta_link : route('facade.index') }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
-                                <span>{{ isset($solutions['facade']) ? $solutions['facade']->cta_text : 'Explore Facade' }}</span>
+                            <a href="{{ isset($solutions['products']) && $solutions['products']->cta_link && $solutions['products']->cta_link !== '#featured-products' ? $solutions['products']->cta_link : route('products.index') }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                                <span>{{ isset($solutions['products']) ? $solutions['products']->cta_text : 'Explore Products' }}</span>
                                 <span class="text-sm">&rarr;</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 5 Feature Badges Row -->
+                    <!-- 5 Feature Badges Row for Products / Perforations -->
                     <div class="pt-5 pb-2 bg-white">
                         <div class="grid grid-cols-5 gap-1 text-center">
-                            <!-- Feature 1: Façade Cladding -->
+                            <!-- Feature 1: CNC Perforation -->
                             <div class="flex flex-col items-center">
                                 <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
-                                        <rect x="3" y="3" width="18" height="18" rx="1.5"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 3v18M13 3v18M18 3v18M3 8h18M3 13h18M3 18h18" stroke-dasharray="1 2"/>
+                                        <circle cx="6" cy="6" r="1.8" fill="currentColor"/>
+                                        <circle cx="12" cy="6" r="1.8" fill="currentColor"/>
+                                        <circle cx="18" cy="6" r="1.8" fill="currentColor"/>
+                                        <circle cx="6" cy="12" r="1.8" fill="currentColor"/>
+                                        <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+                                        <circle cx="18" cy="12" r="1.8" fill="currentColor"/>
+                                        <circle cx="6" cy="18" r="1.8" fill="currentColor"/>
+                                        <circle cx="12" cy="18" r="1.8" fill="currentColor"/>
+                                        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Façade<br>Cladding</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">CNC<br>Perforation</span>
                             </div>
 
-                            <!-- Feature 2: Architectural Panels -->
+                            <!-- Feature 2: Custom Patterns -->
                             <div class="flex flex-col items-center">
                                 <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l9 5-9 5-9-5 9-5zM3 7v10l9 5 9-5V7M12 12v10"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 9.5l5 2.8 5-2.8" stroke-dasharray="1 2"/>
+                                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                        <rect x="3" y="14" width="7" height="7" rx="1"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Architectural<br>Panels</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Custom<br>Patterns</span>
                             </div>
 
-                            <!-- Feature 3: Louvers & Sun Shades -->
+                            <!-- Feature 3: Architectural Mesh -->
                             <div class="flex flex-col items-center">
                                 <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6l16-3M4 11l16-3M4 16l16-3M4 21l16-3"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Louvers &<br>Sun Shades</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Architectural<br>Mesh</span>
                             </div>
 
-                            <!-- Feature 4: Flashings & Accessories -->
+                            <!-- Feature 4: Powder Coated -->
                             <div class="flex flex-col items-center">
                                 <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Flashings &<br>Accessories</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Powder<br>Coated</span>
                             </div>
 
-                            <!-- Feature 5: Custom Fabrication -->
+                            <!-- Feature 5: Precision Fit -->
                             <div class="flex flex-col items-center">
                                 <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                        <circle cx="12" cy="11" r="3"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5v1M12 13.5v1M8.5 11h1M14.5 11h1"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M5 5h14v14H5V5z"/>
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Custom<br>Fabrication</span>
+                                <span class="text-[11px] font-medium text-gray-700 leading-tight">Precision<br>Fit</span>
                             </div>
                         </div>
                     </div>
@@ -667,24 +674,24 @@
 
             </div>
 
-            <!-- DIVISION 3 / FULL-WIDTH CAROUSEL: DOZO PRODUCTS -->
-            <div id="products-division" class="w-full flex flex-col rounded-none mt-8 lg:mt-10">
+            <!-- DIVISION 3 / FULL-WIDTH SECTION: DOZO FACADE -->
+            <div id="facade-division" class="w-full flex flex-col rounded-none mt-8 lg:mt-10">
                 <!-- Image Card with Horizontal Auto-Sliding Reel (No Border Radius) -->
                 <div class="relative h-[320px] sm:h-[400px] w-full rounded-none overflow-hidden group shadow-xs">
                     @php
-                        $prodImages = (isset($solutions) && isset($solutions['products']) && is_array($solutions['products']->images)) ? $solutions['products']->images : [
-                            '/images/hero_building.jpg',
-                            '/images/prod_sliding_window.jpg',
-                            '/images/proj_residential_tower.jpg',
-                            '/images/solution_windows_3.jpg',
+                        $facImages = (isset($solutions) && isset($solutions['facade']) && is_array($solutions['facade']->images)) ? $solutions['facade']->images : [
+                            '/images/solution_facade.jpg',
+                            '/images/solution_facade_2.jpg',
+                            '/images/solution_facade_3.jpg',
+                            '/images/solution_facade_4.jpg',
                         ];
-                        $prodCount = max(1, count($prodImages));
+                        $facCount = max(1, count($facImages));
                     @endphp
                     <!-- Horizontal Slider Track -->
-                    <div id="productsSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $prodCount * 100 }}%;">
-                        @foreach($prodImages as $pImg)
-                            <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $prodCount }}%;">
-                                <img src="{{ $pImg }}" alt="DOZO Full Width Products Reel" class="w-full h-full object-cover object-center rounded-none">
+                    <div id="facadeSliderTrack" class="flex h-full rounded-none transition-transform duration-700 ease-out" style="width: {{ $facCount * 100 }}%;">
+                        @foreach($facImages as $fImg)
+                            <div class="h-full shrink-0 relative rounded-none" style="width: {{ 100 / $facCount }}%;">
+                                <img src="{{ $fImg }}" alt="DOZO Façade Architecture" class="w-full h-full object-cover object-center rounded-none">
                             </div>
                         @endforeach
                     </div>
@@ -695,18 +702,77 @@
                     <!-- Text Overlay at Bottom Left -->
                     <div class="absolute bottom-6 left-6 right-6 text-white z-20">
                         <div class="text-[11px] font-bold tracking-[0.14em] uppercase text-white/90 mb-0.5">
-                            {{ isset($solutions['products']) ? $solutions['products']->eyebrow : 'DOZO' }}
+                            {{ isset($solutions['facade']) ? $solutions['facade']->eyebrow : 'DOZO' }}
                         </div>
                         <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                            {{ isset($solutions['products']) ? $solutions['products']->title : 'Products' }}
+                            {{ isset($solutions['facade']) ? $solutions['facade']->title : 'Façade' }}
                         </h3>
                         <p class="text-xs sm:text-[13px] text-gray-200 font-normal max-w-xl mb-4 leading-relaxed">
-                            {{ isset($solutions['products']) ? $solutions['products']->desc : 'Comprehensive portfolio of premium aluminum windows, high-performance façade systems, and bespoke architectural solutions.' }}
+                            {{ isset($solutions['facade']) ? $solutions['facade']->desc : 'Architectural freedom with precision and durability.' }}
                         </p>
-                        <a href="{{ isset($solutions['products']) ? $solutions['products']->cta_link : '#featured-products' }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
-                            <span>{{ isset($solutions['products']) ? $solutions['products']->cta_text : 'Explore Products' }}</span>
+                        <a href="{{ isset($solutions['facade']) && $solutions['facade']->cta_link && $solutions['facade']->cta_link !== '#featured-products' ? $solutions['facade']->cta_link : route('facade.index') }}" class="inline-flex items-center gap-2 border border-white/60 bg-black/30 hover:bg-white text-white hover:text-black backdrop-blur-xs text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 shadow-sm">
+                            <span>{{ isset($solutions['facade']) ? $solutions['facade']->cta_text : 'Explore Facade' }}</span>
                             <span class="text-sm">&rarr;</span>
                         </a>
+                    </div>
+                </div>
+
+                <!-- 5 Feature Badges Row for Façade -->
+                <div class="pt-5 pb-2 bg-white">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 text-center">
+                        <!-- Feature 1: Façade Cladding -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                    <rect x="3" y="3" width="18" height="18" rx="1.5"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 3v18M13 3v18M18 3v18M3 8h18M3 13h18M3 18h18" stroke-dasharray="1 2"/>
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-medium text-gray-700 leading-tight">Façade<br>Cladding</span>
+                        </div>
+
+                        <!-- Feature 2: Architectural Panels -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l9 5-9 5-9-5 9-5zM3 7v10l9 5 9-5V7M12 12v10"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 9.5l5 2.8 5-2.8" stroke-dasharray="1 2"/>
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-medium text-gray-700 leading-tight">Architectural<br>Panels</span>
+                        </div>
+
+                        <!-- Feature 3: Louvers & Sun Shades -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6l16-3M4 11l16-3M4 16l16-3M4 21l16-3"/>
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-medium text-gray-700 leading-tight">Louvers &<br>Sun Shades</span>
+                        </div>
+
+                        <!-- Feature 4: Flashings & Accessories -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-medium text-gray-700 leading-tight">Flashings &<br>Accessories</span>
+                        </div>
+
+                        <!-- Feature 5: Custom Fabrication -->
+                        <div class="flex flex-col items-center col-span-2 sm:col-span-1">
+                            <div class="w-10 h-10 flex items-center justify-center text-sky-600 mb-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <circle cx="12" cy="11" r="3"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5v1M12 13.5v1M8.5 11h1M14.5 11h1"/>
+                                </svg>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-medium text-gray-700 leading-tight">Custom<br>Fabrication</span>
+                        </div>
                     </div>
                 </div>
             </div>
