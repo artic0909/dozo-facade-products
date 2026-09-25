@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HeroSlide;
 use App\Models\HeroStat;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Project;
 use App\Models\Quote;
 use App\Models\SiteSetting;
@@ -13,6 +14,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -24,8 +26,9 @@ class AdminController extends Controller
         $heroSlides = HeroSlide::where('is_active', true)->orderBy('order')->get();
         $heroStats = HeroStat::orderBy('order')->get();
         $solutions = Solution::orderBy('order')->get()->keyBy('slug');
-        $products = Product::where('is_featured', true)->orderBy('order')->get();
-        $allProducts = Product::orderBy('order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('order')->get();
+        $products = Product::where('is_featured', true)->with('productCategory')->orderBy('order')->get();
+        $allProducts = Product::with('productCategory')->orderBy('order')->get();
         $projects = Project::where('is_featured', true)->orderBy('order')->get();
         $allProjects = Project::orderBy('order')->get();
         $siteSettings = SiteSetting::all()->pluck('value', 'key');
@@ -34,6 +37,7 @@ class AdminController extends Controller
             'heroSlides',
             'heroStats',
             'solutions',
+            'categories',
             'products',
             'allProducts',
             'projects',
@@ -189,9 +193,10 @@ class AdminController extends Controller
      */
     public function productsIndex()
     {
-        $products = Product::orderBy('order')->get();
+        $products = Product::with('productCategory')->orderBy('order')->get();
+        $categories = ProductCategory::withCount('products')->orderBy('order')->get();
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     /**
@@ -342,7 +347,8 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category' => 'required|string|max:100',
+            'slug' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:product_categories,id',
             'theme' => 'required|string|in:light,dark',
             'short_desc' => 'required|string',
             'material_grade' => 'nullable|string|max:150',
@@ -352,6 +358,19 @@ class AdminController extends Controller
             'is_featured' => 'nullable|boolean',
             'order' => 'nullable|integer',
         ]);
+
+        $category = ProductCategory::findOrFail($validated['category_id']);
+        $validated['category'] = $category->name;
+
+        // Handle Slug
+        $baseSlug = !empty($validated['slug']) ? Str::slug($validated['slug']) : Str::slug($validated['name']);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+        $validated['slug'] = $slug;
 
         $imagePath = '/images/prod_sliding_window.jpg';
         if ($request->hasFile('image_upload')) {
@@ -369,7 +388,7 @@ class AdminController extends Controller
 
         $product = Product::create($validated);
 
-        return back()->with('success', 'Product "' . $product->name . '" created successfully!');
+        return back()->with('success', 'Product "' . $product->name . '" (slug: ' . $product->slug . ') created successfully!');
     }
 
     /**
@@ -379,7 +398,8 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category' => 'required|string|max:100',
+            'slug' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:product_categories,id',
             'theme' => 'required|string|in:light,dark',
             'short_desc' => 'required|string',
             'material_grade' => 'nullable|string|max:150',
@@ -391,6 +411,19 @@ class AdminController extends Controller
             'order' => 'nullable|integer',
         ]);
 
+        $category = ProductCategory::findOrFail($validated['category_id']);
+        $validated['category'] = $category->name;
+
+        // Handle Slug
+        $baseSlug = !empty($validated['slug']) ? Str::slug($validated['slug']) : Str::slug($validated['name']);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (Product::where('slug', $slug)->where('id', '!=', $product->id)->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+        $validated['slug'] = $slug;
+
         if ($request->hasFile('image_upload')) {
             $file = $request->file('image_upload');
             $filename = 'prod_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
@@ -401,7 +434,7 @@ class AdminController extends Controller
         $validated['is_featured'] = $request->has('is_featured');
         $product->update($validated);
 
-        return back()->with('success', 'Product "' . $product->name . '" updated successfully!');
+        return back()->with('success', 'Product "' . $product->name . '" (slug: ' . $product->slug . ') updated successfully!');
     }
 
     /**
@@ -413,6 +446,79 @@ class AdminController extends Controller
         $product->delete();
 
         return back()->with('success', 'Product "' . $name . '" deleted successfully.');
+    }
+
+    /**
+     * Store a new Product Category.
+     */
+    public function storeCategory(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:product_categories,slug',
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        $baseSlug = !empty($validated['slug']) ? Str::slug($validated['slug']) : Str::slug($validated['name']);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (ProductCategory::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+        $validated['slug'] = $slug;
+        $validated['order'] = $validated['order'] ?? (ProductCategory::max('order') + 1);
+        $validated['is_active'] = $request->has('is_active');
+
+        $category = ProductCategory::create($validated);
+
+        return back()->with('success', 'Category "' . $category->name . '" (slug: ' . $category->slug . ') created successfully!');
+    }
+
+    /**
+     * Update an existing Product Category.
+     */
+    public function updateCategory(Request $request, ProductCategory $category)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:product_categories,slug,' . $category->id,
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        $baseSlug = !empty($validated['slug']) ? Str::slug($validated['slug']) : Str::slug($validated['name']);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (ProductCategory::where('slug', $slug)->where('id', '!=', $category->id)->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+        $validated['slug'] = $slug;
+        $validated['is_active'] = $request->has('is_active');
+
+        $category->update($validated);
+
+        // Also update existing products category name string
+        Product::where('category_id', $category->id)->update(['category' => $category->name]);
+
+        return back()->with('success', 'Category "' . $category->name . '" (slug: ' . $category->slug . ') updated successfully!');
+    }
+
+    /**
+     * Delete a Product Category.
+     */
+    public function deleteCategory(ProductCategory $category)
+    {
+        $name = $category->name;
+        // Dissociate products
+        Product::where('category_id', $category->id)->update(['category_id' => null]);
+        $category->delete();
+
+        return back()->with('success', 'Category "' . $name . '" deleted successfully.');
     }
 
     /**

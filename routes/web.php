@@ -33,11 +33,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/solutions', [AdminController::class, 'solutionsIndex'])->name('admin.solutions.index');
         Route::post('/solutions/{solution}', [AdminController::class, 'updateSolution'])->name('admin.solutions.update');
 
-        // 5. Products CRUD Routes
+        // 5. Products & Categories CRUD Routes
         Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products.index');
         Route::post('/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
         Route::post('/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
         Route::delete('/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+        Route::post('/categories', [AdminController::class, 'storeCategory'])->name('admin.categories.store');
+        Route::post('/categories/{category}', [AdminController::class, 'updateCategory'])->name('admin.categories.update');
+        Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('admin.categories.delete');
 
         // 6. Projects CRUD Routes
         Route::get('/projects', [AdminController::class, 'projectsIndex'])->name('admin.projects.index');
