@@ -19,6 +19,30 @@
     $whatsapp = $siteSettings['social_whatsapp'] ?? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $phone);
     $facebook = $siteSettings['social_facebook'] ?? 'https://facebook.com';
     $twitter = $siteSettings['social_twitter'] ?? 'https://twitter.com';
+
+    // Dynamic Window Products from CMS
+    $footerWindows = \App\Models\Product::where(function($q) {
+        $q->where('type', 'windows')
+          ->orWhereHas('productCategory', function($catQuery) {
+              $catQuery->where('name', 'like', '%window%')
+                       ->orWhere('name', 'like', '%door%');
+          });
+    })->orderBy('order')->orderBy('id', 'asc')->take(8)->get();
+
+    // Dynamic Perforation & Louver Products from CMS
+    $footerPerforations = \App\Models\Product::where(function($q) {
+        $q->where('name', 'like', '%perforat%')
+          ->orWhere('name', 'like', '%louver%')
+          ->orWhere('name', 'like', '%panel%')
+          ->orWhere('name', 'like', '%cladding%')
+          ->orWhere('name', 'like', '%screen%')
+          ->orWhereHas('productCategory', function($catQuery) {
+              $catQuery->where('name', 'like', '%perforat%')
+                       ->orWhere('name', 'like', '%louver%')
+                       ->orWhere('name', 'like', '%panel%')
+                       ->orWhere('name', 'like', '%cladding%');
+          });
+    })->orderBy('order')->orderBy('id', 'asc')->take(8)->get();
 @endphp
 
 <!-- Desktop & Tablet Footer -->
@@ -123,39 +147,70 @@
                 </div>
             </div>
 
-            <!-- Col 2: Windows Division Links (Span 3) -->
+            <!-- Col 2: Windows Division Links (Dynamic CMS) (Span 3) -->
             <div class="lg:col-span-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2 border-b border-gray-800 pb-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-                    DOZO Windows Division
+                    DOZO Windows
                 </h4>
                 <ul class="space-y-2.5 text-xs text-gray-400">
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sliding Window Systems (Multi-Track)</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Acoustic Casement Windows (45 dB)</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Fixed Panoramic Picture Windows</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Tilt &amp; Turn German Systems</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Slimline Minimalist Sliding Doors</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sub-Frame Amended System (9 Benefits)</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Thermal Break Foam-Filled Profiles</a></li>
-                    <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">4mm to 24mm SGU &amp; Insulated DGU</a></li>
+                    @forelse($footerWindows as $winProd)
+                        <li>
+                            <a href="{{ route('windows.index') }}" class="hover:text-white transition-colors flex items-center justify-between group">
+                                <span class="group-hover:text-sky-300 group-hover:translate-x-0.5 transition-all">{{ $winProd->name }}</span>
+                            </a>
+                        </li>
+                    @empty
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sliding Window Systems (Multi-Track)</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Acoustic Casement Windows (45 dB)</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Fixed Panoramic Picture Windows</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Tilt &amp; Turn German Systems</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Slimline Minimalist Sliding Doors</a></li>
+                    @endforelse
+                    @if($footerWindows->count() < 5)
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sub-Frame Amended System (9 Benefits)</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Thermal Break Energy Glazing</a></li>
+                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">4mm to 24mm Insulated DGU</a></li>
+                    @endif
+                    <li class="pt-1.5">
+                        <a href="{{ route('windows.index') }}" class="text-sky-400 hover:text-sky-300 font-semibold text-[11px] inline-flex items-center gap-1 group">
+                            <span>View All Windows</span>
+                            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
-            <!-- Col 3: Façade Division Links (Span 2) -->
+            <!-- Col 3: Perforation Products (Dynamic CMS) (Span 2) -->
             <div class="lg:col-span-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2 border-b border-gray-800 pb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-                    Façade Systems
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                    Perforation Products
                 </h4>
                 <ul class="space-y-2.5 text-xs text-gray-400">
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Unitized Curtain Walls</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Semi-Unitized Structural Glazing</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Solid Aluminum &amp; ACP Cladding</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">CNC Perforated Façades</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Aerodynamic Louvers &amp; Fins</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Spider &amp; Point-Fixed Glazing</a></li>
-                    <li><a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Flashings &amp; Weatherproof Trims</a></li>
-                    <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">All Architectural Products</a></li>
+                    @forelse($footerPerforations as $perfProd)
+                        <li>
+                            <a href="{{ route('products.index') }}" class="hover:text-white transition-colors flex items-center justify-between group">
+                                <span class="group-hover:text-indigo-300 group-hover:translate-x-0.5 transition-all">{{ $perfProd->name }}</span>
+                            </a>
+                        </li>
+                    @empty
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Architectural Perforated Panels</a></li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">CNC Perforated Façades</a></li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Aerodynamic Solar Louvers &amp; Fins</a></li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Solid Aluminum &amp; ACP Cladding</a></li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Geometric Laser Screens</a></li>
+                    @endforelse
+                    @if($footerPerforations->count() < 4)
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">CNC Laser-Cut Metallic Screens</a></li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Bespoke Architectural Shading</a></li>
+                    @endif
+                    <li class="pt-1.5">
+                        <a href="{{ route('products.index') }}" class="text-sky-400 hover:text-sky-300 font-semibold text-[11px] inline-flex items-center gap-1 group">
+                            <span>View Perforations</span>
+                            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -225,9 +280,9 @@
             </div>
             <div class="flex flex-wrap items-center gap-5 text-gray-400 text-xs">
                 <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
-                <a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Windows</a>
-                <a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Façade</a>
-                <a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Products</a>
+                <a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">DOZO Windows</a>
+                <a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Perforation Products</a>
+                <a href="{{ route('facade.index') }}" class="hover:text-white transition-colors">Façade Systems</a>
                 <a href="{{ $catalogueUrl }}" target="_blank" class="hover:text-white transition-colors">Technical Catalogue</a>
                 <a href="javascript:window.scrollTo({top: 0, behavior: 'smooth'})" class="text-sky-400 hover:text-sky-300 transition-colors font-semibold">Back to Top &uarr;</a>
             </div>
@@ -281,9 +336,9 @@
 
     <!-- Quick Navigation Links -->
     <div class="grid grid-cols-2 gap-2 text-xs text-gray-400 mb-5">
-        <a href="{{ route('windows.index') }}" class="py-1">Windows Division</a>
+        <a href="{{ route('windows.index') }}" class="py-1">DOZO Windows</a>
+        <a href="{{ route('products.index') }}" class="py-1">Perforation Products</a>
         <a href="{{ route('facade.index') }}" class="py-1">Façade Engineering</a>
-        <a href="{{ route('products.index') }}" class="py-1">Product Catalogue</a>
         <a href="{{ route('home') }}#projects" class="py-1">Featured Projects</a>
         <a href="{{ $catalogueUrl }}" target="_blank" class="py-1">Technical Specs (PDF)</a>
         <a href="{{ route('home') }}#about" class="py-1">Quality Assurance</a>
