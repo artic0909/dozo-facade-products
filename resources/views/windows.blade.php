@@ -4,8 +4,104 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DOZO Windows — Premium Engineered Window Systems Catalog</title>
-    <meta name="description" content="Explore DOZO high-performance aluminum sliding, casement, and slimline window systems engineered for acoustic insulation and structural endurance.">
+    <title>DOZO Windows — Premium Engineered Aluminum Window Systems | 3.0 kPa Wind & 45dB Acoustic Tested</title>
+    <meta name="description" content="Explore DOZO high-performance factory-made aluminum sliding & casement windows. Wind pressure tested to 3.0 kPa, 0.30 kPa water tightness, 20-45 dB acoustic cutoff, 10-12°C thermal heat reduction. 25-yr aluminium & 15-yr DURACOAT warranty. AMC available.">
+    <meta name="keywords" content="DOZO windows, aluminum sliding windows, casement windows, acoustic window systems, thermal break windows, 6063-T6 aluminum, sub-frame window system, leak proof windows, double glazed DGU, laminated glass windows, architectural fenestration India, window AMC">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product.group">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="DOZO Windows — Premium Engineered Aluminum Window Systems">
+    <meta property="og:description" content="Wind tested up to 3.0 kPa, 0.30 kPa water tested, 20-45 dB noise cut-off, 10-12°C heat reduction. 25-year aluminium warranty with sub-frame amended system.">
+    <meta property="og:image" content="{{ url('/images/solution_windows.jpg') }}">
+    <meta property="og:site_name" content="DOZO Windows & Façades">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DOZO Windows — Precision Fenestration & Architectural Glass">
+    <meta name="twitter:description" content="Factory-made automatic sliding & casement windows engineered for luxury living with 3.0 kPa structural capacity.">
+    <meta name="twitter:image" content="{{ url('/images/solution_windows.jpg') }}">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@graph' => [
+        [
+          '@type' => 'Organization',
+          '@id' => url('/') . '/#organization',
+          'name' => 'DOZO Windows & Façades',
+          'url' => url('/'),
+          'logo' => url('/logo.png'),
+          'description' => 'Premier manufacturer and engineering contractor of architectural aluminum windows and unitized facades in India.',
+          'contactPoint' => [
+            '@type' => 'ContactPoint',
+            'telephone' => '+91-98765-43210',
+            'contactType' => 'sales',
+            'areaServed' => 'IN',
+            'availableLanguage' => ['English', 'Hindi']
+          ]
+        ],
+        [
+          '@type' => 'Product',
+          'name' => 'DOZO Engineered Aluminum Window Systems',
+          'image' => url('/images/solution_windows.jpg'),
+          'description' => 'High-performance factory-made aluminum window systems tested for 3.0 kPa wind pressure, 0.30 kPa water tightness, and up to 45 dB acoustic insulation with 4mm-24mm glass configurations.',
+          'brand' => [
+            '@type' => 'Brand',
+            'name' => 'DOZO'
+          ],
+          'material' => '6063-T6 Architectural Grade Aluminum Alloy',
+          'offers' => [
+            '@type' => 'AggregateOffer',
+            'priceCurrency' => 'INR',
+            'availability' => 'https://schema.org/InStock'
+          ],
+          'additionalProperty' => [
+            ['@type' => 'PropertyValue', 'name' => 'Wind Pressure Resistance', 'value' => '3.0 kPa (3000 Pa)'],
+            ['@type' => 'PropertyValue', 'name' => 'Water Penetration Resistance', 'value' => '0.30 kPa (300 Pa)'],
+            ['@type' => 'PropertyValue', 'name' => 'Acoustic Cutoff (NRC)', 'value' => '20 - 45 dB'],
+            ['@type' => 'PropertyValue', 'name' => 'Thermal Heat Reduction', 'value' => '10 - 12°C'],
+            ['@type' => 'PropertyValue', 'name' => 'Aluminium Warranty', 'value' => '25 Years'],
+            ['@type' => 'PropertyValue', 'name' => 'Powder Coating Warranty', 'value' => '15 Years DURACOAT (65-80 Microns)'],
+            ['@type' => 'PropertyValue', 'name' => 'Hardware Warranty', 'value' => '5 Years'],
+            ['@type' => 'PropertyValue', 'name' => 'Sub-Frame System', 'value' => 'Included (Pre-plaster amended system)'],
+            ['@type' => 'PropertyValue', 'name' => 'Glass Compatibility', 'value' => '4mm to 24mm (SGU, Laminated DGU, Insulated DGU)']
+          ]
+        ],
+        [
+          '@type' => 'FAQPage',
+          'mainEntity' => [
+            [
+              '@type' => 'Question',
+              'name' => 'What are the core technical performance ratings of DOZO Windows?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO Windows are tested for AIR (wind pressure tested up to 3.0 kPa / 3000 Pa), WATER (water penetration tested to 0.30 kPa / 300 Pa for lifetime leak proofing), SOUND (20-45 dB noise cutoff depending on glazing), and THERMAL (10-12°C heat reduction with foam-filled profiles).'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What is the DOZO Sub-Frame Amended System?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'The DOZO Sub-Frame is installed before masonry and plaster work. It provides precise vertical and square alignment, protects main window profiles during civil construction, ensures a lifetime leak-proof seal with silicone/PU sealants, and enables seamless future maintenance.'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What warranties and maintenance services are provided with DOZO Windows?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO provides a 25-Year warranty on 6063-T6 Aluminium material, a 15-Year warranty on DURACOAT Super Durable Powder Coating (65-80 Microns), a 5-Year warranty on hardware, and comprehensive AMC (Annual Maintenance Contracts).'
+              ]
+            ]
+          ]
+        ]
+      ]
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
 
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
@@ -184,6 +280,284 @@
             @endforelse
         </div>
     </main>
+
+    <!-- TECHNICAL PERFORMANCE & ARCHITECTURAL ENGINEERING (BASIC & ADVANCED REQUIREMENTS FULFILLED) -->
+    <section class="bg-white py-16 sm:py-20 border-t border-gray-200/80">
+        <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="max-w-3xl mb-12">
+                <div class="inline-flex items-center gap-2 text-sky-600 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                    <span>Engineered For Luxury Living & Structural Endurance</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+                    Basic & High-Performance Requirements Fulfilled by DOZO Windows
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 mt-2 leading-relaxed">
+                    In today's architectural landscape, windows define a building's identity, energy efficiency, acoustic comfort, and long-term asset value. Fully factory-made with automatic precision machinery and tested raw materials.
+                </p>
+            </div>
+
+            <!-- 4 Pillar Core Performance Matrix: AIR / WATER / SOUND / THERMAL -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                
+                <!-- AIR -->
+                <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-600 flex items-center justify-center font-black text-xl mb-4 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                        AIR
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">3.0 kPa</div>
+                    <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">Wind Pressure Tested</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Engineered to withstand extreme cyclic wind pressures up to 3000 Pa, ideal for high-rise towers and coastal luxury residences.
+                    </p>
+                </div>
+
+                <!-- WATER -->
+                <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center font-black text-xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        WATER
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">0.30 kPa</div>
+                    <div class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">Water Tested (300 Pa)</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        100% leak-proof multi-chamber design with continuous EPDM gaskets and controlled drainage paths to prevent rainwater ingress.
+                    </p>
+                </div>
+
+                <!-- SOUND -->
+                <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center font-black text-xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        SOUND
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">20–45 dB</div>
+                    <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">Acoustic Noise Cutoff</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Significant acoustic attenuation cuts external ambient traffic and urban noise by up to 75% depending on glass configuration.
+                    </p>
+                </div>
+
+                <!-- THERMAL -->
+                <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-black text-xl mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                        THERMAL
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">10–12°C</div>
+                    <div class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2">Heat Reduction</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Foam-filled window profiles and thermal barriers reduce internal convection, lower U-values, and minimize AC load.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- MANUFACTURING QUALITY & WARRANTY SHIELD -->
+            <div class="bg-gradient-to-br from-[#0f172a] to-[#1e293b] rounded-3xl p-8 sm:p-12 text-white shadow-xl mb-16 relative overflow-hidden">
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wider mb-3">
+                            Fabrication Excellence & Confidence
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-3">
+                            Quality & Tested Raw Materials with Industry-Leading Warranties
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+                            Every DOZO window is fully factory-made with automatic precision CNC tooling, premium 6063-T6 architectural grade aluminum, and DURACOAT powder coating. Reasonable pricing with full project lifecycle AMC support.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button type="button" onclick="openQuoteModal()" class="bg-white hover:bg-gray-100 text-gray-900 text-xs sm:text-sm font-bold px-6 py-2.5 rounded-full transition-all shadow-md">
+                                Request Consultation & Quote &rarr;
+                            </button>
+                            <span class="text-xs text-sky-300 font-semibold px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                                4mm–24mm Glass Fitting Range
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Warranty Highlights Counter Grid -->
+                    <div class="lg:col-span-6 grid grid-cols-3 gap-4 text-center">
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10">
+                            <div class="text-2xl sm:text-4xl font-black text-sky-400">25</div>
+                            <div class="text-[11px] sm:text-xs font-bold text-gray-200 mt-1 uppercase">Years Warranty</div>
+                            <div class="text-[10px] text-gray-400 mt-0.5">Aluminium Material</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10">
+                            <div class="text-2xl sm:text-4xl font-black text-amber-400">15</div>
+                            <div class="text-[11px] sm:text-xs font-bold text-gray-200 mt-1 uppercase">Years Warranty</div>
+                            <div class="text-[10px] text-gray-400 mt-0.5">DURACOAT (65-80μm)</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10">
+                            <div class="text-2xl sm:text-4xl font-black text-emerald-400">5</div>
+                            <div class="text-[11px] sm:text-xs font-bold text-gray-200 mt-1 uppercase">Years Warranty</div>
+                            <div class="text-[10px] text-gray-400 mt-0.5">Hardware & Rollers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOZO SUB-FRAME AMENDED SYSTEM: 9 ENGINEERING ADVANTAGES -->
+            <div class="mb-16">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Patented Precision Methodology</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a] mt-1">
+                        DOZO Sub-Frame Amended System
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-2">
+                        Sub-frame installed before masonry and plaster work. Guarantees lifetime leak proofing, structural stability up to 3.0 kPa, and scratch-free construction.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">1</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Faster Site Installation</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">The sub-frame is fixed before masonry/plaster work. Main window frames install later without disturbing civil finishes.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">2</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Better Alignment & Squareness</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Provides a precise reference frame maintaining verticality and squareness essential for smooth sliding rollers.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">3</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Lifetime Leak-Proof Solution</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Prevents rainwater seepage at the wall-window junction and minimizes water infiltration throughout the building lifecycle.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">4</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Protection During Civil Works</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Main window frames are installed after heavy civil work, preventing cement, paint, or tool damage to finished aluminum profiles.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">5</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Improved Waterproof Sealing</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Creates a controlled perimeter interface allowing airtight sealing with silicone, PU sealants, and waterproof membranes.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">6</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Enhanced 3.0 kPa Structural Load</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Efficiently transfers wind pressure from window sashes to the RCC structure, crucial for high-rise towers.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">7</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Acoustic Perimeter Barrier</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Works alongside EPDM gaskets and wool pile seals to eliminate flanking sound transmission through perimeter gaps.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">8</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Reduced Site Tolerances</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Absorbs dimensional variations in RCC masonry openings to deliver consistent, factory-calibrated window operation.</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-sky-500 transition-all shadow-xs">
+                        <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 font-bold text-sm flex items-center justify-center mb-3">9</div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-1">Easy Maintenance & Upgrades</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Window frames can be serviced, reglazed, or replaced while retaining the intact sub-frame, slashing lifecycle costs.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- GLASS OPTIONS & GLAZING PERFORMANCE MATRIX -->
+            <div class="bg-slate-50 border border-slate-200/90 rounded-3xl p-6 sm:p-10">
+                <div class="max-w-2xl mb-8">
+                    <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Acoustic & Solar Engineering</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a] mt-1">
+                        DOZO Glass & Glazing Performance Matrix (4mm–24mm)
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-600 mt-1">
+                        Customized glazing configurations engineered for daylight harvesting, solar heat gain coefficient (SHGC), and maximum sound insulation.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Single Glazing Unit -->
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-2xs">
+                        <div class="text-xs font-bold text-gray-400 uppercase">Option A</div>
+                        <h4 class="text-lg font-extrabold text-gray-900 mt-0.5 mb-3">Single Glazing Unit (SGU)</h4>
+                        <div class="space-y-2.5 text-xs">
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Visible Light (VLT):</span>
+                                <span class="font-bold text-gray-800">87% – 88%</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Noise Reduction (NRC):</span>
+                                <span class="font-bold text-gray-800">30% External Cut</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Thermal Heat Cut:</span>
+                                <span class="font-bold text-gray-800">15% Reduction</span>
+                            </div>
+                            <div class="flex justify-between py-1.5">
+                                <span class="text-gray-500">Glass Spec:</span>
+                                <span class="font-bold text-sky-600">Single Toughened / Low-E</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Double Glazing Laminated DGU -->
+                    <div class="bg-white rounded-2xl p-6 border-2 border-sky-500 shadow-md relative">
+                        <span class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold uppercase">Popular Choice</span>
+                        <div class="text-xs font-bold text-sky-600 uppercase">Option B1</div>
+                        <h4 class="text-lg font-extrabold text-gray-900 mt-0.5 mb-3">Laminated DGU (PVB Interlayer)</h4>
+                        <div class="space-y-2.5 text-xs">
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Visible Light (VLT):</span>
+                                <span class="font-bold text-gray-800">87% – 88%</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Noise Reduction (NRC):</span>
+                                <span class="font-bold text-sky-600">50% External Cut</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Thermal Heat Cut:</span>
+                                <span class="font-bold text-sky-600">50% Weather Insulation</span>
+                            </div>
+                            <div class="flex justify-between py-1.5">
+                                <span class="text-gray-500">Safety & Security:</span>
+                                <span class="font-bold text-emerald-600">Shatterproof PVB Film</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insulated DGU -->
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-2xs">
+                        <div class="text-xs font-bold text-indigo-600 uppercase">Option B2</div>
+                        <h4 class="text-lg font-extrabold text-gray-900 mt-0.5 mb-3">Insulated DGU (Double Glazed)</h4>
+                        <div class="space-y-2.5 text-xs">
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Visible Light (VLT):</span>
+                                <span class="font-bold text-gray-800">78% – 80%</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Noise Reduction (NRC):</span>
+                                <span class="font-bold text-indigo-600">75% Noise Cutoff (45dB)</span>
+                            </div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                <span class="text-gray-500">Thermal Heat Cut:</span>
+                                <span class="font-bold text-indigo-600">40%–50% Reduction</span>
+                            </div>
+                            <div class="flex justify-between py-1.5">
+                                <span class="text-gray-500">Air Gap / Spacer:</span>
+                                <span class="font-bold text-gray-800">Argon / Warm Edge Spacer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- FULL 4-COLUMN RICH DARK FOOTER (EXACT HOMEPAGE STYLE) -->
     <!-- FOOTER / CALL TO ACTION BANNER (EXACT WELCOME PAGE STYLE) -->

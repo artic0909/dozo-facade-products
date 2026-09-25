@@ -5,8 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>DOZO Façades — {{ $solution->title ?? 'Architectural Building Envelopes' }} | Engineering Excellence</title>
-    <meta name="description" content="{{ $solution->desc ?? 'Architectural freedom with precision and durability. Complete building envelope solutions with DOZO Façades.' }}">
+    <title>DOZO Façades — Architectural Building Envelope Solutions | 6063-T6 Aluminum & 3.0 kPa Wind Tested</title>
+    <meta name="description" content="DOZO Façades delivers integrated architectural building envelopes: unitized curtain walls, perforated metal panels, louvers & solar shading. Engineered with 6063-T6 aluminum, 3.0 kPa wind load resistance, DURACOAT 65-80μm coating. AMC available.">
+    <meta name="keywords" content="DOZO facade, unitized curtain wall, perforated panel facade, architectural louvers, building envelope India, 6063-T6 facade aluminum, solar shading louvers, exterior cladding, high-rise facade engineering, facade AMC">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="DOZO Façades — Architectural Building Envelope Solutions">
+    <meta property="og:description" content="Unitized curtain walls, perforated panels & louvers engineered with 6063-T6 aluminum alloy for 3.0 kPa wind pressure resistance and long-term durability.">
+    <meta property="og:image" content="{{ url('/images/solution_facade.jpg') }}">
+    <meta property="og:site_name" content="DOZO Windows & Façades">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DOZO Façades — Architectural Envelope Engineering">
+    <meta name="twitter:description" content="Complete building envelope solutions combining thermal efficiency, 3.0 kPa structural capacity, and timeless luxury aesthetics.">
+    <meta name="twitter:image" content="{{ url('/images/solution_facade.jpg') }}">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@graph' => [
+        [
+          '@type' => 'Organization',
+          '@id' => url('/') . '/#organization',
+          'name' => 'DOZO Windows & Façades',
+          'url' => url('/'),
+          'logo' => url('/logo.png'),
+          'description' => 'Premier manufacturer and engineering contractor of architectural aluminum windows and unitized facades in India.',
+          'contactPoint' => [
+            '@type' => 'ContactPoint',
+            'telephone' => '+91-98765-43210',
+            'contactType' => 'sales',
+            'areaServed' => 'IN'
+          ]
+        ],
+        [
+          '@type' => 'Service',
+          'name' => 'DOZO Complete Building Envelope & Façade Solutions',
+          'provider' => [
+            '@type' => 'Organization',
+            'name' => 'DOZO Windows & Façades'
+          ],
+          'serviceType' => 'Architectural Façade Engineering & Fenestration Contracting',
+          'areaServed' => 'India',
+          'description' => 'Integrated building envelopes engineered with 6063-T6 architectural grade aluminum, tested for 3.0 kPa wind pressure, offering thermal efficiency, acoustic comfort, and sustainable recyclable fabrication.',
+          'hasOfferCatalog' => [
+            '@type' => 'OfferCatalog',
+            'name' => 'Façade Systems',
+            'itemListElement' => [
+              ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Unitized Curtain Walls & Cladding']],
+              ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Architectural Perforated Panels']],
+              ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Louvers & Solar Shading Systems']],
+              ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Flashings & Weatherproofing Trims']],
+              ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Custom Architectural Fabrication & AMC']]
+            ]
+          ]
+        ],
+        [
+          '@type' => 'FAQPage',
+          'mainEntity' => [
+            [
+              '@type' => 'Question',
+              'name' => 'What aluminum alloy is used in DOZO Façade Systems?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO uses 6063-T6 Architectural Grade Aluminum Alloy (97–99% Aluminum, 0.45–0.90% Magnesium, 0.20–0.60% Silicon, and trace elements) delivering 110-120 MPa Tensile Strength and 160-240 MPa Yield Strength with 25-Year warranty.'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What is the wind load capacity of DOZO Façades?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO Façade Systems are engineered for wind load capacities up to 3.0 kPa (3000 Pa), making them suitable for high-rise buildings, luxury residential towers, commercial complexes, and coastal developments.'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What surface coating is applied to DOZO Façade elements?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO utilizes DURACOAT Super Durable Powder Coating (65–80 Microns) with a 15-Year warranty, offering maximum resistance against UV degradation, weathering, and corrosion.'
+              ]
+            ]
+          ]
+        ]
+      ]
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
 
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
@@ -330,6 +420,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- FOOTER / CALL TO ACTION BANNER (EXACT WELCOME PAGE DESIGN) -->
     <!-- Desktop Footer -->

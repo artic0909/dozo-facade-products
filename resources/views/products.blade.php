@@ -4,8 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DOZO Products & Façades — Precision Building Envelope Solutions</title>
-    <meta name="description" content="Explore DOZO architectural façade products including unitized curtain walls, perforated metal panels, architectural louvers, and bespoke envelope systems.">
+    <!-- Primary SEO Metadata -->
+    <title>DOZO Architectural Products — Façade Systems, Windows & Building Envelopes</title>
+    <meta name="title" content="DOZO Architectural Products — Façade Systems, Windows & Building Envelopes">
+    <meta name="description" content="Explore DOZO's precision architectural catalogue: 6063-T6 aluminum unitized curtain walls, acoustic casement & sliding windows, DURACOAT powder-coated cladding, and insulated glass systems (4mm–24mm). Wind tested to 3.0 kPa.">
+    <meta name="keywords" content="DOZO architectural products, aluminum facade catalog, unitized curtain wall systems, high performance windows, 6063-T6 aluminum alloy, 3.0 kPa wind load, DURACOAT powder coating, acoustic glass 45dB, sub frame window system, AMC building envelope">
+    <meta name="author" content="DOZO Windows & Façades">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="DOZO Architectural Products — Façade Systems, Windows & Building Envelopes">
+    <meta property="og:description" content="Explore DOZO's precision architectural catalogue: 6063-T6 aluminum unitized curtain walls, acoustic windows, DURACOAT powder coating, and 4mm–24mm glass fitting. Tested to 3.0 kPa wind load.">
+    <meta property="og:image" content="{{ url('/logo.png') }}">
+    <meta property="og:site_name" content="DOZO Windows & Façade">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="DOZO Architectural Products — Façade Systems & High-Rise Windows">
+    <meta property="twitter:description" content="Precision engineered building envelope systems: 6063-T6 aluminum, 3.0 kPa wind resistance, 0.30 kPa water tightness, 20-45 dB acoustic cut-off.">
+    <meta property="twitter:image" content="{{ url('/logo.png') }}">
 
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
@@ -13,6 +34,105 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Structured Data (JSON-LD) for Products Collection & OfferCatalog -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@graph' => [
+        [
+          '@type' => 'CollectionPage',
+          '@id' => url()->current() . '#webpage',
+          'url' => url()->current(),
+          'name' => 'DOZO Architectural Products — Façade Systems & Windows Catalogue',
+          'isPartOf' => [
+            '@type' => 'WebSite',
+            '@id' => url('/') . '#website',
+            'name' => 'DOZO Windows & Façades',
+            'url' => url('/')
+          ],
+          'description' => 'Comprehensive catalogue of DOZO architectural building envelope solutions, high performance windows, unitized curtain walls, and exterior cladding.',
+          'breadcrumb' => [
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+              [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => url('/')
+              ],
+              [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => 'Products',
+                'item' => url()->current()
+              ]
+            ]
+          ]
+        ],
+        [
+          '@type' => 'OfferCatalog',
+          'name' => 'DOZO Architectural Building Envelope Solutions',
+          'itemListElement' => [
+            [
+              '@type' => 'OfferCatalog',
+              'name' => 'High-Performance Window Systems',
+              'itemListElement' => [
+                [
+                  '@type' => 'Product',
+                  'name' => 'DOZO Slimline Sliding & Casement Windows',
+                  'description' => 'Factory fabricated aluminum windows tested to 3.0 kPa wind load and 0.30 kPa water tightness. Compatible with 4mm to 24mm glass.',
+                  'material' => '6063-T6 Architectural Grade Aluminum Alloy',
+                  'warranty' => '25 Years on Aluminum, 15 Years on Powder Coating, 5 Years on Hardware'
+                ]
+              ]
+            ],
+            [
+              '@type' => 'OfferCatalog',
+              'name' => 'Architectural Façade & Cladding Systems',
+              'itemListElement' => [
+                [
+                  '@type' => 'Product',
+                  'name' => 'DOZO Unitized Curtain Wall & Perforated Metal Panels',
+                  'description' => 'Engineered facade solutions with DURACOAT 65–80μm powder coating, sub-frame amended integration, and thermal insulation.',
+                  'material' => '6063-T6 Aluminum with Super Durable Architectural Coating'
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          '@type' => 'FAQPage',
+          'mainEntity' => [
+            [
+              '@type' => 'Question',
+              'name' => 'What glass thicknesses and configurations are supported by DOZO products?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO products accommodate glass thicknesses ranging from 4mm up to 24mm, supporting Single Glazing Units (SGU), Laminated DGU with PVB Interlayer, and Insulated Double Glazing Units (DGU) with Low-E coatings for optimal acoustic (20-45 dB noise cut-off) and thermal performance (10-12°C heat reduction).'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What are the structural performance ratings of DOZO systems?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO products are wind pressure tested up to 3.0 kPa (3000 Pa) and water penetration tested up to 0.30 kPa (300 Pa), manufactured with architectural grade 6063-T6 aluminum alloy possessing tensile strength of 110-120 MPa and yield strength of 160-240 MPa.'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What warranties and maintenance services are provided?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO provides a 25-year warranty on aluminum materials, 15-year warranty on DURACOAT powder coating, and 5-year warranty on all moving hardware, supported by comprehensive Annual Maintenance Contracts (AMC).'
+              ]
+            ]
+          ]
+        ]
+      ]
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -167,9 +287,11 @@
         </div>
     </main>
 
+
+
     <!-- FOOTER / CALL TO ACTION BANNER (EXACT WELCOME PAGE STYLE) -->
     <!-- Desktop Footer -->
-    <footer id="contact" class="hidden sm:block bg-[#161a1e] text-white pt-12 pb-10 mt-10 border-t border-gray-800">
+    <footer id="contact" class="hidden sm:block bg-[#161a1e] text-white pt-12 pb-10 mt-0 border-t border-gray-800">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Top CTA Banner Container -->

@@ -4,8 +4,85 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DOZO - Windows & Façades | Architectural Building Envelope Solutions</title>
-    <meta name="description" content="Innovative. Sustainable. Elegant. Complete Building Envelope Solutions with DOZO Windows and Architectural Façades.">
+    <title>DOZO - Windows &amp; Façades | Architectural Building Envelope Solutions | 3.0 kPa Wind &amp; Acoustic Tested</title>
+    <meta name="description" content="DOZO Windows &amp; Façades delivers integrated building envelope solutions. 3.0 kPa wind load tested, 0.30 kPa water tested, 20-45 dB acoustic cutoff, 10-12°C heat reduction. 6063-T6 aluminum, sub-frame system, DURACOAT 15-yr coating, 25-yr aluminium warranty. AMC available.">
+    <meta name="keywords" content="DOZO windows, DOZO facade, architectural building envelopes, aluminum sliding windows, unitized curtain wall, 6063-T6 aluminum, sub-frame window system, acoustic glass windows, DURACOAT powder coating, facade contractor India, window AMC">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="DOZO - Windows &amp; Façades | Architectural Building Envelope Solutions">
+    <meta property="og:description" content="Precision engineered aluminum windows and unitized facades. 3.0 kPa wind tested, 20-45 dB noise cut-off, 25-year aluminium warranty with patented sub-frame amended system.">
+    <meta property="og:image" content="{{ url('/logo.png') }}">
+    <meta property="og:site_name" content="DOZO Windows &amp; Façades">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DOZO - Windows &amp; Façades | Engineering Architectural Excellence">
+    <meta name="twitter:description" content="Integrated building envelope solutions combining thermal efficiency, 3.0 kPa structural capacity, and timeless luxury aesthetics.">
+    <meta name="twitter:image" content="{{ url('/logo.png') }}">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@graph' => [
+        [
+          '@type' => 'Organization',
+          '@id' => url('/') . '/#organization',
+          'name' => 'DOZO Windows & Façades',
+          'url' => url('/'),
+          'logo' => url('/logo.png'),
+          'description' => 'Premier manufacturer and engineering contractor of architectural aluminum windows and unitized facades in India.',
+          'telephone' => '+91-98765-43210',
+          'email' => 'info@dozo.co.in',
+          'address' => [
+            '@type' => 'PostalAddress',
+            'addressCountry' => 'IN'
+          ]
+        ],
+        [
+          '@type' => 'WebSite',
+          '@id' => url('/') . '/#website',
+          'url' => url('/'),
+          'name' => 'DOZO Windows & Façades',
+          'publisher' => [
+            '@id' => url('/') . '/#organization'
+          ]
+        ],
+        [
+          '@type' => 'FAQPage',
+          'mainEntity' => [
+            [
+              '@type' => 'Question',
+              'name' => 'What are the core technical capabilities of DOZO Windows and Façades?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO systems fulfill key architectural criteria: AIR (wind pressure tested up to 3.0 kPa), WATER (tested up to 0.30 kPa for lifetime leak proofing), SOUND (noise cutoff of 20-45 dB), and THERMAL (10-12°C heat reduction with foam-filled profiles and Low-E glazing).'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What aluminum material and warranties does DOZO offer?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'DOZO uses 6063-T6 Architectural Grade Aluminum with a 25-Year warranty, DURACOAT Super Durable Powder Coating (65-80 Microns) with a 15-Year warranty, 5-Year warranty on hardware, and available AMC (Annual Maintenance Contracts).'
+              ]
+            ],
+            [
+              '@type' => 'Question',
+              'name' => 'What is the DOZO Sub-Frame amended system?',
+              'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'The DOZO Sub-Frame is installed before civil masonry and plaster work to protect finishes, guarantee vertical alignment and squareness, enhance wind load transfer up to 3.0 kPa, and ensure a lifetime leak-proof seal.'
+              ]
+            ]
+          ]
+        ]
+      ]
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
 
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
