@@ -29,27 +29,19 @@ class AdminController extends Controller
         $solutions = Solution::orderBy('order')->get()->keyBy('slug');
         $categories = ProductCategory::where('is_active', true)->orderBy('order')->get();
         
-        // Dynamic DOZO Windows Products
+        // Dynamic DOZO Windows Products (Strictly type: 'windows')
         $windowProducts = Product::where('type', 'windows')
-            ->where('is_featured', true)
             ->with('productCategory')
+            ->orderByDesc('is_featured')
             ->orderBy('order')
             ->get();
 
-        if ($windowProducts->isEmpty()) {
-            $windowProducts = Product::where('is_featured', true)->take(4)->get();
-        }
-
-        // Dynamic DOZO Envelope & Facade Products
+        // Dynamic DOZO Products / Perforation Products (Strictly type: 'products')
         $dozoProducts = Product::where('type', 'products')
-            ->where('is_featured', true)
             ->with('productCategory')
+            ->orderByDesc('is_featured')
             ->orderBy('order')
             ->get();
-
-        if ($dozoProducts->isEmpty()) {
-            $dozoProducts = Product::where('is_featured', true)->orderByDesc('id')->take(4)->get();
-        }
 
         $products = Product::where('is_featured', true)->with('productCategory')->orderBy('order')->get();
         $allProducts = Product::with('productCategory')->orderBy('order')->get();
