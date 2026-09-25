@@ -249,7 +249,7 @@
         <!-- Bottom Sub-Footer Bar -->
         <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <div>
-                <p>&copy; {{ date('Y') }} DOZO Façade Products Pvt. Ltd. All rights reserved. &bull; {{ $certifications }}</p>
+                <p>&copy; {{ date('Y') }} DOZO Façade | Windows | Perforation Products a brand of Ranihati Const. PVT. LTD. All rights reserved. &bull; {{ $certifications }}</p>
             </div>
             <div class="flex flex-wrap items-center gap-5 text-gray-400 text-xs">
                 <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
