@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>DOZO Façades — {{ $solution->title ?? 'Façade Engineering' }} | Architectural Building Envelopes</title>
-    <meta name="description" content="{{ $solution->desc ?? 'Architectural freedom with precision and durability. Explore DOZO unitized curtain walls, perforated metal panels, and structural glazing.' }}">
+    <title>DOZO Façades — {{ $solution->title ?? 'Architectural Building Envelopes' }} | Engineering Excellence</title>
+    <meta name="description" content="{{ $solution->desc ?? 'Architectural freedom with precision and durability. Complete building envelope solutions with DOZO Façades.' }}">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,285 +22,315 @@
             background-color: #fbfbfb;
             color: #1a1a1a;
         }
+        
         .accent-blue-line {
             display: inline-block;
-            width: 28px;
-            height: 2.5px;
-            background-color: #0284c7;
-            margin-left: 8px;
+            width: 38px;
+            height: 2px;
+            background-color: #7dd3fc;
+            border-radius: 9999px;
             vertical-align: middle;
+            margin-left: 10px;
         }
-        .scrollbar-none::-webkit-scrollbar {
-            display: none;
+
+        .card-hover-zoom {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .scrollbar-none {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .card-hover-zoom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -8px rgba(0, 0, 0, 0.09);
+        }
+
+        .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.04);
+        }
+
+        /* Hero 100% Viewport Height */
+        .hero-container {
+            background-color: #fbfbfb;
+            position: relative;
+            height: 100vh;
+            height: 100dvh;
+            min-height: 580px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .hero-building-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-building-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: right bottom;
+                -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 26%, rgba(0, 0, 0, 0.45) 40%, rgba(0, 0, 0, 0.9) 55%, black 75%);
+                mask-image: linear-gradient(90deg, transparent 0%, transparent 26%, rgba(0, 0, 0, 0.45) 40%, rgba(0, 0, 0, 0.9) 55%, black 75%);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .hero-building-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center bottom;
+                opacity: 0.35;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-black selection:text-white flex flex-col min-h-screen">
+<body class="antialiased selection:bg-black selection:text-white">
 
-    <!-- TOP NAVIGATION BAR (EXACT HOMEPAGE STYLE) -->
-    <header class="relative z-30 w-full shrink-0 pt-3 sm:pt-4 pb-2 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-2xs">
-        <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-                <!-- Brand Logo (Enlarged) -->
-                <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                    <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]">
-                </a>
+    <!-- HERO SECTION WITH INTEGRATED HEADER & 100% VIEWPORT HEIGHT (EXACT WELCOME PAGE DESIGN & DYNAMIC FAÇADE DATA) -->
+    <div class="hero-container w-full border-b border-gray-100">
+        @php
+            $facImages = (isset($solution) && is_array($solution->images) && count($solution->images)) ? array_values($solution->images) : [
+                '/images/solution_facade.jpg',
+                '/images/solution_facade_2.jpg',
+                '/images/solution_facade_3.jpg',
+                '/images/solution_facade_4.jpg',
+                '/images/hero_engineer.jpg'
+            ];
+            while(count($facImages) < 5) {
+                $facImages[] = $facImages[0] ?? '/images/solution_facade.jpg';
+            }
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
-                    <a href="{{ route('home') }}" class="hover:text-sky-600 transition-colors">Home</a>
-                    <a href="{{ route('windows.index') }}" class="hover:text-sky-600 transition-colors">Windows</a>
-                    <a href="{{ route('facade.index') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Façade</a>
-                    <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
-                    <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
-                        Catalogue
+            $badges = (isset($solution) && is_array($solution->badges) && count($solution->badges)) ? $solution->badges : [
+                ['title' => 'Façade Cladding', 'icon' => 'cladding'],
+                ['title' => 'Architectural Panels', 'icon' => 'panels'],
+                ['title' => 'Louvers & Sun Shades', 'icon' => 'louvers'],
+                ['title' => 'Flashings & Accessories', 'icon' => 'flashings'],
+                ['title' => 'Custom Fabrication', 'icon' => 'fabrication'],
+            ];
+
+            // Ensure 5 badges for 5-pillar carousel
+            $defaultBadgeTitles = ['Façade Cladding', 'Architectural Panels', 'Louvers & Sun Shades', 'Flashings & Accessories', 'Custom Fabrication'];
+            $slideItems = [];
+            for($i = 0; $i < 5; $i++) {
+                $bTitle = $badges[$i]['title'] ?? $defaultBadgeTitles[$i];
+                $slideItems[] = [
+                    'name' => $bTitle,
+                    'image' => $facImages[$i % count($facImages)]
+                ];
+            }
+        @endphp
+
+        <!-- 5 Interactive Carousel Background Images with smooth crossfade -->
+        <div class="hero-building-bg">
+            @foreach($slideItems as $idx => $sItem)
+                <div id="heroBg{{ $idx }}" class="hero-bg-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none' }}">
+                    <img src="{{ $sItem['image'] }}" alt="{{ $sItem['name'] }} - DOZO Façade Architecture" class="w-full h-full">
+                </div>
+            @endforeach
+        </div>
+
+        <!-- TOP NAVIGATION BAR -->
+        <header class="relative z-30 w-full shrink-0 pt-3 sm:pt-4 pb-2">
+            <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 sm:h-20">
+                    <!-- Brand Logo (Enlarged) -->
+                    <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
+                        <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]">
                     </a>
-                </nav>
 
-                <!-- Action / Get a Quote Button -->
-                <div class="hidden lg:flex items-center gap-3.5">
-                    <button type="button" onclick="openSearchModal()" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 hover:text-black hover:bg-black/5 transition-colors" title="Search">
-                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
-                    <button type="button" onclick="openQuoteModal()" class="bg-[#1b1e23] hover:bg-black text-white text-[13px] font-bold px-6 py-2.5 rounded-full transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-[0.98]">
-                        Get a Quote
-                    </button>
-                </div>
+                    <!-- Desktop Navigation Links (Façade Active) -->
+                    <nav class="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] xl:text-[16px] font-semibold text-[#1a1d20]">
+                        <a href="{{ route('home') }}" class="hover:text-sky-600 transition-colors">Home</a>
+                        <a href="{{ route('windows.index') }}" class="hover:text-sky-600 transition-colors">Windows</a>
+                        <a href="{{ route('facade.index') }}" class="text-black font-bold hover:text-sky-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Façade</a>
+                        <a href="{{ route('products.index') }}" class="hover:text-sky-600 transition-colors">Products</a>
+                        <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-sky-600 transition-colors flex items-center gap-1">
+                            Catalogue
+                        </a>
+                    </nav>
 
-                <!-- Mobile Hamburger Button -->
-                <div class="flex items-center gap-1.5 lg:hidden">
-                    <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none" aria-label="Toggle navigation menu">
-                        <svg id="menuIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                        <svg id="closeIcon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Drawer Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 shadow-lg">
-            <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
-                <a href="{{ route('home') }}" class="py-1 border-b border-gray-100 hover:text-sky-600">Home</a>
-                <a href="{{ route('windows.index') }}" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
-                <a href="{{ route('facade.index') }}" class="text-black font-bold py-1 border-b border-gray-100">DOZO Façades</a>
-                <a href="{{ route('products.index') }}" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products</a>
-                <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
-                    <span>Downloads (Catalogue)</span>
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                    </svg>
-                </a>
-                
-                <div class="pt-2 flex flex-col gap-2">
-                    <button type="button" onclick="toggleMobileMenu(); openQuoteModal();" class="w-full bg-[#1b1e23] text-white py-3 rounded-xl font-bold text-center text-sm shadow-md">
-                        Get a Quote &rarr;
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- 'OUR SOLUTIONS CMS' FAÇADE SHOWCASE HERO SECTION -->
-    <section class="relative bg-[#161a1e] text-white overflow-hidden py-12 lg:py-16 border-b border-gray-800">
-        <!-- Subtle Background Glow -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-600/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                
-                <!-- Left: Solution Info & CMS Content -->
-                <div class="lg:col-span-6 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-widest mb-3">
-                        <span class="w-2 h-2 rounded-full bg-sky-400"></span>
-                        <span>{{ $solution->eyebrow ?? 'DOZO Façade Systems' }}</span>
+                    <!-- Action / Search Buttons -->
+                    <div class="hidden lg:flex items-center gap-3.5">
+                        <button type="button" onclick="openSearchModal()" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 hover:text-black hover:bg-black/5 transition-colors" title="Search">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button type="button" onclick="openQuoteModal()" class="bg-[#1b1e23] hover:bg-black text-white text-[13px] font-bold px-6 py-2.5 rounded-full transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-[0.98]">
+                            Get a Quote
+                        </button>
                     </div>
 
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight mb-4">
-                        {{ $solution->title ?? 'Façade' }}
+                    <!-- Mobile Hamburger Button -->
+                    <div class="flex items-center gap-1.5 lg:hidden">
+                        <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-gray-900 hover:bg-white/60 transition-colors focus:outline-none" aria-label="Toggle navigation menu">
+                            <svg id="menuIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                            <svg id="closeIcon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Drawer Menu -->
+            <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-6 py-4 shadow-lg">
+                <div class="flex flex-col gap-3.5 text-[15px] font-semibold text-gray-900">
+                    <a href="{{ route('home') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">Home</a>
+                    <a href="{{ route('windows.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Windows</a>
+                    <a href="{{ route('facade.index') }}" onclick="toggleMobileMenu()" class="text-black font-bold py-1 border-b border-gray-100">DOZO Façades</a>
+                    <a href="{{ route('products.index') }}" onclick="toggleMobileMenu()" class="py-1 border-b border-gray-100 hover:text-sky-600">DOZO Products</a>
+                    <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1 border-b border-gray-100 flex items-center justify-between hover:text-sky-600">
+                        <span>Downloads (Catalogue)</span>
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </a>
+                    
+                    <div class="pt-2 flex flex-col gap-2">
+                        <button type="button" onclick="toggleMobileMenu(); openQuoteModal();" class="w-full bg-[#1b1e23] text-white py-3 rounded-xl font-bold text-center text-sm shadow-md">
+                            Get a Quote &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO MAIN BODY WITH INTERACTIVE CAROUSEL CONTENT (DYNAMIC FAÇADE DATA) -->
+        <div id="home" class="relative z-10 max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 flex-1 flex flex-col justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                
+                <!-- Hero Left: Dynamic Carousel Typography -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2.5">
+                        <span id="heroEyebrow" class="text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.16em] uppercase text-gray-400 transition-opacity duration-300">
+                            {{ $solution->eyebrow ?? 'ENGINEERED ARCHITECTURAL ENVELOPE' }}
+                        </span>
+                    </div>
+
+                    <!-- Exact Stacked Headline Typography -->
+                    <h1 id="heroHeadline" class="text-[32px] sm:text-[44px] lg:text-[min(4vw,54px)] tracking-[-0.035em] leading-[1.03] text-[#1a1d20] mb-2 sm:mb-3 uppercase transition-opacity duration-300">
+                        <span class="font-black block">DOZO</span>
+                        <span class="font-black block">FAÇADES</span>
+                        <span class="font-light block text-[#25282d]">FOR ARCHITECTURAL</span>
+                        <span class="font-light block text-[#25282d]">EXCELLENCE</span>
                     </h1>
 
-                    <p class="text-sm sm:text-base text-gray-300 font-normal leading-relaxed mb-6 max-w-xl">
-                        {{ $solution->desc ?? 'Architectural freedom with precision and durability. High-performance building envelopes, unitized curtain walls, and bespoke metallic facades engineered to endure extreme climatic loads.' }}
+                    <p id="heroDesc" class="text-gray-500 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed max-w-md mb-4 sm:mb-5 transition-opacity duration-300">
+                        {{ $solution->desc ?? 'Architectural freedom with precision and durability. High-performance unitized curtain walls, CNC perforated panels, and bespoke metallic facades engineered for enduring beauty.' }}
                     </p>
 
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap items-center gap-3.5 mb-8">
-                        <button type="button" onclick="openQuoteModal()" class="bg-white hover:bg-gray-100 text-[#161a1e] text-sm font-bold px-7 py-3 rounded-full transition-all duration-200 shadow-lg hover:scale-105 flex items-center gap-2 cursor-pointer">
-                            <span>Request Façade Consultation</span>
-                            <span class="text-base">&rarr;</span>
+                    <!-- Dynamic CTA Button -->
+                    <div class="flex items-center gap-3">
+                        <button type="button" onclick="openQuoteModal()" id="heroCta" class="inline-flex items-center gap-2.5 bg-[#1b1e23] hover:bg-black text-white text-xs sm:text-[12.5px] font-semibold px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:gap-3.5 cursor-pointer">
+                            <span id="heroCtaText">{{ $solution->cta_text ?? 'Request Façade Consultation' }}</span>
+                            <span class="text-sm">&rarr;</span>
                         </button>
-                        <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="border border-gray-700 hover:border-gray-500 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 flex items-center gap-2">
-                            <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                            </svg>
-                            <span>Technical Catalogue (PDF)</span>
-                        </a>
                     </div>
 
-                    <!-- 5 Feature Badges from CMS -->
-                    <div class="pt-6 border-t border-gray-800/80">
-                        <div class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-3.5">
-                            Engineered System Capabilities:
-                        </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            @php
-                                $badges = (isset($solution) && is_array($solution->badges) && count($solution->badges)) ? $solution->badges : [
-                                    ['title' => 'Façade Cladding', 'icon' => 'cladding'],
-                                    ['title' => 'Architectural Panels', 'icon' => 'panels'],
-                                    ['title' => 'Louvers & Sun Shades', 'icon' => 'louvers'],
-                                    ['title' => 'Flashings & Accessories', 'icon' => 'flashings'],
-                                    ['title' => 'Custom Fabrication', 'icon' => 'fabrication'],
-                                ];
-                            @endphp
-                            @foreach($badges as $b)
-                                <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-gray-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0"></span>
-                                    <span>{{ $b['title'] ?? 'Façade Feature' }}</span>
-                                </div>
-                            @endforeach
-                        </div>
+                    <!-- Mobile Carousel Points Strip -->
+                    <div class="flex lg:hidden items-center gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
+                        @foreach($slideItems as $idx => $sItem)
+                            <button type="button" onclick="setHeroSlide({{ $idx }})" class="mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold {{ $idx === 0 ? 'bg-black text-white' : 'bg-gray-200/80 text-gray-700' }} shrink-0" data-idx="{{ $idx }}">
+                                {{ $sItem['name'] }}
+                            </button>
+                        @endforeach
                     </div>
                 </div>
 
-                <!-- Right: Dynamic Sliding Images Carousel from Our Solutions CMS -->
-                <div class="lg:col-span-6">
-                    @php
-                        $facImages = (isset($solution) && is_array($solution->images) && count($solution->images)) ? $solution->images : [
-                            '/images/solution_facade.jpg',
-                            '/images/solution_facade_2.jpg',
-                            '/images/solution_facade_3.jpg',
-                            '/images/solution_facade_4.jpg',
-                        ];
-                        $facCount = max(1, count($facImages));
-                    @endphp
-
-                    <div class="relative h-[340px] sm:h-[420px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-black/40 group">
-                        <!-- Horizontal Slider Track -->
-                        <div id="facadeHeroSliderTrack" class="flex h-full transition-transform duration-700 ease-out" style="width: {{ $facCount * 100 }}%;">
-                            @foreach($facImages as $fIdx => $fImg)
-                                <div class="h-full shrink-0 relative" style="width: {{ 100 / $facCount }}%;">
-                                    <img src="{{ $fImg }}" alt="DOZO Façade Architecture Slide {{ $fIdx + 1 }}" class="w-full h-full object-cover object-center">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md text-[11px] font-mono font-bold text-white/90 border border-white/10">
-                                        DOZO Façade #0{{ $fIdx + 1 }}
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <!-- Prev / Next Slider Arrows -->
-                        @if($facCount > 1)
-                            <button type="button" onclick="prevFacadeSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all opacity-0 group-hover:opacity-100">
-                                &#10094;
+                <!-- Hero Right: Interactive 5 Pillars Carousel Menu (Façade Badges) -->
+                <div class="lg:col-span-5 hidden lg:flex flex-col justify-between items-end h-[280px] xl:h-[320px] text-right pr-4 z-20">
+                    <!-- Clickable Carousel Points -->
+                    <div class="space-y-1 drop-shadow-md">
+                        @foreach($slideItems as $idx => $sItem)
+                            <button type="button" onclick="setHeroSlide({{ $idx }})" class="hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 {{ $idx === 0 ? 'text-white font-bold' : 'text-white/70 hover:text-white font-medium' }}" data-index="{{ $idx }}">
+                                <span class="inline-block pb-0.5 border-b {{ $idx === 0 ? 'border-white' : 'border-transparent' }}">{{ $sItem['name'] }}</span>
                             </button>
-                            <button type="button" onclick="nextFacadeSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all opacity-0 group-hover:opacity-100">
-                                &#10095;
-                            </button>
-                            
-                            <!-- Slide Dots -->
-                            <div class="absolute bottom-4 right-4 flex items-center gap-1.5 z-20">
-                                @foreach($facImages as $fIdx => $fImg)
-                                    <button type="button" onclick="goFacadeSlide({{ $fIdx }})" class="facade-dot w-2 h-2 rounded-full {{ $fIdx === 0 ? 'bg-sky-400 w-5' : 'bg-white/50' }} transition-all duration-300" data-idx="{{ $fIdx }}"></button>
-                                @endforeach
-                            </div>
-                        @endif
+                        @endforeach
+                    </div>
+
+                    <!-- Bottom Right Badge -->
+                    <div class="text-white/90 font-medium text-[11.5px] sm:text-[12px] leading-tight drop-shadow-md pointer-events-none">
+                        <div>Façade Engineering</div>
+                        <div>Meets Performance</div>
                     </div>
                 </div>
 
             </div>
         </div>
-    </section>
 
-    <!-- CATEGORY FILTER STRIP -->
-    <div class="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-xs">
-        <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-            <div class="flex items-center justify-between gap-4 overflow-x-auto scrollbar-none">
-                <div class="flex items-center gap-2 shrink-0">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider mr-2 hidden sm:inline">Systems:</span>
+        <!-- HERO BOTTOM STATS ROW (STAYS FIXED / DYNAMIC CMS) -->
+        <div class="relative z-10 w-full shrink-0 bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none border-t border-gray-200/50 py-3 sm:py-3.5">
+            <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap items-center justify-start sm:justify-between lg:justify-start gap-4 sm:gap-6 lg:gap-10 text-left">
                     
-                    <a href="{{ route('facade.index') }}" 
-                       class="px-4 py-2 rounded-full text-xs font-bold transition-all {{ is_null($selectedCategory) ? 'bg-[#1b1e23] text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                        All Façade Systems ({{ $totalCount }})
-                    </a>
+                    @if(isset($heroStats) && $heroStats->count())
+                        @foreach($heroStats as $idx => $stat)
+                            <div class="flex items-center gap-6 lg:gap-10">
+                                <div>
+                                    <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">{{ $stat->number }}</div>
+                                    <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">{{ $stat->label }}</div>
+                                </div>
+                                @if(!$loop->last)
+                                    <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        <!-- Stat 1 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">25+</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Years of Experience</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
+                        </div>
 
-                    @foreach($categories as $cat)
-                        <a href="{{ route('facade.index', $cat->slug) }}" 
-                           class="px-4 py-2 rounded-full text-xs font-bold transition-all {{ ($selectedCategory && $selectedCategory->id === $cat->id) ? 'bg-sky-600 text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                            {{ $cat->name }} ({{ $cat->products_count }})
-                        </a>
-                    @endforeach
-                </div>
+                        <!-- Stat 2 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">500+</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Projects Delivered</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
+                        </div>
 
-                <div class="text-xs text-gray-400 font-medium shrink-0 hidden md:block">
-                    Showing {{ $products->count() }} Systems
+                        <!-- Stat 3 -->
+                        <div class="flex items-center gap-6 lg:gap-10">
+                            <div>
+                                <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Premium</div>
+                                <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Quality Materials</div>
+                            </div>
+                            <span class="hidden sm:inline-block w-px h-7 bg-gray-300/80"></span>
+                        </div>
+
+                        <!-- Stat 4 -->
+                        <div>
+                            <div class="text-xl sm:text-2xl font-black text-[#1a1d20] tracking-tight">Pan India</div>
+                            <div class="text-[10.5px] text-gray-500 font-medium leading-tight mt-0.5">Presence</div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FAÇADE PRODUCTS & SPECIFICATIONS GRID -->
-    <main class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            @forelse($products as $prod)
-                <div class="group flex flex-col bg-white rounded-2xl overflow-hidden cursor-pointer border border-gray-200/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1" 
-                     onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
-                    
-                    <div class="aspect-[16/11] w-full overflow-hidden bg-[#161a1e] relative">
-                        <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        @if($prod->is_featured)
-                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider border border-white/10">
-                                Featured
-                            </span>
-                        @endif
-                    </div>
-
-                    <div class="p-4 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-[11px] font-semibold text-sky-600 uppercase tracking-wider">
-                                    {{ $prod->productCategory->name ?? $prod->category ?? 'Façade System' }}
-                                </span>
-                            </div>
-                            <h4 class="text-base font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">
-                                {{ $prod->name }}
-                            </h4>
-                            <p class="text-xs text-gray-500 font-normal mt-1 line-clamp-2 leading-relaxed">
-                                {{ $prod->short_desc }}
-                            </p>
-                        </div>
-
-                        <!-- Specs Snippet Footer -->
-                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500 font-mono">
-                            <span>{{ $prod->acoustic_rating ?? 'Acoustic Rated' }}</span>
-                            <span class="text-sky-600 font-bold group-hover:underline">View Specs &rarr;</span>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <div class="col-span-full py-16 text-center text-gray-400 bg-white border border-dashed border-gray-200 rounded-3xl">
-                    <p class="text-base font-bold text-gray-600">No façade systems found in this category.</p>
-                    <a href="{{ route('facade.index') }}" class="inline-block mt-3 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold">
-                        View All Façade Systems
-                    </a>
-                </div>
-            @endforelse
-        </div>
-    </main>
-
-    <!-- FOOTER / CALL TO ACTION BANNER (EXACT WELCOME PAGE STYLE) -->
+    <!-- FOOTER / CALL TO ACTION BANNER (EXACT WELCOME PAGE DESIGN) -->
     <!-- Desktop Footer -->
-    <footer id="contact" class="hidden sm:block bg-[#161a1e] text-white pt-12 pb-10 mt-10 border-t border-gray-800">
+    <footer id="contact" class="hidden sm:block bg-[#161a1e] text-white pt-12 pb-10 border-t border-gray-800">
         <div class="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Top CTA Banner Container -->
@@ -350,29 +380,35 @@
                     <div>
                         <div class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Follow DOZO</div>
                         <div class="flex items-center gap-3">
-                            <!-- LinkedIn -->
                             <a href="https://linkedin.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0077b5] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="LinkedIn">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
                             </a>
-                            <!-- Instagram -->
                             <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#e1306c] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="Instagram">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
                             </a>
-                            <!-- YouTube -->
                             <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#ff0000] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="YouTube">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
                             </a>
-                            <!-- Facebook -->
                             <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#1877f2] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="Facebook">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/>
+                                </svg>
                             </a>
-                            <!-- X (Twitter) -->
                             <a href="https://twitter.com" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-black text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="X (Twitter)">
-                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
                             </a>
-                            <!-- WhatsApp Direct -->
                             <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#25d366] text-gray-300 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110" title="WhatsApp">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -422,7 +458,7 @@
                         <li><a href="{{ route('home') }}#about" class="hover:text-white transition-colors">About DOZO</a></li>
                         <li><a href="{{ route('home') }}#projects" class="hover:text-white transition-colors">Featured Projects</a></li>
                         <li><a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">Downloads (PDF)</a></li>
-                        <li><a href="javascript:void(0)" onclick="openQuoteModal()" class="hover:text-white transition-colors">Get Consultation</a></li>
+                        <li><a href="#contact" onclick="openQuoteModal()" class="hover:text-white transition-colors">Get Consultation</a></li>
                         <li><a href="{{ route('home') }}#about" class="hover:text-white transition-colors">Quality Standards</a></li>
                     </ul>
 
@@ -443,7 +479,7 @@
                     <a href="{{ route('home') }}" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="{{ route('home') }}" class="hover:text-white transition-colors">Terms of Service</a>
                     <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="hover:text-white transition-colors">Technical Specs</a>
-                    <a href="javascript:window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white transition-colors">Back to Top &uarr;</a>
+                    <a href="#home" class="hover:text-white transition-colors">Back to Top &uarr;</a>
                 </div>
             </div>
 
@@ -464,16 +500,24 @@
         <!-- Social Media Icons Row for Mobile -->
         <div class="flex items-center gap-3 py-3 border-y border-gray-800 my-4">
             <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="LinkedIn">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
             </a>
             <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="Instagram">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
             </a>
             <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="YouTube">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
             </a>
             <a href="https://wa.me/919876543210" target="_blank" class="w-8 h-8 rounded-full bg-white/10 text-gray-300 flex items-center justify-center" title="WhatsApp">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
             </a>
         </div>
 
@@ -481,7 +525,7 @@
         <div class="grid grid-cols-2 gap-2 text-xs text-gray-400 mb-5">
             <a href="{{ route('windows.index') }}" class="py-1">Windows Division</a>
             <a href="{{ route('facade.index') }}" class="py-1">Façade Engineering</a>
-            <a href="{{ route('products.index') }}" class="py-1">Featured Products</a>
+            <a href="{{ route('products.index') }}" class="py-1">DOZO Products</a>
             <a href="{{ route('home') }}#projects" class="py-1">Projects Portfolio</a>
             <a href="{{ $siteSettings['catalogue_url'] ?? '/catelogue.pdf' }}" target="_blank" class="py-1">Technical Catalogue</a>
             <a href="{{ route('home') }}#about" class="py-1">About Company</a>
@@ -508,13 +552,15 @@
     <!-- INTERACTIVE MODAL: GET A QUOTE -->
     <div id="quoteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
-            <button type="button" onclick="closeQuoteModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors cursor-pointer">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <button type="button" onclick="closeQuoteModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
             </button>
             
             <div class="mb-5">
                 <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Inquiry Form</div>
-                <h3 class="text-2xl font-extrabold text-gray-900">Request a Façade Consultation & Quote</h3>
+                <h3 class="text-2xl font-extrabold text-gray-900">Request a Consultation & Quote</h3>
                 <p class="text-xs sm:text-sm text-gray-500 mt-1">Fill out the details below and our facade engineers will reach out to you within 24 hours.</p>
             </div>
 
@@ -541,10 +587,9 @@
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Product Division</label>
                         <select name="product_interest" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                             <option value="DOZO Façade Systems" selected>DOZO Façade Systems</option>
-                            <option value="Unitized Glass Curtain Walls">Unitized Glass Curtain Walls</option>
-                            <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
-                            <option value="DOZO Windows">DOZO Windows</option>
                             <option value="Both Windows & Façade">Both Windows & Façade</option>
+                            <option value="DOZO Windows">DOZO Windows</option>
+                            <option value="Perforated Panels & Cladding">Perforated Panels & Cladding</option>
                         </select>
                     </div>
                     <div>
@@ -554,57 +599,44 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief / Façade Scope</label>
-                    <textarea name="message" rows="3" placeholder="Tell us about the facade surface area, glass specs, wind load requirements..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Project Brief</label>
+                    <textarea name="message" rows="3" placeholder="Tell us about the facade area, glass specs, or architectural drawings..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
                 </div>
 
-                <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm cursor-pointer">
+                <button id="quoteSubmitBtn" type="submit" class="w-full bg-[#1b1e23] hover:bg-black text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm">
                     Submit Inquiry &rarr;
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- INTERACTIVE MODAL: PRODUCT DETAIL -->
-    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
-            <button type="button" onclick="closeProductModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 p-2 rounded-full transition-colors cursor-pointer">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            
-            <div class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-1">Façade Engineering Specification</div>
-            <h3 id="modalProductTitle" class="text-2xl font-extrabold text-gray-900 mb-2">Product Title</h3>
-            <p id="modalProductDesc" class="text-sm text-gray-600 leading-relaxed mb-5">Product details description.</p>
-
-            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100 mb-5 space-y-2">
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Material Grade:</span>
-                    <span id="modalProductMaterial" class="font-semibold text-gray-800">Architectural T6 Aluminum</span>
+    <!-- INTERACTIVE MODAL: SEARCH -->
+    <div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 pt-20">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl border border-gray-100 relative">
+            <div class="flex items-center gap-3 border-b border-gray-200 pb-3">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input id="searchInput" type="text" placeholder="Search facade systems, curtain walls, cladding..." class="w-full text-sm focus:outline-none text-gray-800 placeholder-gray-400">
+                <button type="button" onclick="closeSearchModal()" class="text-xs font-semibold text-gray-500 hover:text-black bg-gray-100 px-2 py-1 rounded-md">
+                    ESC
+                </button>
+            </div>
+            <div class="mt-3 space-y-2 text-xs sm:text-sm text-gray-600">
+                <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('facade.index') }}';">
+                    <div class="font-bold text-gray-800">Unitized Glass & Perforated Façade</div>
+                    <div class="text-[11px] text-gray-400">Architectural cladding, sun shades, commercial curtain walls</div>
                 </div>
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Finish Options:</span>
-                    <span id="modalProductFinish" class="font-semibold text-gray-800">PVDF Coating / Anodized</span>
-                </div>
-                <div class="flex justify-between text-xs py-1 border-b border-gray-200/60">
-                    <span class="text-gray-500">Acoustic Rating:</span>
-                    <span id="modalProductAcoustic" class="font-semibold text-gray-800">Up to 45 dB</span>
-                </div>
-                <div class="flex justify-between text-xs py-1">
-                    <span class="text-gray-500">Wind Load Resistance:</span>
-                    <span id="modalProductWind" class="font-semibold text-gray-800">Engineered to 5.0 kPa</span>
+                <div class="p-2 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="closeSearchModal(); location.href='{{ route('windows.index') }}';">
+                    <div class="font-bold text-gray-800">DOZO Sliding & Casement Windows</div>
+                    <div class="text-[11px] text-gray-400">Thermal insulation, acoustic reduction, weather resistant systems</div>
                 </div>
             </div>
-
-            <button type="button" onclick="closeProductModal(); openQuoteModal();" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 rounded-xl transition-all shadow-md text-sm flex items-center justify-center gap-2 cursor-pointer">
-                <span>Request Quotation for this System</span>
-                <span>&rarr;</span>
-            </button>
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Mobile Drawer Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const menuIcon = document.getElementById('menuIcon');
@@ -620,110 +652,191 @@
             }
         }
 
-        // Façade Hero Slider
-        let currentFacadeSlide = 0;
-        const totalFacadeSlides = {{ $facCount }};
-        const facadeTrack = document.getElementById('facadeHeroSliderTrack');
-        const facadeDots = document.querySelectorAll('.facade-dot');
-
-        function updateFacadeSlider() {
-            if (!facadeTrack || totalFacadeSlides <= 1) return;
-            const percent = (currentFacadeSlide * 100) / totalFacadeSlides;
-            facadeTrack.style.transform = `translateX(-${percent}%)`;
-            facadeDots.forEach((dot, idx) => {
-                if (idx === currentFacadeSlide) {
-                    dot.className = 'facade-dot w-5 h-2 rounded-full bg-sky-400 transition-all duration-300';
-                } else {
-                    dot.className = 'facade-dot w-2 h-2 rounded-full bg-white/50 transition-all duration-300';
-                }
-            });
-        }
-
-        function nextFacadeSlide() {
-            if (totalFacadeSlides <= 1) return;
-            currentFacadeSlide = (currentFacadeSlide + 1) % totalFacadeSlides;
-            updateFacadeSlider();
-        }
-
-        function prevFacadeSlide() {
-            if (totalFacadeSlides <= 1) return;
-            currentFacadeSlide = (currentFacadeSlide - 1 + totalFacadeSlides) % totalFacadeSlides;
-            updateFacadeSlider();
-        }
-
-        function goFacadeSlide(idx) {
-            currentFacadeSlide = idx;
-            updateFacadeSlider();
-        }
-
-        if (totalFacadeSlides > 1) {
-            setInterval(nextFacadeSlide, 4500);
-        }
-
-        // Modal Controls
         function openQuoteModal() {
             document.getElementById('quoteModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-
         function closeQuoteModal() {
             document.getElementById('quoteModal').classList.add('hidden');
             document.body.style.overflow = '';
         }
-
-        function openProductModal(title, desc, material, finish, acoustic, wind) {
-            document.getElementById('modalProductTitle').textContent = title;
-            document.getElementById('modalProductDesc').textContent = desc;
-            document.getElementById('modalProductMaterial').textContent = material || 'Architectural Aluminum';
-            document.getElementById('modalProductFinish').textContent = finish || 'PVDF / Anodized';
-            document.getElementById('modalProductAcoustic').textContent = acoustic || 'Engineered Isolation';
-            document.getElementById('modalProductWind').textContent = wind || 'Standard Structural Rating';
-            document.getElementById('productModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProductModal() {
-            document.getElementById('productModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        // Async Form Submit
-        async function handleQuoteSubmit(e) {
+        function handleQuoteSubmit(e) {
             e.preventDefault();
-            const btn = document.getElementById('quoteSubmitBtn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Submitting...';
-            btn.disabled = true;
-
             const form = document.getElementById('publicQuoteForm');
+            const submitBtn = document.getElementById('quoteSubmitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+
             const formData = new FormData(form);
 
-            try {
-                const res = await fetch('{{ route("quotes.store") }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Accept': 'application/json'
-                    },
-                    body: formData
-                });
-                const data = await res.json();
-                if (data.success) {
-                    alert('Thank you! Your inquiry has been submitted. A DOZO engineer will contact you shortly.');
-                    form.reset();
-                    closeQuoteModal();
-                } else {
-                    alert('There was an error submitting your form. Please try again.');
-                }
-            } catch (err) {
-                alert('Inquiry sent successfully!');
+            fetch('/quotes', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]')?.value || '',
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message || 'Thank you! Your quote inquiry has been submitted. Our facade engineering team will contact you shortly.');
                 form.reset();
                 closeQuoteModal();
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Thank you! Your inquiry has been received. Our team will contact you shortly.');
+                closeQuoteModal();
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
         }
+
+        function openSearchModal() {
+            document.getElementById('searchModal').classList.remove('hidden');
+            document.getElementById('searchInput').focus();
+        }
+        function closeSearchModal() {
+            document.getElementById('searchModal').classList.add('hidden');
+        }
+
+        @php
+            $facadeSlideDefinitions = [];
+            $eyebrows = [
+                'Unitized Curtain Walls & Cladding',
+                'Architectural Panels & Perforation',
+                'Louvers & Solar Shading Solutions',
+                'Flashings & Weatherproofing Trims',
+                'Custom Architectural Fabrication'
+            ];
+            $headlines = [
+                '<span class="font-black block">DOZO</span><span class="font-black block">FAÇADES</span><span class="font-light block text-[#25282d]">FOR ARCHITECTURAL</span><span class="font-light block text-[#25282d]">EXCELLENCE</span>',
+                '<span class="font-black block">PRECISION</span><span class="font-black block">PANELS</span><span class="font-light block text-[#25282d]">PERFORATED &</span><span class="font-light block text-[#25282d]">STRUCTURED</span>',
+                '<span class="font-black block">ENGINEERED</span><span class="font-black block">LOUVERS</span><span class="font-light block text-[#25282d]">OPTIMAL SHADE</span><span class="font-light block text-[#25282d]">& AIRFLOW</span>',
+                '<span class="font-black block">WEATHERPROOF</span><span class="font-black block">ENVELOPE</span><span class="font-light block text-[#25282d]">SEAMLESS FINISH</span><span class="font-light block text-[#25282d]">& PROTECTION</span>',
+                '<span class="font-black block">BESPOKE</span><span class="font-black block">FABRICATION</span><span class="font-light block text-[#25282d]">TAILORED TO</span><span class="font-light block text-[#25282d]">DESIGN</span>'
+            ];
+            $descriptions = [
+                $solution->desc ?? "Architectural freedom with precision and durability. Complete building envelope solutions engineered for thermal mastery and acoustic comfort.",
+                "Precision CNC perforated metallic envelopes, solid aluminum cassettes, and composite panels offering bespoke aesthetics and solar mitigation.",
+                "Aerodynamic louvers, continuous sun-fins, and intelligent architectural shading devices engineered for high wind-pressure resistance.",
+                "High-grade aluminum flashings, weather-tight gaskets, and tailored perimeter trims ensuring zero-leakage durability across multi-storey elevations.",
+                "Turnkey custom fabrication to European engineering tolerances with state-of-the-art automated CNC milling and robotic structural bonding."
+            ];
+
+            for($i = 0; $i < 5; $i++) {
+                $facadeSlideDefinitions[] = [
+                    'name' => $slideItems[$i]['name'] ?? $defaultBadgeTitles[$i],
+                    'eyebrow' => $eyebrows[$i],
+                    'headline' => $headlines[$i],
+                    'desc' => $descriptions[$i],
+                    'ctaText' => 'Request Façade Consultation',
+                    'image' => $slideItems[$i]['image']
+                ];
+            }
+        @endphp
+
+        // Façade 5-Pillar Carousel Controller (Dynamic CMS)
+        const heroSlides = {!! json_encode($facadeSlideDefinitions) !!};
+
+        let currentHeroIndex = 0;
+        let heroTimer = null;
+
+        function setHeroSlide(idx) {
+            currentHeroIndex = idx;
+            const slide = heroSlides[idx];
+            if (!slide) return;
+
+            // 1. Update Background Layers
+            for (let i = 0; i < 5; i++) {
+                const bgEl = document.getElementById('heroBg' + i);
+                if (bgEl) {
+                    if (i === idx) {
+                        bgEl.classList.remove('opacity-0', 'pointer-events-none');
+                        bgEl.classList.add('opacity-100');
+                    } else {
+                        bgEl.classList.remove('opacity-100');
+                        bgEl.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                }
+            }
+
+            // 2. Update Desktop Point Buttons
+            const desktopBtns = document.querySelectorAll('.hero-point-btn');
+            desktopBtns.forEach((btn, i) => {
+                const span = btn.querySelector('span');
+                if (i === idx) {
+                    btn.className = 'hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white font-bold cursor-pointer';
+                    if (span) span.className = 'inline-block pb-0.5 border-b-2 border-white';
+                } else {
+                    btn.className = 'hero-point-btn block w-full text-right text-[13px] sm:text-[14px] transition-all duration-300 text-white/70 hover:text-white font-medium cursor-pointer';
+                    if (span) span.className = 'inline-block pb-0.5 border-b-2 border-transparent';
+                }
+            });
+
+            // 3. Update Mobile Point Buttons
+            const mobBtns = document.querySelectorAll('.mob-hero-btn');
+            mobBtns.forEach((btn, i) => {
+                if (i === idx) {
+                    btn.className = 'mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-bold bg-black text-white shrink-0 shadow-xs';
+                } else {
+                    btn.className = 'mob-hero-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-gray-200/80 text-gray-700 shrink-0';
+                }
+            });
+
+            // 4. Smooth Typography Transitions
+            const eyebrowEl = document.getElementById('heroEyebrow');
+            const headlineEl = document.getElementById('heroHeadline');
+            const descEl = document.getElementById('heroDesc');
+            const ctaTextEl = document.getElementById('heroCtaText');
+
+            if (eyebrowEl) eyebrowEl.style.opacity = '0.2';
+            if (headlineEl) headlineEl.style.opacity = '0.2';
+            if (descEl) descEl.style.opacity = '0.2';
+
+            setTimeout(() => {
+                if (eyebrowEl) {
+                    eyebrowEl.innerText = slide.eyebrow;
+                    eyebrowEl.style.opacity = '1';
+                }
+                if (headlineEl) {
+                    headlineEl.innerHTML = slide.headline;
+                    headlineEl.style.opacity = '1';
+                }
+                if (descEl) {
+                    descEl.innerHTML = slide.desc;
+                    descEl.style.opacity = '1';
+                }
+                if (ctaTextEl) ctaTextEl.innerText = slide.ctaText;
+            }, 180);
+
+            // Reset auto-advance timer on interaction
+            resetHeroTimer();
+        }
+
+        function nextHeroSlide() {
+            let nextIdx = (currentHeroIndex + 1) % heroSlides.length;
+            setHeroSlide(nextIdx);
+        }
+
+        function resetHeroTimer() {
+            if (heroTimer) clearInterval(heroTimer);
+            heroTimer = setInterval(nextHeroSlide, 5500);
+        }
+
+        // Start carousel autoplay on load
+        resetHeroTimer();
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQuoteModal();
+                closeSearchModal();
+            }
+        });
     </script>
 </body>
 </html>

@@ -112,6 +112,7 @@ class AdminController extends Controller
     {
         $siteSettings = SiteSetting::all()->pluck('value', 'key');
         $solution = Solution::where('slug', 'facade')->first();
+        $heroStats = HeroStat::orderBy('order')->get();
         
         // Get categories associated with products/façades
         $categories = ProductCategory::where('is_active', true)
@@ -137,7 +138,7 @@ class AdminController extends Controller
         $products = $query->get();
         $totalCount = Product::where('type', 'products')->count();
 
-        return view('facade', compact('solution', 'products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings'));
+        return view('facade', compact('solution', 'products', 'categories', 'selectedCategory', 'totalCount', 'siteSettings', 'heroStats'));
     }
 
     /**
