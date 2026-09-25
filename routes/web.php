@@ -15,29 +15,38 @@ Route::prefix('admin')->group(function () {
 
     // Protected Admin Dashboard Routes
     Route::middleware(['auth'])->group(function () {
+        // 1. Overview Dashboard
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin.index');
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+        // 2. Inquiries CRM
+        Route::get('/inquiries', [AdminController::class, 'quotesIndex'])->name('admin.quotes.index');
         Route::post('/quotes/{quote}/status', [AdminController::class, 'updateQuoteStatus'])->name('admin.quotes.status');
         Route::delete('/quotes/{quote}', [AdminController::class, 'deleteQuote'])->name('admin.quotes.delete');
         
-        // Hero CMS Edit Routes
+        // 3. Hero CMS Edit Routes
+        Route::get('/hero', [AdminController::class, 'heroIndex'])->name('admin.hero.index');
         Route::post('/hero-slides/{slide}', [AdminController::class, 'updateHeroSlide'])->name('admin.hero.slide.update');
         Route::post('/hero-stats/{stat}', [AdminController::class, 'updateHeroStat'])->name('admin.hero.stat.update');
 
-        // Solutions CMS Routes
+        // 4. Solutions CMS Routes
+        Route::get('/solutions', [AdminController::class, 'solutionsIndex'])->name('admin.solutions.index');
         Route::post('/solutions/{solution}', [AdminController::class, 'updateSolution'])->name('admin.solutions.update');
 
-        // Products CRUD Routes
+        // 5. Products CRUD Routes
+        Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products.index');
         Route::post('/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
         Route::post('/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
         Route::delete('/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
 
-        // Projects CRUD Routes
+        // 6. Projects CRUD Routes
+        Route::get('/projects', [AdminController::class, 'projectsIndex'])->name('admin.projects.index');
         Route::post('/projects', [AdminController::class, 'storeProject'])->name('admin.projects.store');
         Route::post('/projects/{project}', [AdminController::class, 'updateProject'])->name('admin.projects.update');
         Route::delete('/projects/{project}', [AdminController::class, 'deleteProject'])->name('admin.projects.delete');
 
-        // Site Settings Route
+        // 7. Site Settings Routes
+        Route::get('/settings', [AdminController::class, 'settingsIndex'])->name('admin.settings.index');
         Route::post('/settings', [AdminController::class, 'updateSiteSettings'])->name('admin.settings.update');
     });
 });

@@ -107,7 +107,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Render the White Themed Liquid Glass Dashboard.
+     * Render the White Themed Liquid Glass Dashboard Overview.
      */
     public function dashboard()
     {
@@ -137,6 +137,81 @@ class AdminController extends Controller
             'projects',
             'siteSettings'
         ));
+    }
+
+    /**
+     * Render Inquiries & Lead Management CRM Page.
+     */
+    public function quotesIndex()
+    {
+        $quotes = Quote::orderByDesc('created_at')->get();
+        $totalQuotes = $quotes->count();
+        $newQuotesCount = $quotes->where('status', 'New')->count();
+        $contactedCount = $quotes->where('status', 'Contacted')->count();
+        $inReviewCount = $quotes->where('status', 'In Review')->count();
+        $quotationSentCount = $quotes->where('status', 'Quotation Sent')->count();
+        $completedCount = $quotes->where('status', 'Completed')->count();
+
+        return view('admin.quotes.index', compact(
+            'quotes',
+            'totalQuotes',
+            'newQuotesCount',
+            'contactedCount',
+            'inReviewCount',
+            'quotationSentCount',
+            'completedCount'
+        ));
+    }
+
+    /**
+     * Render Hero Carousel & 5 Pillars CMS Page.
+     */
+    public function heroIndex()
+    {
+        $heroSlides = HeroSlide::orderBy('order')->get();
+        $heroStats = HeroStat::orderBy('order')->get();
+
+        return view('admin.hero.index', compact('heroSlides', 'heroStats'));
+    }
+
+    /**
+     * Render Our Solutions & Sliding Images CMS Page.
+     */
+    public function solutionsIndex()
+    {
+        $solutions = Solution::orderBy('order')->get();
+
+        return view('admin.solutions.index', compact('solutions'));
+    }
+
+    /**
+     * Render Product Systems Catalog CRUD Page.
+     */
+    public function productsIndex()
+    {
+        $products = Product::orderBy('order')->get();
+
+        return view('admin.products.index', compact('products'));
+    }
+
+    /**
+     * Render Featured Projects Showcase CRUD Page.
+     */
+    public function projectsIndex()
+    {
+        $projects = Project::orderBy('order')->get();
+
+        return view('admin.projects.index', compact('projects'));
+    }
+
+    /**
+     * Render Site & Contact Settings Page.
+     */
+    public function settingsIndex()
+    {
+        $siteSettings = SiteSetting::all()->pluck('value', 'key');
+
+        return view('admin.settings.index', compact('siteSettings'));
     }
 
     /**
