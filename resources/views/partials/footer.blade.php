@@ -20,29 +20,19 @@
     $facebook = $siteSettings['social_facebook'] ?? 'https://facebook.com';
     $twitter = $siteSettings['social_twitter'] ?? 'https://twitter.com';
 
-    // Dynamic Window Products from CMS
-    $footerWindows = \App\Models\Product::where(function($q) {
-        $q->where('type', 'windows')
-          ->orWhereHas('productCategory', function($catQuery) {
-              $catQuery->where('name', 'like', '%window%')
-                       ->orWhere('name', 'like', '%door%');
-          });
-    })->orderBy('order')->orderBy('id', 'asc')->take(8)->get();
+    // Dynamic Window Products from CMS (Type: windows)
+    $footerWindows = \App\Models\Product::where('type', 'windows')
+        ->with('productCategory')
+        ->orderBy('order')
+        ->orderBy('id', 'asc')
+        ->get();
 
-    // Dynamic Perforation & Louver Products from CMS
-    $footerPerforations = \App\Models\Product::where(function($q) {
-        $q->where('name', 'like', '%perforat%')
-          ->orWhere('name', 'like', '%louver%')
-          ->orWhere('name', 'like', '%panel%')
-          ->orWhere('name', 'like', '%cladding%')
-          ->orWhere('name', 'like', '%screen%')
-          ->orWhereHas('productCategory', function($catQuery) {
-              $catQuery->where('name', 'like', '%perforat%')
-                       ->orWhere('name', 'like', '%louver%')
-                       ->orWhere('name', 'like', '%panel%')
-                       ->orWhere('name', 'like', '%cladding%');
-          });
-    })->orderBy('order')->orderBy('id', 'asc')->take(8)->get();
+    // Dynamic Perforation & Architectural Products from CMS (Type: products)
+    $footerPerforations = \App\Models\Product::where('type', 'products')
+        ->with('productCategory')
+        ->orderBy('order')
+        ->orderBy('id', 'asc')
+        ->get();
 @endphp
 
 <!-- Desktop & Tablet Footer -->
@@ -147,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- Col 2: Windows Division Links (Dynamic CMS) (Span 3) -->
+            <!-- Col 2: DOZO Windows (Span 3) -->
             <div class="lg:col-span-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2 border-b border-gray-800 pb-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
@@ -161,17 +151,8 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sliding Window Systems (Multi-Track)</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Acoustic Casement Windows (45 dB)</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Fixed Panoramic Picture Windows</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Tilt &amp; Turn German Systems</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Slimline Minimalist Sliding Doors</a></li>
+                        <li><span class="text-gray-500">No windows products available</span></li>
                     @endforelse
-                    @if($footerWindows->count() < 5)
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Sub-Frame Amended System (9 Benefits)</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">Thermal Break Energy Glazing</a></li>
-                        <li><a href="{{ route('windows.index') }}" class="hover:text-white transition-colors">4mm to 24mm Insulated DGU</a></li>
-                    @endif
                     <li class="pt-1.5">
                         <a href="{{ route('windows.index') }}" class="text-sky-400 hover:text-sky-300 font-semibold text-[11px] inline-flex items-center gap-1 group">
                             <span>View All Windows</span>
@@ -181,7 +162,7 @@
                 </ul>
             </div>
 
-            <!-- Col 3: Perforation Products (Dynamic CMS) (Span 2) -->
+            <!-- Col 3: Perforation Products (Span 2) -->
             <div class="lg:col-span-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2 border-b border-gray-800 pb-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
@@ -195,19 +176,11 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Architectural Perforated Panels</a></li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">CNC Perforated Façades</a></li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Aerodynamic Solar Louvers &amp; Fins</a></li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Solid Aluminum &amp; ACP Cladding</a></li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Geometric Laser Screens</a></li>
+                        <li><span class="text-gray-500">No perforation products available</span></li>
                     @endforelse
-                    @if($footerPerforations->count() < 4)
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">CNC Laser-Cut Metallic Screens</a></li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-white transition-colors">Bespoke Architectural Shading</a></li>
-                    @endif
                     <li class="pt-1.5">
                         <a href="{{ route('products.index') }}" class="text-sky-400 hover:text-sky-300 font-semibold text-[11px] inline-flex items-center gap-1 group">
-                            <span>View Perforations</span>
+                            <span>View All Products</span>
                             <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                         </a>
                     </li>
