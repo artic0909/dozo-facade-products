@@ -250,11 +250,7 @@
                     
                     <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5] relative">
                         <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
-                        @if($prod->is_featured)
-                            <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider">
-                                Featured
-                            </span>
-                        @endif
+                        
                     </div>
 
                     <div class="pt-3 pb-1">
