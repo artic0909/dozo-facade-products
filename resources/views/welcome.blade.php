@@ -635,8 +635,8 @@
 
             <!-- Dynamic 4 Big Product Cards in One Row (Zero Border Radius) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @if(isset($products) && $products->count())
-                    @foreach($products as $prod)
+                @if(isset($windowProducts) && $windowProducts->count())
+                    @foreach($windowProducts as $prod)
                         @php
                             $isDark = ($prod->theme === 'dark');
                         @endphp
@@ -646,7 +646,12 @@
                                 <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-4 flex items-center justify-between {{ $isDark ? 'bg-[#161e27] border-gray-800' : 'bg-white border-gray-100' }} border-t rounded-none">
-                                <span class="text-sm sm:text-[15px] font-bold truncate {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }}">{{ $prod->name }}</span>
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-sm sm:text-[15px] font-bold truncate block {{ $isDark ? 'text-white' : 'text-[#1a1d20]' }}">{{ $prod->name }}</span>
+                                    @if($prod->productCategory)
+                                        <span class="text-[11px] {{ $isDark ? 'text-sky-400' : 'text-sky-600' }} font-medium uppercase tracking-wider truncate block mt-0.5">{{ $prod->productCategory->name }}</span>
+                                    @endif
+                                </div>
                                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full {{ $isDark ? 'bg-white/10 border border-white/20 text-white' : 'bg-black text-white' }} flex items-center justify-center shrink-0 ml-2 group-hover:bg-sky-600 transition-colors shadow-sm">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -691,29 +696,29 @@
                 </a>
             </div>
 
-            <!-- Dynamic 4 Big Project Cards in One Row (Zero Border Radius) -->
+            <!-- Dynamic 4 Big Product Cards in One Row (Zero Border Radius - Original Clean Showcase Style) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @if(isset($projects) && $projects->count())
-                    @foreach($projects as $proj)
-                        <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('{{ addslashes($proj->title) }} ({{ addslashes($proj->location) }})', '{{ addslashes($proj->description) }}', '{{ addslashes($proj->type ?? 'Architectural System') }}', '{{ addslashes($proj->scope ?? 'Full Envelope') }}', 'Status: {{ addslashes($proj->status) }}', 'Progress: {{ addslashes($proj->progress) }}')">
+                @if(isset($dozoProducts) && $dozoProducts->count())
+                    @foreach($dozoProducts as $prod)
+                        <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('{{ addslashes($prod->name) }}', '{{ addslashes($prod->short_desc) }}', '{{ addslashes($prod->material_grade) }}', '{{ addslashes($prod->finish_options) }}', '{{ addslashes($prod->acoustic_rating) }}', '{{ addslashes($prod->wind_load) }}')">
                             <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                                <img src="{{ $proj->image }}" alt="{{ $proj->title }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                                <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="pt-3 pb-1">
-                                <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">{{ $proj->title }}</h4>
-                                <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">{{ $proj->location }}</p>
+                                <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20] leading-snug group-hover:text-sky-600 transition-colors">{{ $prod->name }}</h4>
+                                <p class="text-xs sm:text-[13px] text-gray-500 font-normal mt-0.5">{{ $prod->productCategory->name ?? $prod->category ?? 'Architectural System' }}</p>
                             </div>
                         </div>
                     @endforeach
                 @else
-                    <!-- Fallback Static Project Card -->
-                    <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer">
+                    <!-- Fallback Static Product Card -->
+                    <div class="group flex flex-col bg-white rounded-none overflow-hidden cursor-pointer" onclick="openProductModal('Unitized Glass Façade', 'Engineered architectural unitized curtain wall glazing systems.')">
                         <div class="aspect-[16/11] w-full rounded-none overflow-hidden bg-[#f0f2f5]">
-                            <img src="/images/proj_residential_tower.jpg" alt="Residential Tower" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
+                            <img src="/images/prod_unitized_facade.jpg" alt="Unitized Glass Facade" class="w-full h-full object-cover rounded-none group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="pt-3 pb-1">
-                            <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20]">Residential Tower</h4>
-                            <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5">Kolkata</p>
+                            <h4 class="text-sm sm:text-[15px] font-bold text-[#1a1d20]">Unitized Glass Façade</h4>
+                            <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5">Commercial Curtain Wall</p>
                         </div>
                     </div>
                 @endif

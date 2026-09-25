@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
-@section('title', 'Product Systems & Dynamic Categories — DOZO Admin')
-@section('page_title', 'Product Systems & Categories')
+@section('title', 'DOZO Windows & Products CMS — DOZO Admin')
+@section('page_title', 'DOZO Windows & Products Management')
 
 @section('content')
 <div class="space-y-6">
@@ -10,10 +10,10 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                DOZO Products & Categories Catalog
+                DOZO Windows & Products Catalog
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
-                Manage architectural window and façade products with dynamic category grouping, auto-generated URL slugs, and live featured status.
+                Manage DOZO Windows & DOZO Architectural Products with dynamic category grouping, auto-generated URL slugs, and homepage integration.
             </p>
         </div>
         <div class="flex items-center gap-3">
@@ -28,15 +28,38 @@
         </div>
     </div>
 
-    <!-- Category Filter / Badges Bar -->
+    <!-- Primary Division / System Filter Bar -->
+    <div class="p-2 rounded-2xl bg-slate-100/90 border border-slate-200/80 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-1.5 overflow-x-auto">
+            <button onclick="filterType('all')" class="type-filter-btn px-4 py-2 rounded-xl bg-white text-slate-900 font-bold shadow-xs transition-all flex items-center gap-2" data-type="all">
+                <span>All Catalog</span>
+                <span class="px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 font-mono text-[10px] font-bold">{{ $products->count() }}</span>
+            </button>
+            <button onclick="filterType('windows')" class="type-filter-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold transition-all flex items-center gap-2" data-type="windows">
+                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                <span>DOZO Windows</span>
+                <span class="px-1.5 py-0.5 rounded-md bg-sky-50 text-sky-700 font-mono text-[10px] font-bold">{{ $products->where('type', 'windows')->count() }}</span>
+            </button>
+            <button onclick="filterType('products')" class="type-filter-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold transition-all flex items-center gap-2" data-type="products">
+                <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                <span>DOZO Products (Façade & Envelope)</span>
+                <span class="px-1.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700 font-mono text-[10px] font-bold">{{ $products->where('type', 'products')->count() }}</span>
+            </button>
+        </div>
+        <div class="text-[11px] font-semibold text-slate-500 px-2">
+            Auto-synced with landing page sections
+        </div>
+    </div>
+
+    <!-- Dynamic Category Filter Bar -->
     <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-        <button onclick="filterCategory('all')" class="cat-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-white font-bold transition-colors" data-cat="all">
-            All Products ({{ $products->count() }})
+        <button onclick="filterCategory('all')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl bg-[#0f172a] text-white font-bold transition-colors" data-cat="all">
+            All Categories
         </button>
         @foreach ($categories as $cat)
-            <button onclick="filterCategory('{{ $cat->id }}')" class="cat-filter-btn px-3.5 py-2 rounded-xl bg-white/80 hover:bg-white text-slate-700 border border-slate-200 font-semibold transition-colors flex items-center gap-2" data-cat="{{ $cat->id }}">
+            <button onclick="filterCategory('{{ $cat->id }}')" class="cat-filter-btn px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold transition-colors flex items-center gap-1.5 shrink-0" data-cat="{{ $cat->id }}">
                 <span>{{ $cat->name }}</span>
-                <span class="px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500 font-mono text-[10px] font-bold">{{ $cat->products_count }}</span>
+                <span class="px-1.5 py-0.2 rounded bg-slate-100 text-slate-500 font-mono text-[10px] font-bold">{{ $cat->products_count }}</span>
             </button>
         @endforeach
     </div>
@@ -50,6 +73,7 @@
                         <th class="py-3.5 pl-4 w-12 text-center">#</th>
                         <th class="py-3.5 px-3">Thumbnail</th>
                         <th class="py-3.5 px-3">Product Name & Auto Slug</th>
+                        <th class="py-3.5 px-3">Section / System</th>
                         <th class="py-3.5 px-3">Category (Dynamic)</th>
                         <th class="py-3.5 px-3">Theme</th>
                         <th class="py-3.5 px-3">Specs (Acoustic / Wind Load)</th>
@@ -59,7 +83,7 @@
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
                     @forelse ($products as $index => $prod)
-                        <tr class="prod-row hover:bg-slate-50/80 transition-colors" data-category-id="{{ $prod->category_id }}">
+                        <tr class="prod-row hover:bg-slate-50/80 transition-colors" data-category-id="{{ $prod->category_id }}" data-type="{{ $prod->type ?? 'windows' }}">
                             <td class="py-3.5 pl-4 text-center font-bold text-slate-400 font-mono">{{ $index + 1 }}</td>
                             <td class="py-3.5 px-3">
                                 <div class="w-14 h-12 rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
@@ -74,12 +98,24 @@
                                 </div>
                             </td>
                             <td class="py-3.5 px-3">
-                                @if($prod->productCategory)
+                                @if(($prod->type ?? 'windows') === 'windows')
                                     <span class="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 font-bold border border-sky-200/80 text-[11px] inline-flex items-center gap-1.5">
                                         <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                        <span>DOZO Windows</span>
+                                    </span>
+                                @else
+                                    <span class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-800 font-bold border border-indigo-200/80 text-[11px] inline-flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                                        <span>DOZO Products</span>
+                                    </span>
+                                @endif
+                            </td>
+                            <td class="py-3.5 px-3">
+                                @if($prod->productCategory)
+                                    <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold text-[11px] inline-flex items-center gap-1.5">
                                         <span>{{ $prod->productCategory->name }}</span>
                                     </span>
-                                    <div class="text-[10px] text-slate-400 font-mono mt-0.5 pl-3">{{ $prod->productCategory->slug }}</div>
+                                    <div class="text-[10px] text-slate-400 font-mono mt-0.5">{{ $prod->productCategory->slug }}</div>
                                 @else
                                     <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold text-[11px]">
                                         {{ $prod->category ?? 'Unassigned' }}
@@ -115,7 +151,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="py-12 text-center text-slate-400">No products configured. Click "+ Add New Product" to create one.</td>
+                            <td colspan="9" class="py-12 text-center text-slate-400">No products configured. Click "+ Add New Product" to create one.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -132,7 +168,7 @@
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
                 <div>
                     <h3 id="productModalTitle" class="text-lg font-black text-slate-900">Add Product</h3>
-                    <p class="text-xs text-slate-500">Configure technical specifications, dynamic category, and media. Slugs are auto-generated from product name.</p>
+                    <p class="text-xs text-slate-500">Configure system division, technical specifications, and category. Slugs are auto-generated from product name.</p>
                 </div>
                 <button type="button" onclick="closeProductModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg bg-slate-100">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -144,8 +180,11 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Product Name *</label>
-                        <input type="text" id="prodName" name="name" required placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Product System / Section *</label>
+                        <select id="prodType" name="type" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                            <option value="windows">DOZO Windows (Windows Section)</option>
+                            <option value="products">DOZO Products (Façade & Architectural Section)</option>
+                        </select>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Dynamic Category *</label>
@@ -155,6 +194,12 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Product Name *</label>
+                    <input type="text" id="prodName" name="name" required placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <p class="text-[10.5px] text-slate-400 mt-1">Note: URL slug will be automatically generated from this name (e.g. <code>/products/slimline-sliding-system</code>).</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -200,7 +245,7 @@
 
                 <div class="flex items-center gap-2 pt-1">
                     <input type="checkbox" id="prodIsFeatured" name="is_featured" value="1" class="w-4 h-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" checked>
-                    <label for="prodIsFeatured" class="text-xs font-bold text-slate-700">Display in Featured Products Catalog on Homepage</label>
+                    <label for="prodIsFeatured" class="text-xs font-bold text-slate-700">Display in Live Homepage Catalog</label>
                 </div>
 
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-3">
@@ -307,24 +352,49 @@
 
 @push('scripts')
 <script>
-    // Category Filter in Products Table
-    function filterCategory(catId) {
-        document.querySelectorAll('.cat-filter-btn').forEach(btn => {
-            if (btn.getAttribute('data-cat') === catId) {
-                btn.className = 'cat-filter-btn px-4 py-2 rounded-xl bg-[#0f172a] text-white font-bold transition-colors';
-            } else {
-                btn.className = 'cat-filter-btn px-3.5 py-2 rounded-xl bg-white/80 hover:bg-white text-slate-700 border border-slate-200 font-semibold transition-colors flex items-center gap-2';
-            }
-        });
+    let currentTypeFilter = 'all';
+    let currentCatFilter = 'all';
 
+    function applyFilters() {
         document.querySelectorAll('.prod-row').forEach(row => {
             const rowCatId = row.getAttribute('data-category-id');
-            if (catId === 'all' || rowCatId === catId) {
+            const rowType = row.getAttribute('data-type');
+
+            const matchType = (currentTypeFilter === 'all' || rowType === currentTypeFilter);
+            const matchCat = (currentCatFilter === 'all' || rowCatId === currentCatFilter);
+
+            if (matchType && matchCat) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
             }
         });
+    }
+
+    // System Type Filter (All / DOZO Windows / DOZO Products)
+    function filterType(type) {
+        currentTypeFilter = type;
+        document.querySelectorAll('.type-filter-btn').forEach(btn => {
+            if (btn.getAttribute('data-type') === type) {
+                btn.className = 'type-filter-btn px-4 py-2 rounded-xl bg-white text-slate-900 font-bold shadow-xs transition-all flex items-center gap-2';
+            } else {
+                btn.className = 'type-filter-btn px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold transition-all flex items-center gap-2';
+            }
+        });
+        applyFilters();
+    }
+
+    // Category Filter in Products Table
+    function filterCategory(catId) {
+        currentCatFilter = catId;
+        document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+            if (btn.getAttribute('data-cat') === catId) {
+                btn.className = 'cat-filter-btn px-3.5 py-1.5 rounded-xl bg-[#0f172a] text-white font-bold transition-colors';
+            } else {
+                btn.className = 'cat-filter-btn px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold transition-colors flex items-center gap-1.5 shrink-0';
+            }
+        });
+        applyFilters();
     }
 
     // Product Modal Operations
@@ -333,6 +403,7 @@
         form.action = "{{ route('admin.products.store') }}";
         document.getElementById('productModalTitle').textContent = 'Add New Product System';
         document.getElementById('prodName').value = '';
+        document.getElementById('prodType').value = currentTypeFilter !== 'all' ? currentTypeFilter : 'windows';
         document.getElementById('prodTheme').value = 'light';
         document.getElementById('prodAcoustic').value = '';
         document.getElementById('prodMaterial').value = '';
@@ -350,6 +421,7 @@
         form.action = `/admin/products/${prod.id}`;
         document.getElementById('productModalTitle').textContent = 'Edit Product: ' + prod.name;
         document.getElementById('prodName').value = prod.name;
+        document.getElementById('prodType').value = prod.type || 'windows';
         if (prod.category_id) {
             document.getElementById('prodCategoryId').value = prod.category_id;
         }
@@ -409,3 +481,4 @@
     });
 </script>
 @endpush
+

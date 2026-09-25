@@ -218,7 +218,7 @@
                         <a href="{{ route('admin.products.index') }}" class="sidebar-nav-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }} w-full px-3.5 py-2.5 items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <svg class="w-4 h-4 nav-icon transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"/></svg>
-                                <span>Product Systems</span>
+                                <span>DOZO Windows & Products</span>
                             </div>
                             <span class="nav-badge px-2 py-0.5 rounded-full text-[10.5px] font-bold font-mono transition-all">
                                 {{ \App\Models\Product::count() }}

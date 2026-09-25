@@ -163,7 +163,7 @@
                     <span class="text-xs font-mono font-bold text-slate-400 group-hover:text-purple-600">&rarr;</span>
                 </div>
                 <div>
-                    <div class="font-bold text-slate-900 text-xs">Product Catalog</div>
+                    <div class="font-bold text-slate-900 text-xs">DOZO Windows & Products</div>
                     <div class="text-[11px] text-slate-400">{{ $products->count() }} Systems live</div>
                 </div>
             </a>
