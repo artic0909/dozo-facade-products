@@ -6,6 +6,16 @@
 @section('content')
 <div class="space-y-8">
     
+    @if(session('success'))
+        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center justify-between shadow-xs">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>{{ session('success') }}</span>
+            </div>
+            <button type="button" onclick="this.parentElement.remove()" class="text-emerald-600 hover:text-emerald-900">&times;</button>
+        </div>
+    @endif
+
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -15,10 +25,19 @@
                 Customize headlines, eyebrows, descriptions, CTA buttons, and background images for each of the 5 Façade architectural pillars.
             </p>
         </div>
-        <a href="{{ route('facade.index') }}" target="_blank" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0">
-            <span>Preview Live Façade</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
+        <div class="flex items-center gap-3">
+            <form action="{{ route('admin.facade.reset') }}" method="POST" onsubmit="return confirm('Initialize / Reset 5 standard Façade Engineering Pillars?')">
+                @csrf
+                <button type="submit" class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    <span>Reset / Initialize 5 Pillars</span>
+                </button>
+            </form>
+            <a href="{{ route('facade.index') }}" target="_blank" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0">
+                <span>Preview Live Façade</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+        </div>
     </div>
 
     <!-- 5 Façade Pillar Editor Cards Grid -->
@@ -29,7 +48,7 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            @foreach ($facadeSlides as $slide)
+            @forelse ($facadeSlides as $slide)
                 <div class="white-liquid-card white-liquid-card-hover rounded-3xl overflow-hidden flex flex-col justify-between p-5 border border-slate-200">
                     <div>
                         <!-- Image Preview -->
@@ -70,7 +89,22 @@
                         </button>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-span-full py-16 text-center bg-white border border-dashed border-slate-200 rounded-3xl p-8">
+                    <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-800">No Façade Slides Configured</h3>
+                    <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Click below to automatically load the 5 standard engineering pillars for the Façade CMS.</p>
+                    <form action="{{ route('admin.facade.reset') }}" method="POST" class="mt-4">
+                        @csrf
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-md transition-all inline-flex items-center gap-1.5 cursor-pointer">
+                            <span>Initialize 5 Standard Façade Pillars</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </form>
+                </div>
+            @endforelse
         </div>
     </div>
 

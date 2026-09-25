@@ -7,7 +7,10 @@ use Illuminate\Database\Seeder;
 
 class FacadeSlideSeeder extends Seeder
 {
-    public function run(): void
+    /**
+     * Seed or re-seed the default 5 Façade pillar slides.
+     */
+    public static function seedDefaults(): void
     {
         $slides = [
             [
@@ -70,5 +73,10 @@ class FacadeSlideSeeder extends Seeder
         foreach ($slides as $slide) {
             FacadeSlide::updateOrCreate(['order' => $slide['order']], $slide);
         }
+    }
+
+    public function run(): void
+    {
+        self::seedDefaults();
     }
 }

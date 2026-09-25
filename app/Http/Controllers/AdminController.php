@@ -112,6 +112,9 @@ class AdminController extends Controller
     public function facadePage(Request $request, $categorySlug = null)
     {
         $siteSettings = SiteSetting::all()->pluck('value', 'key');
+        if (FacadeSlide::count() === 0) {
+            \Database\Seeders\FacadeSlideSeeder::seedDefaults();
+        }
         $solution = Solution::where('slug', 'facade')->first();
         $heroStats = HeroStat::orderBy('order')->get();
         $facadeSlides = FacadeSlide::where('is_active', true)->orderBy('order')->get();
@@ -395,9 +398,23 @@ class AdminController extends Controller
      */
     public function facadeHeroIndex()
     {
+        if (FacadeSlide::count() === 0) {
+            \Database\Seeders\FacadeSlideSeeder::seedDefaults();
+        }
+
         $facadeSlides = FacadeSlide::orderBy('order')->get();
 
         return view('admin.facade.index', compact('facadeSlides'));
+    }
+
+    /**
+     * Reset / Re-seed all 5 Façade pillar slides.
+     */
+    public function resetFacadeSlides(Request $request)
+    {
+        \Database\Seeders\FacadeSlideSeeder::seedDefaults();
+
+        return redirect()->route('admin.facade.index')->with('success', '5 Standard Façade Engineering Pillars initialized successfully!');
     }
 
     /**

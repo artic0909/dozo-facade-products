@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function () {
 
         // 3.1 Façade Section CMS Routes
         Route::get('/facade-cms', [AdminController::class, 'facadeHeroIndex'])->name('admin.facade.index');
+        Route::post('/facade-cms/reset', [AdminController::class, 'resetFacadeSlides'])->name('admin.facade.reset');
         Route::post('/facade-slides/{slide}', [AdminController::class, 'updateFacadeSlide'])->name('admin.facade.slide.update');
 
         // 4. Solutions CMS Routes
