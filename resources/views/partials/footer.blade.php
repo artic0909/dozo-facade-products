@@ -20,18 +20,18 @@
     $facebook = $siteSettings['social_facebook'] ?? 'https://facebook.com';
     $twitter = $siteSettings['social_twitter'] ?? 'https://twitter.com';
 
-    // Dynamic Window Products from CMS (Type: windows)
+    // Dynamic Window Products from CMS (Type: windows, 7 randomly)
     $footerWindows = \App\Models\Product::where('type', 'windows')
         ->with('productCategory')
-        ->orderBy('order')
-        ->orderBy('id', 'asc')
+        ->inRandomOrder()
+        ->take(7)
         ->get();
 
-    // Dynamic Perforation & Architectural Products from CMS (Type: products)
+    // Dynamic Perforation & Architectural Products from CMS (Type: products, 7 randomly)
     $footerPerforations = \App\Models\Product::where('type', 'products')
         ->with('productCategory')
-        ->orderBy('order')
-        ->orderBy('id', 'asc')
+        ->inRandomOrder()
+        ->take(7)
         ->get();
 @endphp
 
