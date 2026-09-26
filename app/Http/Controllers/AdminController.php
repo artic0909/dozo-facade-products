@@ -559,24 +559,36 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|in:windows,products',
-            'category_id' => 'required|exists:product_categories,id',
-            'theme' => 'required|string|in:light,dark',
-            'short_desc' => 'required|string',
+            'name' => 'nullable|string|max:255',
+            'type' => 'nullable|string|in:windows,products',
+            'category_id' => 'nullable|exists:product_categories,id',
+            'theme' => 'nullable|string|in:light,dark',
+            'short_desc' => 'nullable|string',
             'material_grade' => 'nullable|string|max:150',
             'finish_options' => 'nullable|string|max:150',
             'acoustic_rating' => 'nullable|string|max:150',
             'wind_load' => 'nullable|string|max:150',
+            'image' => 'nullable|string|max:255',
             'is_featured' => 'nullable|boolean',
             'order' => 'nullable|integer',
         ]);
 
-        $category = ProductCategory::findOrFail($validated['category_id']);
-        $validated['category'] = $category->name;
+        if (!empty($validated['category_id'])) {
+            $category = ProductCategory::find($validated['category_id']);
+            $validated['category'] = $category ? $category->name : null;
+        } else {
+            $validated['category_id'] = null;
+            $validated['category'] = null;
+        }
+
+        $name = !empty($validated['name']) ? trim($validated['name']) : 'Untitled Product';
+        $validated['name'] = $name;
 
         // Auto-generate unique slug from product name
-        $baseSlug = Str::slug($validated['name']);
+        $baseSlug = Str::slug($name);
+        if (empty($baseSlug)) {
+            $baseSlug = 'product-' . time();
+        }
         $slug = $baseSlug;
         $counter = 1;
         while (Product::where('slug', $slug)->exists()) {
@@ -585,7 +597,7 @@ class AdminController extends Controller
         }
         $validated['slug'] = $slug;
 
-        $imagePath = '/images/prod_sliding_window.jpg';
+        $imagePath = null;
         if ($request->hasFile('image_upload')) {
             $file = $request->file('image_upload');
             $filename = 'prod_' . time() . '_' . rand(100, 999) . '.' . $file->getClientOriginalExtension();
@@ -596,6 +608,8 @@ class AdminController extends Controller
         }
 
         $validated['image'] = $imagePath;
+        $validated['type'] = $validated['type'] ?? 'windows';
+        $validated['theme'] = $validated['theme'] ?? 'light';
         $validated['is_featured'] = $request->has('is_featured');
         $validated['order'] = $validated['order'] ?? (Product::max('order') + 1);
 
@@ -610,11 +624,11 @@ class AdminController extends Controller
     public function updateProduct(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|in:windows,products',
-            'category_id' => 'required|exists:product_categories,id',
-            'theme' => 'required|string|in:light,dark',
-            'short_desc' => 'required|string',
+            'name' => 'nullable|string|max:255',
+            'type' => 'nullable|string|in:windows,products',
+            'category_id' => 'nullable|exists:product_categories,id',
+            'theme' => 'nullable|string|in:light,dark',
+            'short_desc' => 'nullable|string',
             'material_grade' => 'nullable|string|max:150',
             'finish_options' => 'nullable|string|max:150',
             'acoustic_rating' => 'nullable|string|max:150',
@@ -624,11 +638,22 @@ class AdminController extends Controller
             'order' => 'nullable|integer',
         ]);
 
-        $category = ProductCategory::findOrFail($validated['category_id']);
-        $validated['category'] = $category->name;
+        if (!empty($validated['category_id'])) {
+            $category = ProductCategory::find($validated['category_id']);
+            $validated['category'] = $category ? $category->name : null;
+        } else {
+            $validated['category_id'] = null;
+            $validated['category'] = null;
+        }
+
+        $name = !empty($validated['name']) ? trim($validated['name']) : ($product->name ?: 'Untitled Product');
+        $validated['name'] = $name;
 
         // Auto-generate unique slug from product name on edit
-        $baseSlug = Str::slug($validated['name']);
+        $baseSlug = Str::slug($name);
+        if (empty($baseSlug)) {
+            $baseSlug = 'product-' . $product->id;
+        }
         $slug = $baseSlug;
         $counter = 1;
         while (Product::where('slug', $slug)->where('id', '!=', $product->id)->exists()) {
@@ -644,6 +669,8 @@ class AdminController extends Controller
             $validated['image'] = '/images/' . $filename;
         }
 
+        $validated['type'] = $validated['type'] ?? $product->type ?? 'windows';
+        $validated['theme'] = $validated['theme'] ?? $product->theme ?? 'light';
         $validated['is_featured'] = $request->has('is_featured');
         $product->update($validated);
 
@@ -667,14 +694,20 @@ class AdminController extends Controller
     public function storeCategory(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'order' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);
 
+        $name = !empty($validated['name']) ? trim($validated['name']) : 'New Category';
+        $validated['name'] = $name;
+
         // Auto-generate unique slug from category name
-        $baseSlug = Str::slug($validated['name']);
+        $baseSlug = Str::slug($name);
+        if (empty($baseSlug)) {
+            $baseSlug = 'category-' . time();
+        }
         $slug = $baseSlug;
         $counter = 1;
         while (ProductCategory::where('slug', $slug)->exists()) {
@@ -696,14 +729,20 @@ class AdminController extends Controller
     public function updateCategory(Request $request, ProductCategory $category)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'order' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
         ]);
 
+        $name = !empty($validated['name']) ? trim($validated['name']) : ($category->name ?: 'New Category');
+        $validated['name'] = $name;
+
         // Auto-generate unique slug from category name on edit
-        $baseSlug = Str::slug($validated['name']);
+        $baseSlug = Str::slug($name);
+        if (empty($baseSlug)) {
+            $baseSlug = 'category-' . $category->id;
+        }
         $slug = $baseSlug;
         $counter = 1;
         while (ProductCategory::where('slug', $slug)->where('id', '!=', $category->id)->exists()) {

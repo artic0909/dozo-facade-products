@@ -87,11 +87,11 @@
                             <td class="py-3.5 pl-4 text-center font-bold text-slate-400 font-mono">{{ $index + 1 }}</td>
                             <td class="py-3.5 px-3">
                                 <div class="w-14 h-12 rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
-                                    <img src="{{ $prod->image }}" alt="{{ $prod->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ $prod->image ?: '/images/prod_sliding_window.jpg' }}" alt="{{ $prod->name ?? 'Product' }}" class="w-full h-full object-cover">
                                 </div>
                             </td>
                             <td class="py-3.5 px-3">
-                                <div class="font-bold text-slate-900 text-sm">{{ $prod->name }}</div>
+                                <div class="font-bold text-slate-900 text-sm">{{ $prod->name ?? 'Untitled Product' }}</div>
                                 <div class="font-mono text-[11px] text-slate-400 flex items-center gap-1 mt-0.5">
                                     <span class="text-sky-500 font-bold">slug:</span>
                                     <span class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-semibold">/products/{{ $prod->slug }}</span>
@@ -180,15 +180,16 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Product System / Section *</label>
-                        <select id="prodType" name="type" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Product System / Section</label>
+                        <select id="prodType" name="type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                             <option value="windows">DOZO Windows (Windows Section)</option>
                             <option value="products">DOZO Products (Façade & Architectural Section)</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Dynamic Category *</label>
-                        <select id="prodCategoryId" name="category_id" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Dynamic Category</label>
+                        <select id="prodCategoryId" name="category_id" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                            <option value="">-- None / Unassigned --</option>
                             @foreach ($categories as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name }} ({{ $cat->slug }})</option>
                             @endforeach
@@ -197,44 +198,44 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Product Name *</label>
-                    <input type="text" id="prodName" name="name" required placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Product Name</label>
+                    <input type="text" id="prodName" name="name" placeholder="e.g. Slimline Sliding System" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     <p class="text-[10.5px] text-slate-400 mt-1">Note: URL slug will be automatically generated from this name (e.g. <code>/products/slimline-sliding-system</code>).</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Theme Card Style *</label>
-                        <select id="prodTheme" name="theme" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Theme Card Style</label>
+                        <select id="prodTheme" name="theme" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                             <option value="light">Light Glass (White card)</option>
                             <option value="dark">Dark Obsidian (Black card)</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Acoustic Rating</label>
-                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
+                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Material Grade</label>
-                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
+                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Wind Load Performance</label>
-                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
+                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Finish Options</label>
-                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
+                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Description & Engineering Specs *</label>
-                    <textarea id="prodDesc" name="short_desc" rows="3" required placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">N/A</textarea>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Description & Engineering Specs</label>
+                    <textarea id="prodDesc" name="short_desc" rows="3" placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
                 </div>
 
                 <div>
@@ -282,8 +283,8 @@
                 <form id="categoryForm" action="{{ route('admin.categories.store') }}" method="POST" class="space-y-3">
                     @csrf
                     <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Category Name *</label>
-                        <input type="text" id="catName" name="name" required placeholder="e.g. Curtain Wall Systems" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Category Name</label>
+                        <input type="text" id="catName" name="name" placeholder="e.g. Curtain Wall Systems" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">Description (Optional)</label>
@@ -404,6 +405,7 @@
         document.getElementById('productModalTitle').textContent = 'Add New Product System';
         document.getElementById('prodName').value = '';
         document.getElementById('prodType').value = currentTypeFilter !== 'all' ? currentTypeFilter : 'windows';
+        document.getElementById('prodCategoryId').value = '';
         document.getElementById('prodTheme').value = 'light';
         document.getElementById('prodAcoustic').value = '';
         document.getElementById('prodMaterial').value = '';
@@ -419,12 +421,10 @@
     function openEditProductModal(prod) {
         const form = document.getElementById('productForm');
         form.action = `/admin/products/${prod.id}`;
-        document.getElementById('productModalTitle').textContent = 'Edit Product: ' + prod.name;
-        document.getElementById('prodName').value = prod.name;
+        document.getElementById('productModalTitle').textContent = 'Edit Product: ' + (prod.name || 'Untitled');
+        document.getElementById('prodName').value = prod.name || '';
         document.getElementById('prodType').value = prod.type || 'windows';
-        if (prod.category_id) {
-            document.getElementById('prodCategoryId').value = prod.category_id;
-        }
+        document.getElementById('prodCategoryId').value = prod.category_id || '';
         document.getElementById('prodTheme').value = prod.theme || 'light';
         document.getElementById('prodAcoustic').value = prod.acoustic_rating || '';
         document.getElementById('prodMaterial').value = prod.material_grade || '';
