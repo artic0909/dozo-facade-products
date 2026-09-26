@@ -212,29 +212,29 @@
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Acoustic Rating</label>
-                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodAcoustic" name="acoustic_rating" placeholder="e.g. Up to 44 dB" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Material Grade</label>
-                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodMaterial" name="material_grade" placeholder="e.g. 6063-T6 Architectural Alloy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Wind Load Performance</label>
-                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="text" id="prodWind" name="wind_load" placeholder="e.g. Up to 4.5 kPa Class E" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Finish Options</label>
-                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="text" id="prodFinish" name="finish_options" placeholder="e.g. PVDF, Powder Coated (Qualicoat), Anodized 25μm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500" value="N/A">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Description & Engineering Specs *</label>
-                    <textarea id="prodDesc" name="short_desc" rows="3" required placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <textarea id="prodDesc" name="short_desc" rows="3" required placeholder="Technical performance, thermal break, and engineering details..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500">N/A</textarea>
                 </div>
 
                 <div>
