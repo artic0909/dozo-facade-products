@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DOZO - Windows &amp; Façades &amp; Perforation Products | Architectural Building Envelope Solutions | 3.0 kPa Wind &amp; Acoustic Tested</title>
+    <title>DOZO - Façade & Windows & Perforation Products | Architectural Building Envelope Solutions | 3.0 kPa Wind &amp; Acoustic Tested</title>
     <meta name="description" content="DOZO Windows &amp; Façades delivers integrated building envelope solutions. 3.0 kPa wind load tested, 0.30 kPa water tested, 20-45 dB acoustic cutoff, 10-12°C heat reduction. 6063-T6 aluminum, sub-frame system, DURACOAT 15-yr coating, 25-yr aluminium warranty. AMC available.">
     <meta name="keywords" content="DOZO windows, DOZO facade, architectural building envelopes, aluminum sliding windows, unitized curtain wall, 6063-T6 aluminum, sub-frame window system, acoustic glass windows, DURACOAT powder coating, facade contractor India, window AMC">
     <link rel="canonical" href="{{ url()->current() }}">
