@@ -80,10 +80,34 @@
             <!-- Col 1: Brand Info & Socials (Span 4) -->
             <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
                 <div>
-                    <!-- Footer Logo Container -->
-                    <a href="{{ route('home') }}" class="inline-flex items-center bg-white px-4 py-2 rounded-lg mb-4 shadow-sm hover:opacity-95 transition-opacity">
-                        <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-12 w-auto object-contain">
-                    </a>
+                    <!-- Footer Logo & Mother Company Container -->
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <a href="{{ route('home') }}" class="inline-flex items-center bg-white px-4 py-2 rounded-xl shadow-sm hover:opacity-95 transition-opacity">
+                                <img src="/logo.png" alt="DOZO Windows & Facades" class="h-10 sm:h-11 w-auto object-contain">
+                            </a>
+                        </div>
+                        
+                        <!-- Prominently Highlighted Mother Company Card -->
+                        <a href="https://rconpl.in/" target="_blank" rel="noopener noreferrer" class="block p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/40 via-slate-900/70 to-slate-800/50 border border-sky-500/40 hover:border-sky-400/80 shadow-xl max-w-sm backdrop-blur-md transition-all duration-200 hover:scale-[1.02] group">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 shadow-md ring-2 ring-sky-400/30 group-hover:ring-sky-400 transition-all">
+                                    <img src="/rcpl.png" alt="Ranihati Construction Private Limited" class="w-full h-full object-contain">
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-1.5 mb-0.5">
+                                        <span class="text-[10px] text-sky-400 font-bold uppercase tracking-wider">DOZO &bull; A Brand of</span>
+                                        <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-sky-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-xs sm:text-[13px] font-black text-white tracking-tight leading-snug group-hover:text-sky-200 transition-colors">
+                                        Ranihati Construction Private Limited
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     <p class="text-xs text-gray-400 leading-relaxed max-w-sm mb-5">
                         {{ $footerAbout }}
                     </p>
@@ -249,7 +273,7 @@
         <!-- Bottom Sub-Footer Bar -->
         <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <div>
-                <p>&copy; {{ date('Y') }} DOZO Façade | Windows | Perforation Products a brand of Ranihati Const. PVT. LTD. All rights reserved. &bull; {{ $certifications }}</p>
+                <p>&copy; {{ date('Y') }} DOZO Façade | Windows | Perforation Products &bull; A Brand of Ranihati Construction Private Limited. All rights reserved. &bull; {{ $certifications }}</p>
             </div>
             <div class="flex flex-wrap items-center gap-5 text-gray-400 text-xs">
                 <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
@@ -267,10 +291,32 @@
 <!-- Mobile Footer -->
 <footer class="sm:hidden bg-[#121518] text-white p-6 mt-6 border-t border-gray-800 selection:bg-sky-500 selection:text-white">
     <!-- Brand Info -->
-    <div class="mb-4 text-left">
-        <a href="{{ route('home') }}" class="inline-flex items-center bg-white px-3.5 py-1.5 rounded-md mb-3 shadow-sm">
-            <img src="/logo.png" alt="DOZO Windows & Facades" class="h-9 w-auto object-contain">
-        </a>
+    <div class="mb-5 text-left">
+        <div class="flex flex-col items-start gap-3 mb-4">
+            <a href="{{ route('home') }}" class="inline-flex items-center bg-white px-3.5 py-1.5 rounded-md shadow-sm">
+                <img src="/logo.png" alt="DOZO Windows & Facades" class="h-9 w-auto object-contain">
+            </a>
+            
+            <!-- Prominently Highlighted Mother Company Badge for Mobile -->
+            <a href="https://rconpl.in/" target="_blank" rel="noopener noreferrer" class="block w-full p-3 rounded-2xl bg-gradient-to-r from-sky-950/50 via-slate-900 to-slate-800/60 border border-sky-500/40 hover:border-sky-400/80 shadow-lg transition-all group">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 shadow-md ring-2 ring-sky-400/30 group-hover:ring-sky-400">
+                        <img src="/rcpl.png" alt="Ranihati Construction Private Limited" class="w-full h-full object-contain">
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-1.5 mb-0.5">
+                            <span class="text-[9px] text-sky-400 font-bold uppercase tracking-wider">DOZO &bull; A Brand of</span>
+                            <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-sky-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs font-black text-white leading-snug group-hover:text-sky-200">
+                            Ranihati Construction Private Limited
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         <h3 class="text-base font-bold text-white leading-snug">Precision Building Envelope Solutions</h3>
         <p class="text-xs text-gray-400 mt-1 leading-relaxed">{{ $footerAbout }}</p>
     </div>
@@ -333,6 +379,6 @@
 
     <!-- Mobile Sub-Footer -->
     <div class="text-center text-[11px] text-gray-500 mt-6 pt-4 border-t border-gray-800">
-        &copy; {{ date('Y') }} DOZO. {{ $certifications }}
+        &copy; {{ date('Y') }} DOZO &bull; A Brand of Ranihati Construction Private Limited. {{ $certifications }}
     </div>
 </footer>
